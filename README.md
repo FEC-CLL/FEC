@@ -4,6 +4,7 @@ Front End Capstone Project for HR
 Step 1: npm install
 
 Step 2: add a dist folder in client directory
+
   2.1: add an index.html file to dist folder
   ```
     <!DOCTYPE html>
