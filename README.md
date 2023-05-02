@@ -23,6 +23,6 @@ Step 2: add a dist folder in client directory
   ```
   2.2 add a styles.css file to dist folder
   
-Step 3: npm run dev
+Step 3: npm run dev in terminal at root directory
 
 Step 4: You should see Hello World! when navigating to localhost/3000
