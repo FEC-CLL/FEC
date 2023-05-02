@@ -2,6 +2,7 @@
 Front End Capstone Project for HR
 
 Step 1: npm install
+
 Step 2: add a dist folder in client directory
   2.1: add an index.html file to dist folder
   ```
@@ -20,5 +21,7 @@ Step 2: add a dist folder in client directory
     </html>
   ```
   2.2 add a styles.css file to dist folder
+  
 Step 3: npm run dev
+
 Step 4: You should see Hello World! when navigating to localhost/3000
