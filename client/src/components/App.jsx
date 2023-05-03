@@ -1,6 +1,5 @@
 import React from 'react';
 
-console.log('Test');
 
 export default function App() {
   return (
