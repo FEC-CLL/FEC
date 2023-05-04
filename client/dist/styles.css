@@ -4,5 +4,45 @@
   font-weight: 100;
   color: black;
   text-align: center;
-  margin: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.navBar {
+  background-color: #BFBFA7;
+}
+
+#searchIcon {
+  width: 16px;
+  height: 16px;
+  background-size: 100% ;
+}
+
+/* Melissa */
+.productContainer {
+  border-style: solid;
+  border-color: red;
+  height: 300px;
+}
+
+/* Frank */
+.relatedContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+}
+
+/* Sasha */
+.qaContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+}
+
+/* Julie */
+.ratingsContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+
 }

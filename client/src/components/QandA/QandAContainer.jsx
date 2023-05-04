@@ -2,8 +2,8 @@ import React from 'react';
 
 const QandAContainer = () => {
   return (
-    <div>
-      Hi World
+    <div className='qaContainer'>
+      Q and A
     </div>
   )
 }
