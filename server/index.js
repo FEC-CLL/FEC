@@ -1,10 +1,17 @@
 require('dotenv').config();
+const productController = require('./controllers/ProductController');
+const reviewsController = require('./controllers/ReviewsController');
+const relatedController = require('./controllers/RelatedItemsController');
+const questionsController = require('./controllers/QandAController');
+
 const path = require('path');
 
 const express = require('express');
 const morgan = require('morgan');
 
 const app = express();
+
+const api = process.env.API_ENDPOINT;
 app.use(morgan('dev'));
 
 // These two middlewares work hand-in-hand with one another
@@ -14,7 +21,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
-
+app.use('/products', productController);
+app.use('/reviews', reviewsController);
+app.use('/questions', questionsController);
+app.use('/related', relatedController);
 // Product Reviews
 
 // Q & A
