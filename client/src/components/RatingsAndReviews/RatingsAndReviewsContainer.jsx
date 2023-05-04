@@ -2,8 +2,8 @@ import React from 'react';
 
 const RatingsAndReviewsContainer = () => {
   return (
-    <div>
-      We did it
+    <div className='ratingsContainer'>
+      Ratings and Reviews
     </div>
   )
 }

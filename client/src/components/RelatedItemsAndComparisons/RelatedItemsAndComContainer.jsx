@@ -2,8 +2,8 @@ import React from 'react';
 
 const RelatedItemsAndComContainer = () => {
   return (
-    <div>
-      Whats up World
+    <div className='relatedContainer'>
+      Related Products and Outfits
     </div>
   )
 }
