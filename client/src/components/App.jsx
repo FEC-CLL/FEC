@@ -20,7 +20,7 @@ export default function App() {
           </input>
 
           <button type='submit'>
-            <img src='../../dist/assets/icons/search.png' />
+            <img src='/assets/icons/search.png' />
           </button>
 
         </form>
