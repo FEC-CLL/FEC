@@ -7,7 +7,7 @@ const API_URL = process.env.API_ENDPOINT;
 const API_KEY = process.env.TOKEN;
 
 // API request for related products based off a product ID
-router.get('/:id/related', (req, res) => {
+router.get('/:id', (req, res) => {
   axios.get(`${API_URL}/products/${req.params.id}/related`, { headers: { Authorization: API_KEY } })
     .then((response) => {
       // Need to loop thru related product id's and do a GET request for each
