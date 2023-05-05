@@ -39,15 +39,4 @@ router.get('/:id/styles', (req, res) => {
   })
 });
 
-router.get('/:id/related', (req, res) => {
-  axios.get(`${API_URL}/products/${req.params.id}/related`, {headers : {'Authorization': API_KEY}})
-  .then((response) => {
-    res.send(response.data)
-  })
-  .catch((error) => {
-    console.error(error)
-    res.sendStatus(error.response.status)
-  })
-});
-
 module.exports = router;
