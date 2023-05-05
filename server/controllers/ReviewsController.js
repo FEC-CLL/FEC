@@ -10,7 +10,7 @@ router.get('/:productID', (req, res) => {
   let productId = req.params.productID;
   let options = {
     method: 'get',
-    url: url + 'reviews?product_id=' + productId,
+    url: url + '/reviews?product_id=' + productId,
     headers: {
       Authorization: token
     }
@@ -31,7 +31,7 @@ router.get('/metadata/:productID', (req, res) => {
     let productId = req.params.productID;
     let options = {
       method: 'get',
-      url: url + 'reviews/meta?product_id=' + productId,
+      url: url + '/reviews/meta?product_id=' + productId,
       headers: {
         Authorization: token
       }
@@ -51,7 +51,7 @@ router.get('/metadata/:productID', (req, res) => {
 router.post('/', (req, res) => {
   let options = {
     method: 'post',
-    url: url + 'reviews',
+    url: url + '/reviews',
     headers: {
       Authorization: token
     },
@@ -73,7 +73,7 @@ router.put('/:reviewId/helpful', (req, res) => {
   let reviewId = req.params.reviewId;
   let options = {
     method: 'put',
-    url: url + 'reviews/' + reviewId + '/helpful',
+    url: url + '/reviews/' + reviewId + '/helpful',
     headers: {
       Authorization: token
     }
@@ -94,7 +94,7 @@ router.put('/:reviewId/report', (req, res) => {
   let reviewId = req.params.reviewId;
   let options = {
     method: 'put',
-    url: url + 'reviews/' + reviewId + '/report',
+    url: url + '/reviews/' + reviewId + '/report',
     headers: {
       Authorization: token
     }
