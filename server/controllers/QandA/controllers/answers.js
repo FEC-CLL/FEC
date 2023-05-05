@@ -8,7 +8,7 @@ module.exports = {
     const question_id = req.body.question_id;
     const count = req.body.count || 5;
     const page = req.body.page || 1;
-    axios.get(`${api}qa/questions/${question_id}/answers?`, {
+    axios.get(`${api}/qa/questions/${question_id}/answers?`, {
       params: {
         count: count,
         page: page
@@ -27,7 +27,7 @@ module.exports = {
   },
   post: function (req, res) {
     const question_id = req.body.question_id;
-    axios.post(`${api}qa/questions/${question_id}/answers`,
+    axios.post(`${api}/qa/questions/${question_id}/answers`,
     {
       body: req.body.body,
       name: req.body.name,
@@ -49,7 +49,7 @@ module.exports = {
   },
   putHelpful: function (req, res) {
     const answer_id = req.body.answer_id;
-    axios.put(`${api}qa/answers/${answer_id}/helpful`, {}, {
+    axios.put(`${api}/qa/answers/${answer_id}/helpful`, {}, {
       headers: {
         Authorization: process.env.TOKEN
       }
@@ -64,7 +64,7 @@ module.exports = {
   },
   putReport: function (req, res) {
     const answer_id = req.body.answer_id;
-    axios.put(`${api}qa/answers/${answer_id}/report`, {}, {
+    axios.put(`${api}/qa/answers/${answer_id}/report`, {}, {
       headers: {
         Authorization: process.env.TOKEN
       }
