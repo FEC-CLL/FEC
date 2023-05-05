@@ -2,7 +2,7 @@ require('dotenv').config();
 const productController = require('./controllers/ProductController');
 const reviewsController = require('./controllers/ReviewsController');
 const relatedController = require('./controllers/RelatedItemsController');
-const questionsController = require('./controllers/QandAController');
+const questionsController = require('./controllers/QandA/QandARouter');
 
 const path = require('path');
 
