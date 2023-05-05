@@ -39,7 +39,7 @@ module.exports = {
       }
     })
     .then(() => {
-      res.status(200).send();
+      res.status(201).send();
     })
     .catch((err) => {
       console.log(err);
@@ -47,9 +47,33 @@ module.exports = {
     })
   },
   putHelpful: function (req, res) {
-
+    const question_id = req.body.question_id;
+    axios.put(`${api}qa/questions/${question_id}/helpful`, {}, {
+      headers: {
+        Authorization: process.env.TOKEN
+      }
+    })
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).send(err);
+    })
   },
   putReport: function (req, res) {
-
+    const question_id = req.body.question_id;
+    axios.put(`${api}qa/questions/${question_id}/report`, {}, {
+      headers: {
+        Authorization: process.env.TOKEN
+      }
+    })
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).send(err);
+    })
   }
 };
