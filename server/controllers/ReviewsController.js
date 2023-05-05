@@ -22,7 +22,7 @@ router.get('/:productID', (req, res) => {
     })
     .catch((err) => {
       console.error('Server failed to GET data', err);
-      res.sendStatus(error.response.status);
+      res.sendStatus(err.response.status);
     })
 })
 
@@ -43,7 +43,7 @@ router.get('/metadata/:productID', (req, res) => {
       })
       .catch((err) => {
         console.error('Server failed to GET metadata', err);
-        res.sendStatus(error.response.status);
+        res.sendStatus(err.response.status);
       })
 })
 
@@ -76,7 +76,7 @@ let data = {
     })
     .catch((err) => {
       console.error('Server failed to send POST request', err);
-      res.sendStatus(error.response.status);
+      res.sendStatus(err.response.status);
     })
 })
 
@@ -97,7 +97,7 @@ router.put('/:reviewId/helpful', (req, res) => {
   })
   .catch((err) => {
     console.error('Server failed to send PUT helpful request', err.message);
-    res.sendStatus(error.response.status);
+    res.sendStatus(err.response.status);
   })
 })
 
@@ -118,7 +118,7 @@ router.put('/:reviewId/report', (req, res) => {
   })
   .catch((err) => {
     console.error('Server failed to send PUT report request', err);
-    res.sendStatus(error.response.status);
+    res.sendStatus(err.response.status);
   })
 })
 
