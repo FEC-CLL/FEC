@@ -49,13 +49,25 @@ router.get('/metadata/:productID', (req, res) => {
 
 
 router.post('/', (req, res) => {
+let data = {
+  product_id: req.body.product_id,
+  rating: req.body.rating || 5,
+  summary: req.body.summary || '',
+  body: req.body.body || '',
+  recommend: req.body.recommend || false,
+  name: req.body.name || '',
+  email: req.body.email || '',
+  photos: req.body.photos || [],
+  characteristics: req.body.characteristics || {}
+}
+
   let options = {
     method: 'post',
     url: url + '/reviews',
     headers: {
       Authorization: token
     },
-    data: req.body,
+    data: data,
   };
 
   axios(options)
