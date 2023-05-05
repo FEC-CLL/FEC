@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 // ROUTES
 app.use('/products', productController);
 app.use('/reviews', reviewsController);
-app.use('/questions', questionsController);
+app.use('/qa', questionsController);
 app.use('/related', relatedController);
 // Product Reviews
 

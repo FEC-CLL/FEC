@@ -5,7 +5,6 @@ const api = process.env.API_ENDPOINT;
 module.exports = {
   get: function (req, res) {
     const productId = req.body.product_id;
-    console.log(productId);
     const count = req.body.count || 5;
     const page = req.body.page || 1;
     axios.get(`${api}qa/questions?`, {
@@ -19,7 +18,6 @@ module.exports = {
       }
     })
     .then((data) => {
-      console.log(data.data);
       res.status(200).send(data.data);
     })
     .catch((err) => {
