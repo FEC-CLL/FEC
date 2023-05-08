@@ -37,6 +37,8 @@
   border-style: solid;
   border-color: red;
   height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Julie */
