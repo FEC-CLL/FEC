@@ -1,0 +1,50 @@
+#App {
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+  font-weight: 100;
+  color: black;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.navBar {
+  background-color: #BFBFA7;
+}
+
+#searchIcon {
+  width: 16px;
+  height: 16px;
+  background-size: 100% ;
+}
+
+/* Melissa */
+.productContainer {
+  border-style: solid;
+  border-color: red;
+  height: 300px;
+}
+
+/* Frank */
+.relatedContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+}
+
+/* Sasha */
+.qaContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Julie */
+.ratingsContainer {
+  border-style: solid;
+  border-color: red;
+  height: 200px;
+
+}

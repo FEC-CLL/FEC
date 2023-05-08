@@ -4,10 +4,10 @@ import ReviewList from './ReviewList'
 
 const RatingsAndReviewsContainer = () => {
   return (
-    <div>
+    <div className='ratingsContainer'>
+      <p>Ratings and Reviews</p>
       <ReviewList />
     </div>
-  )
-}
+  )}
 
 export default RatingsAndReviewsContainer;
