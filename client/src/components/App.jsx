@@ -8,8 +8,8 @@ import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
 import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContainer';
 
 export default function App() {
-  const [allProducts, setAllProducts] = useState(data);
-  const [currentProduct, setCurrentProduct] = useState(data[0]);
+  const [allProducts, setAllProducts] = useState();
+  const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function App() {
     axios.get('/products/40344')
       .then((response) => {
         // Set product data to state
-        console.log(response.data);
+        console.log('response:', response);
         setInitProd(response.data);
       })
       .catch((err) => {
@@ -42,7 +42,7 @@ export default function App() {
       <Product />
       <RelatedItems />
       <QandA />
-      <Ratings />
+      <Ratings initProd={initProd} />
     </div>
   );
 }

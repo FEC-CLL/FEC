@@ -8,9 +8,11 @@ const token = process.env.TOKEN;
 
 router.get('/:productID', (req, res) => {
   const productId = req.params.productID;
+  const page = req.query.page || 1;
+  const sort = req.query.sort || "newest";
   const options = {
     method: 'get',
-    url: `${url}/reviews?product_id=${productId}`,
+    url: `${url}/reviews?product_id=${productId}&page=${page}&count=2&sort="${sort}"`,
     headers: {
       Authorization: token,
     },
