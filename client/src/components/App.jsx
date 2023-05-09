@@ -8,8 +8,8 @@ import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
 import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContainer';
 
 export default function App() {
-  const [allProducts, setAllProducts] = useState(data);
-  const [currentProduct, setCurrentProduct] = useState(data[0]);
+  const [allProducts, setAllProducts] = useState();
+  const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
 
   useEffect(() => {
