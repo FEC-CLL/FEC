@@ -4,7 +4,7 @@ import axios from 'axios';
 function LoadMoreReviews({page, setPage, reviewNum}) {
   return (
     <div id="loadMoreReviews">
-      {reviewNum >= 2 ? (<button type="button" id="loadMoreReviewsButton">More Reviews</button>) : ''}
+      {reviewNum >= 2 ? (<button type="button" id="loadMoreReviewsButton">MORE REVIEWS</button>) : ''}
     </div>
   );
 }

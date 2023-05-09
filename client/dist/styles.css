@@ -51,7 +51,8 @@ body {
 
 /* Julie */
 .ratingsContainer {
-  font-size: 20px;
+  margin-bottom: 5%;
+  padding-bottom: 3%;
   border-style: solid;
   border-color: red;
   height: auto;
