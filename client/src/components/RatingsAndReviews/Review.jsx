@@ -9,8 +9,8 @@ function Review({ review }) {
         <div className="reviewDate">{review.date}</div>
       </div>
       <div className="reviewSummary">{review.summary}</div>
-      <div className="reviewBody">{review.summary}</div>
-      <div className="reviewResponse">{review.summary}</div>
+      <div className="reviewBody">{review.body}</div>
+      <div className="reviewResponse">{review.response ? review.response : ''}</div>
       <div className="reviewFooter">
         <div>Helpful?</div>
         <div>Yes</div>

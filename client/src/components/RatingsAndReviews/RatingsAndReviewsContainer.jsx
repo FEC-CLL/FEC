@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './stylesRR.css';
 import ReviewList from './ReviewList';
+import LoadMoreReviews from './LoadMoreReview';
 
 function RatingsAndReviewsContainer({ initProd }) {
   const [allReviews, setAllReviews] = useState([]);
-  const [page, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const [reviewNum, setReviewNum] = useState(0);
 
   useEffect(() => {
     if (initProd.id) {
@@ -13,6 +15,7 @@ function RatingsAndReviewsContainer({ initProd }) {
         .then((response) => {
           console.log(response.data);
           setAllReviews(allReviews.concat(response.data.results));
+          setReviewNum(response.data.results.length);
         })
         .catch((err) => {
           console.error(err);
@@ -27,6 +30,7 @@ function RatingsAndReviewsContainer({ initProd }) {
         <div className="ratings1Container"></div>
         <div className="reviewContainer">
           <ReviewList allReviews={allReviews} />
+          <LoadMoreReviews page={page} setPage={setPage} reviewNum={reviewNum} />
         </div>
       </div>
     </div>

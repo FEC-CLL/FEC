@@ -4,7 +4,6 @@ import Review from './Review';
 
 function ReviewList({allReviews}) {
 
-  //{allReviews.results.length > 2 ? <button id="addReview">Add Review</button> : ''}
 
   return (
     <div>
