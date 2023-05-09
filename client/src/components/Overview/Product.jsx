@@ -6,7 +6,7 @@ export default function Product() {
     <div className="container">
       <div className="image-gallery">
         <div className="image-gallery__thumbnail-nav">
-          <button className="image-gallery__thumbnail-nav__up"></button>
+          <button type="button" className="image-gallery__thumbnail-nav__up" aria-label="Up" />
           <ul>
             <li><img className="image-gallery__thumbnail-nav__image" src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Thumbnail 1" /></li>
             <li><img className="image-gallery__thumbnail-nav__image" src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Thumbnail 1" /></li>
@@ -16,12 +16,12 @@ export default function Product() {
             <li><img className="image-gallery__thumbnail-nav__image" src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Thumbnail 1" /></li>
             <li><img className="image-gallery__thumbnail-nav__image" src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Thumbnail 1" /></li>
           </ul>
-          <button className="image-gallery__thumbnail-nav__down"></button>
+          <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" />
         </div>
         <div className="image-gallery__image">
-          <button className="image-gallery__image-left"></button>
+          <button type="button" className="image-gallery__image-left" aria-label="Left" />
           <img className="image-gallery__image__main" src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Main Product" />
-          <button className="image-gallery__image-right"></button>
+          <button type="button" className="image-gallery__image-right" aria-label="Right" />
         </div>
       </div>
       <div className="product-information">
@@ -71,7 +71,7 @@ export default function Product() {
             <option value="1">1</option>
           </select>
         </div>
-        <button className="product-information__add-to-cart">
+        <button type="button" className="product-information__add-to-cart">
           Add to Cart
         </button>
       </div>
