@@ -9,7 +9,6 @@ const questionsController = require('./controllers/QandA/QandARouter');
 
 const app = express();
 
-const api = process.env.API_ENDPOINT;
 app.use(morgan('dev'));
 
 // These two middlewares work hand-in-hand with one another

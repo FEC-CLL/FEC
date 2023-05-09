@@ -50,7 +50,9 @@ module.exports = {
       });
   },
   putHelpful(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/questions/${question_id}/helpful`, {}, {
       headers: {
         Authorization: process.env.TOKEN,
@@ -65,7 +67,9 @@ module.exports = {
       });
   },
   putReport(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/questions/${question_id}/report`, {}, {
       headers: {
         Authorization: process.env.TOKEN,
