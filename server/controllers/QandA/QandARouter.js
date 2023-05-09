@@ -1,5 +1,5 @@
-const controller = require('./controllers')
 const router = require('express').Router();
+const controller = require('./controllers');
 
 router.get('/questions', controller.questions.get);
 
