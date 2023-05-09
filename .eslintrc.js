@@ -18,11 +18,4 @@ module.exports = {
     'react',
     'jest',
   ],
-  // rules: {
-  //   settings: {
-  //     react: {
-  //       version: 'detect',
-  //     },
-  //   },
-  // },
 };
