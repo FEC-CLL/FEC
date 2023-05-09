@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
   };
 
   axios(options)
-    .then((result) => {
+    .then(() => {
       res.sendStatus(201);
     })
     .catch((err) => {
@@ -91,7 +91,7 @@ router.put('/:reviewId/helpful', (req, res) => {
   };
 
   axios(options)
-    .then((result) => {
+    .then(() => {
       res.sendStatus(201);
     })
     .catch((err) => {
@@ -111,7 +111,7 @@ router.put('/:reviewId/report', (req, res) => {
   };
 
   axios(options)
-    .then((result) => {
+    .then(() => {
       res.sendStatus(201);
     })
     .catch((err) => {
