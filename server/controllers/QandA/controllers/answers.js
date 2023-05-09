@@ -6,9 +6,11 @@ const api = process.env.API_ENDPOINT;
 // import axios from 'axios';
 module.exports = {
   get(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
     const count = req.body.count || 5;
     const page = req.body.page || 1;
+    // eslint-disable-next-line
     axios.get(`${api}/qa/questions/${question_id}/answers?`, {
       params: {
         count,
@@ -27,8 +29,10 @@ module.exports = {
       });
   },
   post(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
     axios.post(
+      // eslint-disable-next-line
       `${api}/qa/questions/${question_id}/answers`,
       {
         body: req.body.body,
@@ -51,7 +55,9 @@ module.exports = {
       });
   },
   putHelpful(req, res) {
+    // eslint-disable-next-line
     const { answer_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/answers/${answer_id}/helpful`, {}, {
       headers: {
         Authorization: process.env.TOKEN,
@@ -66,7 +72,9 @@ module.exports = {
       });
   },
   putReport(req, res) {
+    // eslint-disable-next-line
     const { answer_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/answers/${answer_id}/report`, {}, {
       headers: {
         Authorization: process.env.TOKEN,
