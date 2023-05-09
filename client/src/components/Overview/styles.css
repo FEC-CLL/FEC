@@ -1,0 +1,204 @@
+.image-gallery {
+  flex-basis: 66.66%;
+  padding: 20px;
+  position: relative;
+}
+
+.image-gallery__thumbnail-nav {
+  position: absolute;
+  text-align: center;
+}
+
+.image-gallery__thumbnail-nav__up {
+  background: url('http://localhost:3000/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+.image-gallery__thumbnail-nav__down {
+  background: url('http://localhost:3000/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-style: none;
+  transform: rotate(180deg);
+}
+
+.image-gallery__image-left {
+  background: url('http://localhost:3000/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-style: none;
+}
+
+.image-gallery__image-right {
+  background: url('http://localhost:3000/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-style: none;
+  transform: rotate(180deg);
+}
+
+.image-gallery__thumbnail-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.image-gallery__thumbnail-nav__image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+
+.image-gallery__image {
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-gallery__image__main {
+  object-fit: contain;
+  height: 600px;
+}
+
+
+
+.product-information {
+  flex-basis: 33.33%;
+  padding: 20px;
+}
+
+.product-information__reviews {
+  color: var(--font-color);
+  margin-bottom: 10px;
+}
+
+.product-information__reviews--0 {
+  background: url("http://localhost:3000/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+}
+
+.product-information__reviews--1 {
+  background: url("http://localhost:3000/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+}
+
+.product-information__reviews--2 {
+  background: url("http://localhost:3000/assets/icons/star-half.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+}
+
+.product-information__reviews--3 {
+  background: url("http://localhost:3000/assets/icons/star-three-quarter.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+}
+
+.product-information__reviews--4 {
+  background: url("http://localhost:3000/assets/icons/star.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+}
+
+.product-information__reviews__link {
+  color: var(--font-color);
+}
+
+.product-information__category {
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+
+.product-information__product-title {
+  font-size: 36px;
+  margin: 0 auto 10px;
+}
+
+.product-information__price {
+  margin-bottom: 10px;
+}
+
+.product-information__price--strike {
+  color: var(--font-color-secondary);
+  text-decoration: line-through;
+}
+
+.product-information__price--sale {
+  color: var(--red);
+}
+
+.product-information__style-selector--bold {
+  font-weight: bold;
+}
+.product-information__style-selector ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-information__style-selector li {
+  position: relative;
+}
+
+.product-information__style-selector--selected {
+  background: url("http://localhost:3000/assets/icons/check-mark.png") 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  right: -8px;
+  top: -8px;
+}
+
+.product-information__style-selector__thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.product-information__options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.product-information__select {
+  border: 1px solid var(--secondary);
+  font-size: 16px;
+  height: 60px;
+  padding: 0 10px;
+  width: 100%;
+  background: url("http://localhost:3000/assets/icons/up-arrow.png") right 20px center / 16px no-repeat;
+  appearance: none;
+}
+
+.product-information__add-to-cart {
+  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  height: 60px;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
+}
