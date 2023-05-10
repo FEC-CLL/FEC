@@ -1,0 +1,19 @@
+.productCard {
+  border-style: solid;
+  border-width: thin;
+  border-color: grey;
+  background-color: white;
+  height: 300px;
+  width: 200px;
+  margin: auto;
+  transition: background-color 2s ease-out 100ms;
+}
+
+.productCard:hover {
+  background-color: #BFBFA7;
+}
+
+.cardImg {
+  height: 200px;
+  width: 200px;
+}
