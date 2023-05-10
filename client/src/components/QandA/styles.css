@@ -122,7 +122,7 @@
 .modal-body-container {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 70%;
   margin-top: 10px;
 }
 
@@ -138,4 +138,19 @@
 
 .nicknameText {
   font-size: 12px;
+}
+
+.imageButton {
+  /* display: flex;
+  justify-content: space-between;
+  width: 140px; */
+  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  border: 1px solid;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  height: 60px;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
 }

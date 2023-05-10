@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionList from './QuestionList.jsx';
+import AddQuestion from './AddQuestion.jsx';
 import './styles.css';
 
 // eslint-disable-next-line react/prop-types
@@ -9,16 +10,17 @@ function QandA({ product }) {
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
   const [currentQuestions, setCurrentQuestions] = useState([]);
-  const [questionCount, setQuestionCount] = useState(4);
+  const [questionCount, setQuestionCount] = useState(2);
   const [isReady, setIsReady] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
+  const [show, setShow] = useState(false);
 
   const getProduct = () => {
     axios.get('qa/questions', {
       params: {
-        product_id:40347,
+        product_id:40380,
         page: 1,
-        count: 20
+        count: 200
       }
     })
     .then((res) => {
@@ -65,11 +67,29 @@ function QandA({ product }) {
     })
   }
 
+  const addQuestionHandler = (data) => {
+    console.log(data.product_id);
+    axios.post('/qa/questions', {
+      body: data.body,
+      name: data.name,
+      email: data.email,
+      product_id: data.product_id
+    })
+    .then(() => {
+      getProduct();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
     <div className='qaContainer'>
       Questions & Answers
       <Search filter={setSearch} />
       {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
+      <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
+      <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
     </div>
   )
 }
