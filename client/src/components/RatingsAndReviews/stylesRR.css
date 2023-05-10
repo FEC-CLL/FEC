@@ -1,0 +1,85 @@
+/* Julie */
+:root {
+  --primary: #BFBFA7;
+  --primary-lighter: #d2d2c1;
+  --primary-darker: #acac96;
+  --secondary: #606060;
+  --font-color: #000000;
+  --font-color-secondary: #606060;
+  --bg-color: #ffffff;
+  --red: red;
+}
+
+.rrTitle {
+  text-align: left;
+}
+
+.rrContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratings1Container {
+  width: 25%;
+  border-style: solid;
+  border-color: blue;
+  margin-right: 3%;
+}
+
+.reviewContainer {
+  width: 75%;
+}
+
+.review {
+  font-size: 15px;
+  padding: 1%;
+  margin-bottom: 2%;
+  text-align: left;
+  border-bottom: 1px solid var(--secondary);
+}
+
+.reviewHeader {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewRating {
+  margin-right: 30%;
+  margin-right: auto;
+}
+
+.reviewReviewerName {
+
+}
+
+.reviewDate {
+
+}
+
+.reviewSummary {
+  margin-top: 2%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.reviewBody {
+  font-size: 12px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.reviewFooter {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#loadMoreReviewsButton {
+
+}
+
+
+
+
+

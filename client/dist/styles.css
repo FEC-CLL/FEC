@@ -44,15 +44,16 @@ body {
 .qaContainer {
   border-style: solid;
   border-color: red;
-  height: 200px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
 
 /* Julie */
 .ratingsContainer {
+  margin-bottom: 5%;
+  padding-bottom: 3%;
   border-style: solid;
   border-color: red;
-  height: 200px;
-
+  height: auto;
 }
