@@ -9,24 +9,20 @@ const API_KEY = process.env.TOKEN;
 // API request for related products based off a product ID
 router.get('/:id', (req, res) => {
   axios.get(`${API_URL}/products/${req.params.id}/related`, { headers: { Authorization: API_KEY } })
-    .then((response) => {
-      // relatedProducts will be an array of product data objects
-      const relatedProducts = [];
-      response.data.forEach((item) => {
-        axios.get(`${API_URL}/products/${item}`)
-          .then((product) => {
-            relatedProducts.push(product);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-      res.status(200).send(relatedProducts);
+    .then(({ data }) => {
+      const relatedProducts = Promise.all(data.map((id) => axios.get(`${API_URL}/products/${id}`, { headers: { Authorization: API_KEY } })
+        .then((product) => product.data)));
+        return relatedProducts;
     })
-    .catch((error) => {
-      console.error(error);
-      res.status(404).send(error);
-    });
+    .then((result) => {
+      // console.log('RESULT ', result);
+      res.status(200).send(result);
+    })
+    .catch((err) => {
+      console.log('Unable to retrieve product data...', err);
+      res.sendStatus(400);
+    })
 });
 
 module.exports = router;
+
