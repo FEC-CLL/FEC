@@ -33,6 +33,7 @@ const RelatedItemsAndComContainer = ({initProd}) => {
       <div className="outfitsList">
         Outfits
       </div>
+
     </div>
   );
 };

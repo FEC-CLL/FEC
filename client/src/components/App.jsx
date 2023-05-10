@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import data from '/sampleData/products.json';
@@ -14,13 +13,14 @@ export default function App() {
 
   useEffect(() => {
     // Initial request for one product
-    axios.get('/products/40344')
+    axios.get('/products/40346')
       .then((response) => {
         // Set product data to state
-        console.log(response.data);
+        console.log('response:', response);
         setInitProd(response.data);
       })
       .catch((err) => {
+        console.log(err);
         console.error(err);
       });
   }, []);
@@ -41,8 +41,8 @@ export default function App() {
       </nav>
       <Product />
       <RelatedItems />
-      <QandA />
-      <Ratings />
+      <QandA product={initProd} />
+      <Ratings initProd={initProd} />
     </div>
   );
 }

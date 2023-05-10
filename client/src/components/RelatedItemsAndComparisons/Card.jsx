@@ -16,6 +16,7 @@ const Card = ({name, category, price, tempImg}) => {
       {category}
       <h3>{name}</h3>
       <p>{price}</p>
+
     </div>
   );
 };
