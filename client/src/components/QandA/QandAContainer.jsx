@@ -14,11 +14,12 @@ function QandA({ product }) {
   const [isReady, setIsReady] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
   const [show, setShow] = useState(false);
+  const [hasMoreQuestions, setHasMoreQuestions] = useState(false);
 
   const getProduct = () => {
     axios.get('qa/questions', {
       params: {
-        product_id:40380,
+        product_id:40347,
         page: 1,
         count: 200
       }
@@ -27,6 +28,9 @@ function QandA({ product }) {
       setQuestions(res.data.results);
       if (res.data.results.length < questionCount) {
         setQuestionCount(res.data.results.length);
+      }
+      if (res.data.results.length > 2) {
+        setHasMoreQuestions(true);
       }
     })
     .then(() => {
@@ -53,7 +57,7 @@ function QandA({ product }) {
       }
       setCurrentQuestions(newQuestions);
     }
-  }, [isReady, questions, search])
+  }, [isReady, questions, search, questionCount])
 
   const questionHelpfulHandler = (question_id) => {
     axios.put('/qa/questions/helpful', {
@@ -83,13 +87,32 @@ function QandA({ product }) {
     })
   }
 
+  const handleMoreAnsweredQuestions = () => {
+    const howMany = questions.length - questionCount;
+    console.log(howMany);
+    switch(howMany) {
+      case 0:
+        setHasMoreQuestions(false);
+        break;
+      case 1:
+        setQuestionCount(questionCount + 1);
+        setHasMoreQuestions(false);
+        break;
+      default:
+        setQuestionCount(questionCount + 2);
+    }
+  }
+
   return (
     <div className='qaContainer'>
       Questions & Answers
       <Search filter={setSearch} />
       {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
-      <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
-      <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
+      <div className="buttonContainer">
+        {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button> : null}
+        <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
+        <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
+      </div>
     </div>
   )
 }
