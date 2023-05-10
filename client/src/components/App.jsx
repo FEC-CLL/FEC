@@ -13,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     // Initial request for one product
-    axios.get('/products/40346')
+    axios.get('/products/40380')
       .then((response) => {
         // Set product data to state
         console.log('response:', response);
