@@ -1,7 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-export default function Product() {
+export default function Product({initProd}) {
+  const {id, name, slogan, description, category, default_price, features} = initProd
+
   return (
     <div className="container">
       <div className="image-gallery">
@@ -36,10 +38,10 @@ export default function Product() {
           {' '}
           <a href="#reviews" className="product-information__reviews__link">Read all reviews</a>
         </div>
-        <p className="product-information__category">Category</p>
-        <h2 className="product-information__product-title">Product Title</h2>
+        <p className="product-information__category">{category}</p>
+        <h2 className="product-information__product-title">{name}</h2>
         <p className="product-information__price">
-          <span className="product-information__price--strike">$140</span>
+          <span className="product-information__price--strike">{default_price}</span>
           {' '}
           <span className="product-information__price--sale">$100</span>
         </p>
