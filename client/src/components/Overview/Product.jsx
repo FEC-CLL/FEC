@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-export default function Product({initProd}) {
+export default function Product({initProd = {}}) {
   const {id, name, slogan, description, category, default_price, features} = initProd
 
   return (

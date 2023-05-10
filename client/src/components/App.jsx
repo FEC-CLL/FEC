@@ -10,7 +10,7 @@ import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContain
 export default function App() {
   const [allProducts, setAllProducts] = useState();
   const [currentProduct, setCurrentProduct] = useState();
-  const [initProd, setInitProd] = useState(null);
+  const [initProd, setInitProd] = useState({});
 
   useEffect(() => {
     // Initial request for one product
@@ -24,10 +24,6 @@ export default function App() {
         console.error(err);
       });
   }, []);
-
-  if(!initProd) {
-    return null
-  }
 
   return (
     <div id="App">
