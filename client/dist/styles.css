@@ -44,7 +44,7 @@ body {
 .qaContainer {
   border-style: solid;
   border-color: red;
-  height: 500px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }

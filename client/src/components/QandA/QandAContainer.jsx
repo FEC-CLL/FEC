@@ -13,7 +13,6 @@ function QandA({ product }) {
   const [isReady, setIsReady] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
 
-  console.log(product.name);
   const getProduct = () => {
     axios.get('qa/questions', {
       params: {
