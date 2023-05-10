@@ -36,7 +36,7 @@
 .qaContainer {
   border-style: solid;
   border-color: red;
-  height: 200px;
+  height: 500px;
   display: flex;
   flex-direction: column;
 }
