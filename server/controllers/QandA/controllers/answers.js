@@ -7,9 +7,9 @@ const api = process.env.API_ENDPOINT;
 module.exports = {
   get(req, res) {
     // eslint-disable-next-line
-    const { question_id } = req.body;
-    const count = req.body.count || 5;
-    const page = req.body.page || 1;
+    const question_id = req.query.question_id;
+    const count = req.query.count || 5;
+    const page = req.query.page || 1;
     // eslint-disable-next-line
     axios.get(`${api}/qa/questions/${question_id}/answers?`, {
       params: {
@@ -21,6 +21,7 @@ module.exports = {
       },
     })
       .then((data) => {
+        console.log(data.data.results);
         res.status(200).send(data.data);
       })
       .catch((err) => {
