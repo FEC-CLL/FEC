@@ -12,6 +12,7 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
   const [show, setShow] = useState(false);
   const [answersIsExpanded, setAnswersIsExpanded] = useState(false);
 
+
   const getAnswers = () => {
     axios.get('/qa/answers', {
       params: {
@@ -108,6 +109,7 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
     setCurrentAnswers(newAnswers);
     setAnswersIsExpanded(false);
   }
+
 
   return (
     <div>

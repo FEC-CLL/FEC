@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 const Answer = ({answer, helpfulHandler, reportHandler}) => {
   const [helpClicked, setHelpClicked] = useState(false);
   const [reportClicked, setReportClicked] = useState(false);
-
   const helpHandler = () => {
     helpfulHandler(answer.answer_id);
     setHelpClicked(true);
