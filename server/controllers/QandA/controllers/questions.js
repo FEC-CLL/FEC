@@ -5,9 +5,9 @@ const api = process.env.API_ENDPOINT;
 
 module.exports = {
   get(req, res) {
-    const productId = req.body.product_id;
-    const count = req.body.count || 5;
-    const page = req.body.page || 1;
+    const productId = req.query.product_id;
+    const count = req.query.count || 5;
+    const page = req.query.page || 1;
     axios.get(`${api}/qa/questions?`, {
       params: {
         product_id: productId,
@@ -19,14 +19,15 @@ module.exports = {
       },
     })
       .then((data) => {
+        console.log(data.data.results);
         res.status(200).send(data.data);
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
   post(req, res) {
+    console.log(req.body.body);
     axios.post(
       `${api}/qa/questions`,
       {
@@ -59,6 +60,7 @@ module.exports = {
       },
     })
       .then(() => {
+        console.log('hi0');
         res.status(204).send();
       })
       .catch((err) => {
