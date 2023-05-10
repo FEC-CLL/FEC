@@ -140,10 +140,11 @@
   font-size: 12px;
 }
 
+.answer {
+  max-height: 200px;
+}
+
 .imageButton {
-  /* display: flex;
-  justify-content: space-between;
-  width: 140px; */
   background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
   border: 1px solid;
   cursor: pointer;
@@ -153,4 +154,5 @@
   padding: 10px 20px;
   text-align: left;
   width: 100%;
+
 }

@@ -6,22 +6,29 @@ import AddAnswer from './AddAnswer.jsx';
 const Question = ({addAnswer, product, question, questionHandler}) => {
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
+  const [moreAnswers, setMoreAnswers] = useState(false);
   const [answerCount, setAnswerCount] = useState(2);
   const [isClicked, setIsClicked] = useState(false);
   const [show, setShow] = useState(false);
+  const [answersIsExpanded, setAnswersIsExpanded] = useState(false);
+
 
   const getAnswers = () => {
     axios.get('/qa/answers', {
       params: {
         question_id: question.question_id,
-        count: 2,
+        count: 100,
         page: 1
       }
     })
     .then((res) => {
       setAnswers(res.data.results);
-      if (res.data.results.length < answerCount) {
+      console.log(res.data.results);
+      if (res.data.results.length < 2) {
         setAnswerCount(res.data.results.length);
+      }
+      if (res.data.results.length > 2) {
+        setMoreAnswers(true);
       }
     })
     .catch((err) => {
@@ -54,11 +61,14 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
   }, [])
 
   useEffect(() => {
-    const newAnswers = [];
-    for (var i =0; i < answerCount; i++) {
-      newAnswers.push(answers[i]);
+    if (answers.length) {
+      const newAnswers = [];
+      for (var i =0; i < answerCount; i++) {
+        newAnswers.push(answers[i]);
+      }
+      console.log("ASDFGSDG", newAnswers)
+      setCurrentAnswers(newAnswers);
     }
-    setCurrentAnswers(newAnswers);
   }, [answers])
 
   const answerHelpfulHandler = (answer_id) => {
@@ -75,9 +85,31 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
       answer_id: answer_id
     })
     .then(() => {
-      getAnswers();
+      console.log("reported");
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
+
+  const addAnswersExpandHandler = () => {
+    const newAnswers = [];
+    for (var i =0; i < answers.length; i++) {
+      newAnswers.push(answers[i]);
+    }
+    setCurrentAnswers(newAnswers);
+    setAnswersIsExpanded(true);
+  }
+
+  const addAnswersCollapseHandler = () => {
+    const newAnswers = [];
+    for (var i =0; i < answerCount; i++) {
+      newAnswers.push(answers[i]);
+    }
+    setCurrentAnswers(newAnswers);
+    setAnswersIsExpanded(false);
+  }
+
 
   return (
     <div>
@@ -93,10 +125,19 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
             <AddAnswer addAnswer={addAnswerHandler} product={product} question={question} show={show} setShow={setShow}/>
           </span>
       </div>
-      <div className="answer">
-        {answers.map((answer) => {
+      <div className="answer" style={{overflow: answersIsExpanded ? "auto" : "none"}} > {/* */}
+        {currentAnswers.map((answer) => {
           return <Answer reportHandler={answerReportHandler} helpfulHandler={answerHelpfulHandler} answer={answer} />
         })}
+        {moreAnswers ?
+          <div>
+            { answersIsExpanded
+              ? <button  onClick={addAnswersCollapseHandler}>Collapse answers</button>
+              : <button  onClick={addAnswersExpandHandler}>See More answers</button>
+            }
+          </div>
+          : null
+        }
       </div>
     </div>
   );
