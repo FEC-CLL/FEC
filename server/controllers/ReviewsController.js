@@ -92,7 +92,7 @@ router.put('/:reviewId/helpful', (req, res) => {
 
   axios(options)
     .then(() => {
-      res.sendStatus(201);
+      res.sendStatus(204);
     })
     .catch((err) => {
       console.error('Server failed to send PUT helpful request', err.message);
@@ -112,7 +112,7 @@ router.put('/:reviewId/report', (req, res) => {
 
   axios(options)
     .then(() => {
-      res.sendStatus(201);
+      res.sendStatus(204);
     })
     .catch((err) => {
       console.error('Server failed to send PUT report request', err);
