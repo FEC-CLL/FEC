@@ -2,16 +2,19 @@ import React, {useState} from 'react';
 
 const Answer = ({answer, helpfulHandler, reportHandler}) => {
   const [helpClicked, setHelpClicked] = useState(false);
+  const [reportClicked, setReportClicked] = useState(false);
+
   const helpHandler = () => {
     helpfulHandler(answer.answer_id);
     setHelpClicked(true);
   }
   const reportingHandler = () => {
     reportHandler(answer.answer_id);
+    setReportClicked(true);
   }
   const date = new Date(answer.date.slice(0,10)).toLocaleString('en-us', {month:'long', day: 'numeric', year:'numeric'});
   return (
-    <div className="answer">
+    <div className="answerContainer">
       <div className="answerBody">
         A: {answer.body}
       </div>
@@ -22,9 +25,8 @@ const Answer = ({answer, helpfulHandler, reportHandler}) => {
         {helpClicked ? <div>Yes</div> : <button onClick={helpHandler} className="astext">Yes</button>}
         ({answer.helpfulness})
         <div className="pole"> | </div>
-        <button onClick={reportingHandler} className="astext">Report</button>
+        {reportClicked ? <div>Reported</div> : <button onClick={reportingHandler} className="astext">Report</button>}
       </div>
-
     </div>
   );
 }
