@@ -14,16 +14,25 @@ export default function App() {
 
   useEffect(() => {
     // Initial request for one product
-    axios.get('/products/40344')
-      .then((response) => {
-        // Set product data to state
-        console.log('response:', response);
-        setInitProd(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    initialRender()
   }, []);
+
+  const initialRender = () => {
+    Promise.all([axios.get('/products/40344'), axios.get('/products/40344/styles')])
+    .then((responses) => {
+      // Set product data to state
+      const [productResponse, stylesResponse] = responses
+      console.log('responses:', responses);
+      console.log('product response:', productResponse.data);
+      console.log('styles response:', stylesResponse.data);
+      const joinedResponse = {...productResponse.data, ...stylesResponse.data}
+      console.log('joined response:', joinedResponse)
+      setInitProd(joinedResponse);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
 
   return (
     <div id="App">
