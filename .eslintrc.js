@@ -16,12 +16,6 @@ module.exports = {
   },
   plugins: [
     'react',
+    'jest',
   ],
-  rules: {
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  },
 };

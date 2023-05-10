@@ -5,16 +5,14 @@ const api = process.env.API_ENDPOINT;
 
 module.exports = {
   get(req, res) {
-    //console.log(req);
-    //console.log("test", req.query);
     const productId = req.query.product_id;
     const count = req.query.count || 5;
     const page = req.query.page || 1;
     axios.get(`${api}/qa/questions?`, {
       params: {
         product_id: productId,
-        count: count,
-        page: page,
+        count,
+        page,
       },
       headers: {
         Authorization: process.env.TOKEN,
@@ -25,7 +23,6 @@ module.exports = {
         res.status(200).send(data.data);
       })
       .catch((err) => {
-        //console.log(err);
         res.status(404).send(err);
       });
   },
@@ -54,7 +51,9 @@ module.exports = {
       });
   },
   putHelpful(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/questions/${question_id}/helpful`, {}, {
       headers: {
         Authorization: process.env.TOKEN,
@@ -70,7 +69,9 @@ module.exports = {
       });
   },
   putReport(req, res) {
+    // eslint-disable-next-line
     const { question_id } = req.body;
+    // eslint-disable-next-line
     axios.put(`${api}/qa/questions/${question_id}/report`, {}, {
       headers: {
         Authorization: process.env.TOKEN,

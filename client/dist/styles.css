@@ -1,28 +1,36 @@
-#App {
+:root {
+  --primary: #BFBFA7;
+  --primary-lighter: #d2d2c1;
+  --primary-darker: #acac96;
+  --secondary: #606060;
+  --font-color: #000000;
+  --font-color-secondary: #606060;
+  --bg-color: #ffffff;
+  --red: red;
+}
+
+body {
+  color: var(--font-color);
   font-family: 'Lato', sans-serif;
-  font-size: 30px;
-  font-weight: 100;
-  color: black;
-  text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navBar {
-  background-color: #BFBFA7;
+  background-color: var(--primary);
 }
 
 #searchIcon {
   width: 16px;
   height: 16px;
   background-size: 100% ;
-}
-
-/* Melissa */
-.productContainer {
-  border-style: solid;
-  border-color: red;
-  height: 300px;
 }
 
 /* Frank */
@@ -43,8 +51,9 @@
 
 /* Julie */
 .ratingsContainer {
+  margin-bottom: 5%;
+  padding-bottom: 3%;
   border-style: solid;
   border-color: red;
-  height: 200px;
-
+  height: auto;
 }
