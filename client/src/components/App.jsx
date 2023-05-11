@@ -18,11 +18,15 @@ export default function App() {
         // Set product data to state
         console.log('response:', response);
         setInitProd(response.data);
+
       })
       .catch((err) => {
-        console.log(err);
         console.error(err);
       });
+  };
+  useEffect(() => {
+    // Initial request for one product
+    fetchProductData();
   }, []);
 
   return (
@@ -39,7 +43,7 @@ export default function App() {
 
         </form>
       </nav>
-      <Product />
+      <Product product={initProd} />
       <RelatedItems />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />

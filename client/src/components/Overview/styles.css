@@ -50,6 +50,14 @@
   margin: 0;
 }
 
+.image-gallery__thumbnail-nav__list button{
+  background: none;
+  border: none;
+  padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
 .image-gallery__thumbnail-nav__image {
   width: 60px;
   height: 60px;
@@ -68,6 +76,7 @@
 .image-gallery__image__main {
   object-fit: contain;
   height: 600px;
+  max-width: 720px;
 }
 
 
@@ -83,7 +92,7 @@
 }
 
 .product-information__reviews--0 {
-  background: url("http://localhost:3000/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
+  background: url("http://localhost:3000/assets/icons/star_unfilled.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -157,6 +166,14 @@
 
 .product-information__style-selector li {
   position: relative;
+}
+
+.product-information__style-selector button {
+  background: none;
+  border: none;
+  padding: 0;
+	cursor: pointer;
+	outline: inherit;
 }
 
 .product-information__style-selector--selected {
