@@ -10,7 +10,6 @@ const API_KEY = process.env.TOKEN;
 router.get('/:id', (req, res) => {
   axios.get(`${API_URL}/products/${req.params.id}/related`, { headers: { Authorization: API_KEY } })
     .then((response) => {
-      // Need to loop thru related product id's and do a GET request for each
       // relatedProducts will be an array of product data objects
       const relatedProducts = [];
       response.data.forEach((item) => {

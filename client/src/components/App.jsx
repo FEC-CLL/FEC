@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import data from '/sampleData/products.json';
@@ -18,7 +17,7 @@ export default function App() {
   }, []);
 
   const initialRender = () => {
-    Promise.all([axios.get('/products/40344'), axios.get('/products/40344/styles')])
+    Promise.all([axios.get('/products/40347'), axios.get('/products/40347/styles')])
     .then((responses) => {
       // Set product data to state
       const [productResponse, stylesResponse] = responses
@@ -50,7 +49,7 @@ export default function App() {
       </nav>
       <Product initProd={initProd}/>
       <RelatedItems />
-      <QandA />
+      <QandA product={initProd} />
       <Ratings initProd={initProd} />
     </div>
   );

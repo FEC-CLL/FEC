@@ -37,14 +37,14 @@ body {
 .relatedContainer {
   border-style: solid;
   border-color: red;
-  height: 200px;
+  height: 700px;
 }
 
 /* Sasha */
 .qaContainer {
   border-style: solid;
   border-color: red;
-  height: 200px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
