@@ -12,11 +12,12 @@ const Card = ({name, category, price, tempImg}) => {
 
   return (
     <div className="productCard" onClick={handleCardClick}>
+      <button className="compareButton">Star</button>
       <img className="cardImg" src={tempImg}></img>
       {category}
-      <h3>{name}</h3>
-      <p>{price}</p>
-
+      <h3 className="prodName">{name}</h3>
+      <p className="price">{price}</p>
+      <p className="rating">Rating</p>
     </div>
   );
 };

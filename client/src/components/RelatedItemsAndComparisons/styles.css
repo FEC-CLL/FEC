@@ -1,12 +1,14 @@
+/* Card List */
 .productCard {
   border-style: solid;
   border-width: thin;
   border-color: grey;
   background-color: white;
-  height: 300px;
-  width: 200px;
+  height: 470px;
+  width: 380px;
   margin: auto;
-  transition: background-color 2s ease-out 100ms;
+  transition: background-color 2s ease-out 50ms;
+  overflow-wrap: break-word;
 }
 
 .productCard:hover {
@@ -14,6 +16,26 @@
 }
 
 .cardImg {
-  height: 200px;
-  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: auto;
+}
+
+/* Outfit List */
+.addToOutfit {
+  border-style: solid;
+  border-width: thin;
+  border-color: grey;
+  background-color: white;
+  height: 470px;
+  width: 380px;
+  margin: auto;
+  transition: background-color 2s ease-out 50ms;
+  overflow-wrap: break-word;
+}
+
+.addToOutfit:hover {
+  background-color: #BFBFA7;
 }
