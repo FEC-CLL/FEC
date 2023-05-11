@@ -5,6 +5,7 @@ import RelatedProducts from './RelatedProducts';
 import './styles.css';
 
 function RelatedItemsAndComContainer({ initProd }) {
+  // eslint-disable-next-line no-unused-vars
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   console.log(initProd);
