@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import axios from 'axios';
-import Search from './Search.jsx';
-import QuestionList from './QuestionList.jsx';
-import AddQuestion from './AddQuestion.jsx';
+import Search from './Search';
+import QuestionList from './QuestionList';
+import AddQuestion from './AddQuestion';
 import './styles.css';
 
 function QandA({ product }) {
@@ -35,7 +35,7 @@ function QandA({ product }) {
       .then(() => {
         setIsReady(false);
       })
-      .catch((err) => {
+      .catch(() => {
         console.log('erropr');
       });
   };
@@ -49,7 +49,7 @@ function QandA({ product }) {
       setIsLoaded(false);
 
       const newQuestions = [];
-      for (let i = 0; i < questionCount; i++) {
+      for (let i = 0; i < questionCount; i + 1) {
         if (questions[i].question_body.includes(search)) {
           newQuestions.push(questions[i]);
         }
@@ -58,8 +58,10 @@ function QandA({ product }) {
     }
   }, [isReady, questions, search, questionCount]);
 
+  // eslint-disable-next-line camelcase
   const questionHelpfulHandler = (question_id) => {
     axios.put('/qa/questions/helpful', {
+      // eslint-disable-next-line camelcase
       question_id,
     })
       .then(() => {
@@ -106,11 +108,27 @@ function QandA({ product }) {
     <div className="qaContainer">
       Questions & Answers
       <Search filter={setSearch} />
-      {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
+      {isLoaded
+        ? <p>Loading...</p>
+        : (
+          <QuestionList
+            product={product}
+            questionHandler={questionHelpfulHandler}
+            questions={currentQuestions}
+            count={questionCount}
+          />
+        )}
       <div className="buttonContainer">
-        {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button> : null}
-        <button onClick={() => setShow(true)} className="imageButton"> ADD A QUESTION </button>
-        <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow} />
+        {hasMoreQuestions
+          ? <button type="button" onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button>
+          : null}
+        <button type="button" onClick={() => setShow(true)} className="imageButton"> ADD A QUESTION </button>
+        <AddQuestion
+          addQuestion={addQuestionHandler}
+          product={product}
+          show={show}
+          setShow={setShow}
+        />
       </div>
     </div>
   );
