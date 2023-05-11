@@ -4,8 +4,8 @@ import axios from 'axios';
 import RelatedProducts from './RelatedProducts';
 import './styles.css';
 
-function RelatedItemsAndComContainer({ initProd }) {
-  // eslint-disable-next-line no-unused-vars
+
+const RelatedItemsAndComContainer = ({initProd}) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   console.log(initProd);
@@ -19,8 +19,8 @@ function RelatedItemsAndComContainer({ initProd }) {
         setRelatedProducts(response.data);
       })
       .catch((err) => {
-        console.error(err);
-      });
+        console.error('Couldnt get back array of related', err);
+      })
   }, []);
 
   return (
@@ -36,6 +36,6 @@ function RelatedItemsAndComContainer({ initProd }) {
 
     </div>
   );
-}
+};
 
 export default RelatedItemsAndComContainer;

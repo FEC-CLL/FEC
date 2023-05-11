@@ -1,4 +1,7 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function LoadMoreReviews({ page, setPage, reviewNum }) {
   const loadMoreReviewsOnClick = () => {

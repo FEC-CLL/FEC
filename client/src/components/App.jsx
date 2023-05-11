@@ -7,6 +7,8 @@ import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
 import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContainer';
 
 export default function App() {
+  const [allProducts, setAllProducts] = useState();
+  const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
   const fetchProductData = () => {
     Promise.all([
@@ -32,12 +34,12 @@ export default function App() {
     <div id="App">
       <nav className="navBar">
         FEC Project
-        <img src="" alt="logo" />
+        <img src="" />
         <form>
           <input type="text" placeholder="Search here..." />
 
           <button type="submit">
-            <img src="/assets/icons/search.png" alt="search icon" />
+            <img src="/assets/icons/search.png" />
           </button>
 
         </form>
