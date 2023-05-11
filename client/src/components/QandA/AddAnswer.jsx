@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React, { useState } from 'react';
 
 function AddAnswer({
@@ -58,7 +61,7 @@ function AddAnswer({
           </div>
           <div className="nicknameText">*For authentication reasons, you will not be emailed </div>
           <div className="modal-footer">
-            <button onClick={() => setShow(!show)} className="button">Close</button>
+            <button type="button" onClick={() => setShow(!show)} className="button">Close</button>
             <button className="button" type="submit">Submit</button>
           </div>
         </form>
