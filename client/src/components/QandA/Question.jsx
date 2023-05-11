@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Answer from './Answer.jsx';
-import AddAnswer from './AddAnswer.jsx';
+import Answer from './Answer';
+import AddAnswer from './AddAnswer';
 
 function Question({
-  addAnswer, product, question, questionHandler,
+  product, question, questionHandler,
 }) {
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
@@ -64,7 +64,7 @@ function Question({
   useEffect(() => {
     if (answers.length) {
       const newAnswers = [];
-      for (let i = 0; i < answerCount; i++) {
+      for (let i = 0; i < answerCount; i + 1) {
         newAnswers.push(answers[i]);
       }
       console.log('ASDFGSDG', newAnswers);
@@ -72,8 +72,10 @@ function Question({
     }
   }, [answers]);
 
+  // eslint-disable-next-line camelcase
   const answerHelpfulHandler = (answer_id) => {
     axios.put('/qa/answers/helpful', {
+      // eslint-disable-next-line camelcase
       answer_id,
     })
       .then(() => {
@@ -81,8 +83,10 @@ function Question({
       });
   };
 
+  // eslint-disable-next-line camelcase
   const answerReportHandler = (answer_id) => {
     axios.put('/qa/answers/report', {
+      // eslint-disable-next-line camelcase
       answer_id,
     })
       .then(() => {
@@ -95,7 +99,7 @@ function Question({
 
   const addAnswersExpandHandler = () => {
     const newAnswers = [];
-    for (let i = 0; i < answers.length; i++) {
+    for (let i = 0; i < answers.length; i + 1) {
       newAnswers.push(answers[i]);
     }
     setCurrentAnswers(newAnswers);
@@ -104,7 +108,7 @@ function Question({
 
   const addAnswersCollapseHandler = () => {
     const newAnswers = [];
-    for (let i = 0; i < answerCount; i++) {
+    for (let i = 0; i < answerCount; i + 1) {
       newAnswers.push(answers[i]);
     }
     setCurrentAnswers(newAnswers);
@@ -119,26 +123,38 @@ function Question({
         {question.question_body}
         <span className="questionHelp">
           Helpful?
-          {isClicked ? <div>Yes</div> : <button onClick={yesHandler} className="astext">Yes</button>}
+          {isClicked ? <div>Yes</div> : <button type="button" onClick={yesHandler} className="astext">Yes</button>}
 
           (
           {question.question_helpfulness}
           )
           <div className="pole"> | </div>
-          <button onClick={() => setShow(true)} className="astext">Add Answer</button>
-          <AddAnswer addAnswer={addAnswerHandler} product={product} question={question} show={show} setShow={setShow} />
+          <button type="button" onClick={() => setShow(true)} className="astext">Add Answer</button>
+          <AddAnswer
+            addAnswer={addAnswerHandler}
+            product={product}
+            question={question}
+            show={show}
+            setShow={setShow}
+          />
         </span>
       </div>
       <div className="answer" style={{ overflow: answersIsExpanded ? 'auto' : 'none' }}>
         {' '}
         {/* */}
-        {currentAnswers.map((answer) => <Answer reportHandler={answerReportHandler} helpfulHandler={answerHelpfulHandler} answer={answer} />)}
+        {currentAnswers.map((answer) => (
+          <Answer
+            reportHandler={answerReportHandler}
+            helpfulHandler={answerHelpfulHandler}
+            answer={answer}
+          />
+        ))}
         {moreAnswers
           ? (
             <div>
               { answersIsExpanded
-                ? <button onClick={addAnswersCollapseHandler}>Collapse answers</button>
-                : <button onClick={addAnswersExpandHandler}>See More answers</button>}
+                ? <button type="button" onClick={addAnswersCollapseHandler}>Collapse answers</button>
+                : <button type="button" onClick={addAnswersExpandHandler}>See More answers</button>}
             </div>
           )
           : null}
