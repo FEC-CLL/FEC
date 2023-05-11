@@ -7,31 +7,26 @@ import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
 import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContainer';
 
 export default function App() {
-  const [allProducts, setAllProducts] = useState();
-  const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
-
+  const fetchProductData = () => {
+    Promise.all([
+      axios.get('/products/40347'),
+      axios.get('/products/40347/styles'),
+    ]) // 40347
+      .then(([productResponse, stylesResponse]) => {
+        setInitProd({
+          ...productResponse.data,
+          ...stylesResponse.data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   useEffect(() => {
     // Initial request for one product
-    initialRender()
+    fetchProductData();
   }, []);
-
-  const initialRender = () => {
-    Promise.all([axios.get('/products/40347'), axios.get('/products/40347/styles')])
-    .then((responses) => {
-      // Set product data to state
-      const [productResponse, stylesResponse] = responses
-      console.log('responses:', responses);
-      console.log('product response:', productResponse.data);
-      console.log('styles response:', stylesResponse.data);
-      const joinedResponse = {...productResponse.data, ...stylesResponse.data}
-      console.log('joined response:', joinedResponse)
-      setInitProd(joinedResponse);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-  }
 
   return (
     <div id="App">
@@ -47,7 +42,7 @@ export default function App() {
 
         </form>
       </nav>
-      <Product initProd={initProd}/>
+      <Product product={initProd} />
       <RelatedItems />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />
