@@ -13,11 +13,11 @@ export default function Product({initProd = {}}) {
 
   const styleSkus = Object.keys(results[styleIndex].skus)
   // console.log('obj', results[styleIndex].skus)
-  // console.log('styleskus', styleSkus)
+  console.log('styleskus', styleSkus)
   // console.log('styleskus 0 quantity', styleSkus[0].quantity)
   //const quantityArray = [...Array(results[styleIndex].skus[0]).keys()]
   // const quantityArray = [...Array(8).keys()]
-  const quantityArray = results[styleIndex].skus[0]
+  const quantityArray = results[styleIndex].styleSkus
   console.log('quantity array', quantityArray)
 
   return (

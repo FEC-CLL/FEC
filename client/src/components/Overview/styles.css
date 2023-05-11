@@ -83,7 +83,7 @@
 }
 
 .product-information__reviews--0 {
-  background: url("http://localhost:3000/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
+  background: url("http://localhost:3000/assets/icons/star_unfilled.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
