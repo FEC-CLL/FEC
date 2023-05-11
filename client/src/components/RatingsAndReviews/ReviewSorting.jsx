@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Review from './Review';
+import React from 'react';
 
 function ReviewSorting({
   setSortType, setPage, setAllReviews, allReviews,
