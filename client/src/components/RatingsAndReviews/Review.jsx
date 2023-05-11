@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';

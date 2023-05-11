@@ -5,7 +5,6 @@ import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import './styles.css';
 
-// eslint-disable-next-line react/prop-types
 function QandA({ product }) {
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
