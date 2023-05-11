@@ -11,5 +11,4 @@ describe('Related Products and Outfits', () => {
     render(<RelatedItemsAndComContainer />);
     expect(screen.getByText('Outfits')).toBeInTheDocument();
   });
-
 });
