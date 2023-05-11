@@ -6,24 +6,24 @@ import Outfits from './Outfits';
 import './styles.css';
 
 
-const RelatedItemsAndComContainer = ({initProd}) => {
+const RelatedItemsAndComContainer = ({ initProd }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
-  // console.log(initProd);
+  console.log('initProd: ', initProd);
   useEffect(() => {
-    // Pass down related products to Card and related products componenent
-    axios.get('/related/40344')
-      .then((response) => {
-
-        console.log('Array of related products data: ', response.data);
-        setRelatedProducts(response.data);
-      })
-      .catch((err) => {
-        console.error('Couldnt get back array of related', err);
-      })
+    if (initProd.id) {
+      axios.get(`/related/${initProd.id}`)
+        .then((response) => {
+          console.log('Array of related products data: ', response.data);
+          setRelatedProducts(response.data);
+        })
+        .catch((err) => {
+          console.error('Couldnt get back array of related', err);
+        });
+    }
 
       // TODO: send another API request to styles to retrieve the default style image from each related product
-  }, []);
+  }, [initProd.id]);
 
   return (
     <div className="relatedContainer">
