@@ -15,7 +15,7 @@ function RelatedItemsAndComContainer({ initProd }) {
     axios.get('/related/40344')
       .then((response) => {
         // Should respond back with an array of related products
-        console.log(response.data);
+        console.log('Array of related products data: ', response.data);
         setRelatedProducts(response.data);
       })
       .catch((err) => {
