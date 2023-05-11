@@ -12,7 +12,7 @@ router.get('/:id', (req, res) => {
     .then(({ data }) => {
       const relatedProducts = Promise.all(data.map((id) => axios.get(`${API_URL}/products/${id}`, { headers: { Authorization: API_KEY } })
         .then((product) => product.data)));
-        return relatedProducts;
+      return relatedProducts;
     })
     .then((result) => {
       // console.log('RESULT ', result);
@@ -21,8 +21,7 @@ router.get('/:id', (req, res) => {
     .catch((err) => {
       console.log('Unable to retrieve product data...', err);
       res.sendStatus(400);
-    })
+    });
 });
 
 module.exports = router;
-
