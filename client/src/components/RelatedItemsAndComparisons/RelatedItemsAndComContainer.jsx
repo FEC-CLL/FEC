@@ -14,6 +14,7 @@ const RelatedItemsAndComContainer = ({initProd}) => {
     // Pass down related products to Card and related products componenent
     axios.get('/related/40344')
       .then((response) => {
+
         console.log('Array of related products data: ', response.data);
         setRelatedProducts(response.data);
       })

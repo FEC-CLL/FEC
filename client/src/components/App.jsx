@@ -10,19 +10,24 @@ export default function App() {
   const [allProducts, setAllProducts] = useState();
   const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
-
-  useEffect(() => {
-    // Initial request for one product
-    axios.get('/products/40380')
-      .then((response) => {
-        // Set product data to state
-        console.log('response:', response);
-        setInitProd(response.data);
+  const fetchProductData = () => {
+    Promise.all([
+      axios.get('/products/40347'),
+      axios.get('/products/40347/styles'),
+    ]) // 40347
+      .then(([productResponse, stylesResponse]) => {
+        setInitProd({
+          ...productResponse.data,
+          ...stylesResponse.data,
+        });
       })
       .catch((err) => {
-        console.log(err);
         console.error(err);
       });
+  };
+  useEffect(() => {
+    // Initial request for one product
+    fetchProductData();
   }, []);
 
   return (
@@ -39,7 +44,7 @@ export default function App() {
 
         </form>
       </nav>
-      <Product />
+      <Product product={initProd} />
       <RelatedItems />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />
