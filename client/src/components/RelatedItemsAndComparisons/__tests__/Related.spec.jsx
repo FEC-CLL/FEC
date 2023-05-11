@@ -17,4 +17,5 @@ describe('Related Products and Outfits', () => {
     render(<RelatedItemsAndComContainer initProd={mockProduct} />);
     expect(screen.getByText('Outfits')).toBeInTheDocument();
   });
+
 });
