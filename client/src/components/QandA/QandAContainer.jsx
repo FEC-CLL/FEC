@@ -49,7 +49,7 @@ function QandA({ product }) {
       setIsLoaded(false);
 
       const newQuestions = [];
-      for (let i = 0; i < questionCount; i + 1) {
+      for (let i = 0; i < questionCount; i += 1) {
         if (questions[i].question_body.includes(search)) {
           newQuestions.push(questions[i]);
         }

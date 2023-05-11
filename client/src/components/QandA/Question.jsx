@@ -64,7 +64,7 @@ function Question({
   useEffect(() => {
     if (answers.length) {
       const newAnswers = [];
-      for (let i = 0; i < answerCount; i + 1) {
+      for (let i = 0; i < answerCount; i += 1) {
         newAnswers.push(answers[i]);
       }
       console.log('ASDFGSDG', newAnswers);
@@ -99,7 +99,7 @@ function Question({
 
   const addAnswersExpandHandler = () => {
     const newAnswers = [];
-    for (let i = 0; i < answers.length; i + 1) {
+    for (let i = 0; i < answers.length; i += 1) {
       newAnswers.push(answers[i]);
     }
     setCurrentAnswers(newAnswers);
@@ -108,7 +108,7 @@ function Question({
 
   const addAnswersCollapseHandler = () => {
     const newAnswers = [];
-    for (let i = 0; i < answerCount; i + 1) {
+    for (let i = 0; i < answerCount; i += 1) {
       newAnswers.push(answers[i]);
     }
     setCurrentAnswers(newAnswers);
