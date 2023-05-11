@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // This child component will contain a single product card
 import React from 'react';
 
@@ -13,7 +15,7 @@ function Card({
 
   return (
     <div className="productCard" onClick={handleCardClick}>
-      <img className="cardImg" src={tempImg} />
+      <img className="cardImg" src={tempImg} alt="product" />
       {category}
       <h3>{name}</h3>
       <p>{price}</p>
