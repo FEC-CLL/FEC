@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Search({ filter }) {
   const submitHandler = (event) => {
@@ -10,7 +10,7 @@ function Search({ filter }) {
   return (
     <form onSubmit={submitHandler} className="searchForm">
       <input id="searchInput" className="searchInput" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
-      <button className="searchButton" type="submit" />
+      <button aria-label="search" className="searchButton" type="submit" />
     </form>
   );
 }
