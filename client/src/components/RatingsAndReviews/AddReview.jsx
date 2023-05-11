@@ -8,7 +8,7 @@ function AddReview() {
     <div>
       <button>ADD REVIEW +</button>
     </div>
-  )
+  );
 }
 
 export default AddReview;

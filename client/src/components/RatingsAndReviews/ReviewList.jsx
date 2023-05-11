@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Review from './Review';
 
-function ReviewList({allReviews}) {
-
-
+function ReviewList({ allReviews }) {
   return (
     <div>
       {

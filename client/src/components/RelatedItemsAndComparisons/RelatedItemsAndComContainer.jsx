@@ -4,8 +4,7 @@ import axios from 'axios';
 import RelatedProducts from './RelatedProducts';
 import './styles.css';
 
-
-const RelatedItemsAndComContainer = ({initProd}) => {
+function RelatedItemsAndComContainer({ initProd }) {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   console.log(initProd);
@@ -20,7 +19,7 @@ const RelatedItemsAndComContainer = ({initProd}) => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   }, []);
 
   return (
@@ -36,6 +35,6 @@ const RelatedItemsAndComContainer = ({initProd}) => {
 
     </div>
   );
-};
+}
 
 export default RelatedItemsAndComContainer;
