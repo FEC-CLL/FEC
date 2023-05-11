@@ -28,12 +28,12 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
         </div>
         <div className="pole"> | </div>
         <div>Helpful?</div>
-        {helpClicked ? <div>Yes</div> : <button onClick={helpHandler} className="astext">Yes</button>}
+        {helpClicked ? <div>Yes</div> : <button type="button" onClick={helpHandler} className="astext">Yes</button>}
         (
         {answer.helpfulness}
         )
         <div className="pole"> | </div>
-        {reportClicked ? <div>Reported</div> : <button onClick={reportingHandler} className="astext">Report</button>}
+        {reportClicked ? <div>Reported</div> : <button type="button" onClick={reportingHandler} className="astext">Report</button>}
       </div>
     </div>
   );
