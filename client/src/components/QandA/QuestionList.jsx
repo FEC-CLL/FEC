@@ -1,13 +1,19 @@
-import React, {useState} from 'react';
-import Question from './Question.jsx';
+import React from 'react';
+import Question from './Question';
 
-const QuestionList = ({product, questions, count, questionHandler}) => {
+function QuestionList({
+  product, questions, questionHandler,
+}) {
   console.log(questions);
   return (
     <div className="questions">
-      {questions.map((question) => {
-        return <Question product={product} questionHandler={questionHandler} question={question} />
-      })}
+      {questions.map((question) => (
+        <Question
+          product={product}
+          questionHandler={questionHandler}
+          question={question}
+        />
+      ))}
     </div>
   );
 }

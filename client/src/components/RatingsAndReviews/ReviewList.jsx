@@ -1,12 +1,7 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Review from './Review';
 
-function ReviewList({allReviews}) {
-
-
+function ReviewList({ allReviews }) {
   return (
     <div>
       {

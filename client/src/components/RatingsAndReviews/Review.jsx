@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';
 
@@ -32,7 +29,7 @@ function Review({ review }) {
 function ReviewPhoto({ photo }) {
   return (
     <div className="reviewPhoto">
-      <img src={photo.url} width="200" height="200" />
+      <img src={photo.url} width="200" height="200" alt="review" />
     </div>
   );
 }
