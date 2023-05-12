@@ -51,7 +51,7 @@ function QandA({ product }) {
 
       const newQuestions = [];
       for(var i =0; i < questionCount; i++) {
-        if (questions[i].question_body.includes(search)) {
+        if (questions[i].question_body.toLowerCase().includes(search.toLowerCase())) {
           newQuestions.push(questions[i]);
         }
       }
@@ -105,13 +105,21 @@ function QandA({ product }) {
 
   return (
     <div className='qaContainer'>
-      Questions & Answers
-      <Search filter={setSearch} />
-      {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
-      <div className="buttonContainer">
-        {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button> : null}
-        <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
-        <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
+      <div className='qaComponent'>
+        QUESTIONS & ANSWERS
+      </div>
+      <div className='qaComponent'>
+        <Search filter={setSearch} />
+      </div>
+      <div className='qaComponent'>
+        {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
+      </div>
+      <div className='qaComponent'>
+        <div className="buttonContainer">
+          {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button> : null}
+          <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
+          <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
+        </div>
       </div>
     </div>
   )

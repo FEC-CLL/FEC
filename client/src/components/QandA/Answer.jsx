@@ -15,13 +15,20 @@ const Answer = ({answer, helpfulHandler, reportHandler}) => {
   return (
     <div className="answerContainer">
       <div className="answerBody">
-        A: {answer.body}
+        {answer.body}
+        {answer.photos.length
+        ?
+        <div className="photos">
+          <img src=""/>
+        </div>
+        :
+        null}
       </div>
       <div className="answerStats">
         <div>by {answer.answerer_name}, {date}</div>
         <div className="pole"> | </div>
         <div>Helpful?</div>
-        {helpClicked ? <div>Yes</div> : <button onClick={helpHandler} className="astext">Yes</button>}
+        {helpClicked ? <div className="regular">Yes</div> : <button onClick={helpHandler} className="astext">Yes</button>}
         ({answer.helpfulness})
         <div className="pole"> | </div>
         {reportClicked ? <div>Reported</div> : <button onClick={reportingHandler} className="astext">Report</button>}

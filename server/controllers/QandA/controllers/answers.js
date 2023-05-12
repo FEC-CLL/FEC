@@ -32,6 +32,7 @@ module.exports = {
   post(req, res) {
     // eslint-disable-next-line
     const { question_id } = req.body;
+    console.log(req.body.photos);
     axios.post(
       // eslint-disable-next-line
       `${api}/qa/questions/${question_id}/answers`,
