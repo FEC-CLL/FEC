@@ -6,7 +6,8 @@ import Outfits from './Outfits';
 import './styles.css';
 
 
-const RelatedItemsAndComContainer = ({ initProd }) => {
+function RelatedItemsAndComContainer({ initProd }) {
+  // eslint-disable-next-line no-unused-vars
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   console.log('initProd: ', initProd);
@@ -21,7 +22,6 @@ const RelatedItemsAndComContainer = ({ initProd }) => {
           console.error('Couldnt get back array of related', err);
         });
     }
-
       // TODO: send another API request to styles to retrieve the default style image from each related product
   }, [initProd.id]);
 
@@ -39,6 +39,6 @@ const RelatedItemsAndComContainer = ({ initProd }) => {
 
     </div>
   );
-};
+}
 
 export default RelatedItemsAndComContainer;

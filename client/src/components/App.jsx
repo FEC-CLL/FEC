@@ -7,19 +7,16 @@ import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
 import RelatedItems from './RelatedItemsAndComparisons/RelatedItemsAndComContainer';
 
 export default function App() {
-  const [allProducts, setAllProducts] = useState();
-  const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
-  const fetchProductData = () => {
-    Promise.all([
-      axios.get('/products/40347'),
-      axios.get('/products/40347/styles'),
-    ]) // 40347
-      .then(([productResponse, stylesResponse]) => {
-        setInitProd({
-          ...productResponse.data,
-          ...stylesResponse.data,
-        });
+
+  useEffect(() => {
+    // Initial request for one product
+    axios.get('/products/40347')
+      .then((response) => {
+        // Set product data to state
+        console.log('response:', response);
+        setInitProd(response.data);
+
       })
       .catch((err) => {
         console.error(err);
@@ -34,12 +31,12 @@ export default function App() {
     <div id="App">
       <nav className="navBar">
         FEC Project
-        <img src="" />
+        <img src="" alt="logo" />
         <form>
           <input type="text" placeholder="Search here..." />
 
           <button type="submit">
-            <img src="/assets/icons/search.png" />
+            <img src="/assets/icons/search.png" alt="search icon" />
           </button>
 
         </form>

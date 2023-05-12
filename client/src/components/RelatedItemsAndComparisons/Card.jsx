@@ -1,15 +1,19 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // This child component will contain a single product card
 import React from 'react';
 
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
-const Card = ({name, category, price, tempImg}) => {
 
-  const handleCardClick = (event) => {
+function Card({
+  name, category, price, tempImg,
+}) {
+  const handleCardClick = () => {
     event.preventDefault();
     alert('New product chosen');
     // TODO: This will change the current chosen product
-  }
+  };
 
   const handleCompareClick = (event) => {
     event.stopPropagation();
@@ -22,12 +26,13 @@ const Card = ({name, category, price, tempImg}) => {
   return (
     <div className="productCard" onClick={handleCardClick}>
       <button className="compareButton" onClick={handleCompareClick} >Star</button>
-      <img className="cardImg" src={tempImg}></img>
+      <img className="cardImg" src={tempImg} alt="product" />
+
       {category}
       <h3 className="prodName">{name}</h3>
       <p className="price">{price}</p>
       <p className="rating">Rating</p>
     </div>
   );
-};
+}
 export default Card;
