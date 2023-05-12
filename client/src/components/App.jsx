@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import data from '/sampleData/products.json';
 import Product from './Overview/Product';
 import QandA from './QandA/QandAContainer';
 import Ratings from './RatingsAndReviews/RatingsAndReviewsContainer';
@@ -16,15 +15,10 @@ export default function App() {
         // Set product data to state
         console.log('response:', response);
         setInitProd(response.data);
-
       })
       .catch((err) => {
         console.error(err);
       });
-  };
-  useEffect(() => {
-    // Initial request for one product
-    fetchProductData();
   }, []);
 
   return (
@@ -42,7 +36,7 @@ export default function App() {
         </form>
       </nav>
       <Product product={initProd} />
-      <RelatedItems initProd={initProd}/>
+      <RelatedItems initProd={initProd} />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />
     </div>
