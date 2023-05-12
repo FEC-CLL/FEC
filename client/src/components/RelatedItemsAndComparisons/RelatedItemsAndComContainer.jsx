@@ -27,12 +27,12 @@ function RelatedItemsAndComContainer({ initProd }) {
     <div className="relatedContainer">
       <div className="relatedList">
         Related Products
-
+        <RelatedProducts relatedProducts={relatedProducts} />
       </div>
 
       <div className="outfitsList">
         Outfits
-
+        <Outfits />
       </div>
 
     </div>
