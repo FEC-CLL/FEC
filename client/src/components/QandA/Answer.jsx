@@ -17,19 +17,26 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
       <div className="answerBody">
         {answer.body}
         {answer.photos.length
-        ?
-        <div className="photos">
-          <img src=""/>
-        </div>
-        :
-        null}
+          ? (
+            <div className="photos">
+              <img src="" alt="" />
+            </div>
+          )
+          : null}
       </div>
       <div className="answer-info">
-        <div>by {answer.answerer_name}, {date}</div>
+        <div>
+          by
+          {answer.answerer_name}
+          ,
+          {date}
+        </div>
         <div className="pole"> | </div>
         <div>Helpful?</div>
-        {helpClicked ? <div className="regular">Yes</div> : <button onClick={helpHandler} className="astext">Yes</button>}
-        ({answer.helpfulness})
+        {helpClicked ? <div className="regular">Yes</div> : <button type="button" onClick={helpHandler} className="astext">Yes</button>}
+        (
+        {answer.helpfulness}
+        )
         <div className="pole"> | </div>
         {reportClicked ? <div>Reported</div> : <button type="button" onClick={reportingHandler} className="astext">Report</button>}
       </div>

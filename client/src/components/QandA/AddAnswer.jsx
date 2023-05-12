@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
+function AddAnswer({
+  addAnswer, product, question, show, setShow,
+}) {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -17,10 +19,10 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
       //   //set state for url
       //   console.log(event.target.result);
       // }
-      //fileReader.readAsDataURL(image);
+      // fileReader.readAsDataURL(image);
       newImageURLs.push(URL.createObjectURL(image));
       photos.push(image.name);
-    })
+    });
     console.log(newImageURLs);
     setImageURLs(newImageURLs);
   }, [images]);
@@ -33,19 +35,19 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
   };
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  }
+  };
   const onImageChange = (event) => {
     setImages([...event.target.files]);
-  }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
       body: answer,
       name: nickname,
-      email: email,
-      photos: photos,
-      question_id: question.question_id
-    }
+      email,
+      photos,
+      question_id: question.question_id,
+    };
     addAnswer(data);
     setShow(!show);
   };
@@ -58,30 +60,36 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h4 className="modal-title">Submit your Answer</h4>
-          <div className="modal-subtitle">{product.name}: {question.question_body} </div>
+          <div className="modal-subtitle">
+            {product.name}
+            :
+            {' '}
+            {question.question_body}
+            {' '}
+          </div>
         </div>
         <form onSubmit={handleSubmit} className="modal-body">
           <div className="modal-body-title">Your answer: </div>
-          <textarea onChange={handleAnswerChange} maxlength="1000" className="modal-textArea" required/>
+          <textarea onChange={handleAnswerChange} maxLength="1000" className="modal-textArea" required />
           <div className="modal-body-container">
             <div className="modal-component-title">Nickname:</div>
-            <input onChange={handleNicknameChange} type="text" maxlength="60" placeholder="Example: jack543!" required />
+            <input onChange={handleNicknameChange} type="text" maxLength="60" placeholder="Example: jack543!" required />
           </div>
           <div className="modal-warning">*For privacy reasons, do not use your full name or email address </div>
           <div className="modal-body-container">
             <div className="modal-component-title">Email:</div>
-            <input onChange={handleEmailChange} id="email" type="email" maxlength="60" placeholder="Example: jack@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></input>
+            <input onChange={handleEmailChange} id="email" type="email" maxLength="60" placeholder="Example: jack@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
           </div>
           <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
           <div className="photo-container">
             <div className="modal-component-title">Photos:</div>
             {images.length < 5 ? <input type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
             <div className="photos">
-              { imageURLs.map(imageSrc => <img className="photo" src={imageSrc} />)}
+              { imageURLs.map((imageSrc) => <img className="photo" alt="this is a ..." src={imageSrc} />)}
             </div>
           </div>
           <div className="modal-footer">
-            <button onClick={() => setShow(!show)} className="modal-button">Close</button>
+            <button type="button" onClick={() => setShow(!show)} className="modal-button">Close</button>
             <button className="modal-button" type="submit">Submit</button>
           </div>
         </form>

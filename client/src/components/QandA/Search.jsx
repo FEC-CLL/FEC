@@ -10,29 +10,29 @@ import React from 'react';
 
 //   return(
 //     <form onSubmit={submitHandler} className="searchForm">
-//       <input id="searchInput" className="searchInput" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
+//       <input id="searchInput" className="searchInput" type="search"
+//       placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
 //       <button className="searchButton" type="submit"></button>
 //     </form>
 //   );
 // }
 
-
-//solution when user types 3 or more characters
-const Search = ({filter}) => {
+// solution when user types 3 or more characters
+function Search({ filter }) {
   const changeHandler = (event) => {
     if (event.target.value.length >= 3) {
-      //console.log('yerr');
-      filter(document.getElementById("searchInput").value);
+      // console.log('yerr');
+      filter(document.getElementById('searchInput').value);
     } else {
       filter('');
     }
     // document.getElementById("searchInput").value = '';
-  }
+  };
 
-  return(
+  return (
     <div className="searchForm">
       <input onChange={changeHandler} id="searchInput" className="searchInput" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
-      <div className="searchButton"></div>
+      <div className="searchButton" />
     </div>
   );
 }

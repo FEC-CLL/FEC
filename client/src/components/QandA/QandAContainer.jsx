@@ -49,7 +49,7 @@ function QandA({ product }) {
       setIsLoaded(false);
 
       const newQuestions = [];
-      for(var i =0; i < questionCount; i++) {
+      for (let i = 0; i < questionCount; i += 1) {
         if (questions[i].question_body.toLowerCase().includes(search.toLowerCase())) {
           newQuestions.push(questions[i]);
         }
@@ -105,25 +105,41 @@ function QandA({ product }) {
   };
 
   return (
-    <div className='qaContainer container'>
-      <div className='qaComponent'>
+    <div className="qaContainer container">
+      <div className="qaComponent">
         QUESTIONS & ANSWERS
       </div>
-      <div className='qaComponent'>
+      <div className="qaComponent">
         <Search filter={setSearch} />
       </div>
-      <div className='qaComponent'>
-        {isLoaded ? <p>Loading...</p> : <QuestionList product={product} questionHandler={questionHelpfulHandler} questions={currentQuestions} count={questionCount} />}
+      <div className="qaComponent">
+        {isLoaded ? <p>Loading...</p>
+          : (
+            <QuestionList
+              product={product}
+              questionHandler={questionHelpfulHandler}
+              questions={currentQuestions}
+              count={questionCount}
+            />
+          )}
       </div>
-      <div className='qaComponent'>
+      <div className="qaComponent">
         <div className="buttonContainer">
-          {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="qa-button">MORE ANSWERED QUESTIONS</button> : null}
-          <button onClick={()=> setShow(true)} className="qa-button imageButton"> ADD A QUESTION </button>
-          <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
+          {hasMoreQuestions ? <button type="button" onClick={handleMoreAnsweredQuestions} className="qa-button">MORE ANSWERED QUESTIONS</button>
+            : null}
+          <button type="button" onClick={() => setShow(true)} className="qa-button imageButton">
+            ADD A QUESTION
+          </button>
+          <AddQuestion
+            addQuestion={addQuestionHandler}
+            product={product}
+            show={show}
+            setShow={setShow}
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default QandA;

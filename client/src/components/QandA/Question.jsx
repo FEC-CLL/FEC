@@ -24,7 +24,6 @@ function Question({
     })
       .then((res) => {
         setAnswers(res.data.results);
-        console.log(res.data.results);
         if (res.data.results.length < 2) {
           setAnswerCount(res.data.results.length);
         }
@@ -43,7 +42,7 @@ function Question({
       name: data.name,
       email: data.email,
       photos: data.photos,
-      question_id: data.question_id
+      question_id: data.question_id,
     })
       .then(() => {
         getAnswers();
@@ -68,7 +67,6 @@ function Question({
       for (let i = 0; i < answerCount; i += 1) {
         newAnswers.push(answers[i]);
       }
-      console.log('ASDFGSDG', newAnswers);
       setCurrentAnswers(newAnswers);
     }
   }, [answers]);
@@ -126,30 +124,42 @@ function Question({
           {question.question_body}
           <span className="question-info">
             Helpful?
-            {isClicked ? <div className="regular">Yes</div> : <button onClick={yesHandler} className="astext">Yes</button>}
+            {isClicked ? <div className="regular">Yes</div> : <button type="button" onClick={yesHandler} className="astext">Yes</button>}
 
-            ({question.question_helpfulness})
+            (
+            {question.question_helpfulness}
+            )
             <div className="pole"> | </div>
-            <button onClick={() => setShow(true)} className="astext">Add Answer</button>
-            <AddAnswer addAnswer={addAnswerHandler} product={product} question={question} show={show} setShow={setShow}/>
+            <button type="button" onClick={() => setShow(true)} className="astext">Add Answer</button>
+            <AddAnswer
+              addAnswer={addAnswerHandler}
+              product={product}
+              question={question}
+              show={show}
+              setShow={setShow}
+            />
           </span>
         </div>
       </div>
-      <div className="answers" style={{overflow: answersIsExpanded ? "auto" : "none"}} >
+      <div className="answers" style={{ overflow: answersIsExpanded ? 'auto' : 'none' }}>
         {answers.length ? 'A:' : null}
         <div className="answer">
-          {currentAnswers.map((answer) => {
-            return <Answer reportHandler={answerReportHandler} helpfulHandler={answerHelpfulHandler} answer={answer} />
-          })}
-          {moreAnswers ?
-            <div>
-              { answersIsExpanded
-                ? <button  onClick={addAnswersCollapseHandler}>Collapse answers</button>
-                : <button  onClick={addAnswersExpandHandler}>See More answers</button>
-              }
-            </div>
-            : null
-          }
+          {currentAnswers.map((answer) => (
+            <Answer
+              reportHandler={answerReportHandler}
+              helpfulHandler={answerHelpfulHandler}
+              answer={answer}
+            />
+          ))}
+          {moreAnswers
+            ? (
+              <div>
+                { answersIsExpanded
+                  ? <button type="button" onClick={addAnswersCollapseHandler}>Collapse answers</button>
+                  : <button type="button" onClick={addAnswersExpandHandler}>See More answers</button>}
+              </div>
+            )
+            : null}
         </div>
       </div>
     </div>
