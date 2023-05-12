@@ -25,8 +25,8 @@ function Card({
   // TODO: replace button with star icon
   return (
     <div className="productCard" onClick={handleCardClick}>
-      <button className="compareButton" onClick={handleCompareClick} >Star</button>
-      <img className="cardImg" src={tempImg} alt="product"/>
+      <button className="compareButton" type="text" onClick={handleCompareClick}>Star</button>
+      <img className="cardImg" src={tempImg} alt="product" />
 
       {category}
       <h3 className="prodName">{name}</h3>
