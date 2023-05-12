@@ -24,7 +24,7 @@ const Answer = ({answer, helpfulHandler, reportHandler}) => {
         :
         null}
       </div>
-      <div className="answerStats">
+      <div className="answer-info">
         <div>by {answer.answerer_name}, {date}</div>
         <div className="pole"> | </div>
         <div>Helpful?</div>

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 
-
 const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
@@ -59,31 +58,31 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h4 className="modal-title">Submit your Answer</h4>
-          <h5 className="modal-subtitle">{product.name}: {question.question_body} </h5>
+          <div className="modal-subtitle">{product.name}: {question.question_body} </div>
         </div>
         <form onSubmit={handleSubmit} className="modal-body">
-          <div className="modalBodyTitle">Your answer: </div>
-          <textarea onChange={handleAnswerChange} maxlength="1000" className="addAnswerInput" required/>
+          <div className="modal-body-title">Your answer: </div>
+          <textarea onChange={handleAnswerChange} maxlength="1000" className="modal-textArea" required/>
           <div className="modal-body-container">
-            <div className="modalTitle">Nickname:</div>
+            <div className="modal-component-title">Nickname:</div>
             <input onChange={handleNicknameChange} type="text" maxlength="60" placeholder="Example: jack543!" required />
           </div>
-          <div className="nicknameText">*For privacy reasons, do not use your full name or email address </div>
+          <div className="modal-warning">*For privacy reasons, do not use your full name or email address </div>
           <div className="modal-body-container">
-            <div className="modalTitle">Email:</div>
-            <input onChange={handleEmailChange} id="email" type="email" maxlength="60" placeholder="Example: jack@email.com" required></input>
+            <div className="modal-component-title">Email:</div>
+            <input onChange={handleEmailChange} id="email" type="email" maxlength="60" placeholder="Example: jack@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></input>
           </div>
-          <div className="nicknameText">*For authentication reasons, you will not be emailed </div>
+          <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
           <div className="photo-container">
-            <div className="modalTitle">Photos:</div>
+            <div className="modal-component-title">Photos:</div>
             {images.length < 5 ? <input type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
             <div className="photos">
               { imageURLs.map(imageSrc => <img className="photo" src={imageSrc} />)}
             </div>
           </div>
           <div className="modal-footer">
-            <button onClick={() => setShow(!show)} className="button">Close</button>
-            <button className="button" type="submit">Submit</button>
+            <button onClick={() => setShow(!show)} className="modal-button">Close</button>
+            <button className="modal-button" type="submit">Submit</button>
           </div>
         </form>
       </div>

@@ -104,7 +104,7 @@ function QandA({ product }) {
   }
 
   return (
-    <div className='qaContainer'>
+    <div className='qaContainer container'>
       <div className='qaComponent'>
         QUESTIONS & ANSWERS
       </div>
@@ -116,8 +116,8 @@ function QandA({ product }) {
       </div>
       <div className='qaComponent'>
         <div className="buttonContainer">
-          {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button> : null}
-          <button onClick={()=> setShow(true)} className="imageButton"> ADD A QUESTION </button>
+          {hasMoreQuestions ? <button onClick={handleMoreAnsweredQuestions} className="qa-button">MORE ANSWERED QUESTIONS</button> : null}
+          <button onClick={()=> setShow(true)} className="qa-button imageButton"> ADD A QUESTION </button>
           <AddQuestion addQuestion={addQuestionHandler} product={product} show={show} setShow={setShow}/>
         </div>
       </div>

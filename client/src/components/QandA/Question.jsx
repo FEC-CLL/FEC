@@ -113,14 +113,14 @@ const Question = ({addAnswer, product, question, questionHandler}) => {
 
 
   return (
-    <div>
+    <div className="qa-container">
       <div className="question-container">
-        <div className="questions">
+        <div>
           Q:
         </div>
         <div className="question">
           {question.question_body}
-          <span className="questionHelp">
+          <span className="question-info">
             Helpful?
             {isClicked ? <div className="regular">Yes</div> : <button onClick={yesHandler} className="astext">Yes</button>}
 
