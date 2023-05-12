@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 // Solution when user presses search
 // const Search = ({filter}) => {

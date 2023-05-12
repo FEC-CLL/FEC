@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import axios from 'axios';
-import Search from './Search.jsx';
-import QuestionList from './QuestionList.jsx';
-import AddQuestion from './AddQuestion.jsx';
+import Search from './Search';
+import QuestionList from './QuestionList';
+import AddQuestion from './AddQuestion';
 import './styles.css';
 
-// eslint-disable-next-line react/prop-types
 function QandA({ product }) {
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -19,34 +18,34 @@ function QandA({ product }) {
   const getProduct = () => {
     axios.get('qa/questions', {
       params: {
-        product_id:40347,
+        product_id: 40347,
         page: 1,
-        count: 200
-      }
+        count: 200,
+      },
     })
-    .then((res) => {
-      setQuestions(res.data.results);
-      if (res.data.results.length < questionCount) {
-        setQuestionCount(res.data.results.length);
-      }
-      if (res.data.results.length > 2) {
-        setHasMoreQuestions(true);
-      }
-    })
-    .then(() => {
-      setIsReady(false);
-    })
-    .catch((err) => {
-      console.log("erropr");
-    })
-  }
+      .then((res) => {
+        setQuestions(res.data.results);
+        if (res.data.results.length < questionCount) {
+          setQuestionCount(res.data.results.length);
+        }
+        if (res.data.results.length > 2) {
+          setHasMoreQuestions(true);
+        }
+      })
+      .then(() => {
+        setIsReady(false);
+      })
+      .catch(() => {
+        console.log('erropr');
+      });
+  };
 
   useLayoutEffect(() => {
     getProduct();
   }, []);
 
   useLayoutEffect(() => {
-    if(!isReady) {
+    if (!isReady) {
       setIsLoaded(false);
 
       const newQuestions = [];
@@ -57,19 +56,21 @@ function QandA({ product }) {
       }
       setCurrentQuestions(newQuestions);
     }
-  }, [isReady, questions, search, questionCount])
+  }, [isReady, questions, search, questionCount]);
 
+  // eslint-disable-next-line camelcase
   const questionHelpfulHandler = (question_id) => {
     axios.put('/qa/questions/helpful', {
-      question_id: question_id
+      // eslint-disable-next-line camelcase
+      question_id,
     })
-    .then(() => {
-      getProduct();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
+      .then(() => {
+        getProduct();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const addQuestionHandler = (data) => {
     console.log(data.product_id);
@@ -77,20 +78,20 @@ function QandA({ product }) {
       body: data.body,
       name: data.name,
       email: data.email,
-      product_id: data.product_id
+      product_id: data.product_id,
     })
-    .then(() => {
-      getProduct();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
+      .then(() => {
+        getProduct();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleMoreAnsweredQuestions = () => {
     const howMany = questions.length - questionCount;
     console.log(howMany);
-    switch(howMany) {
+    switch (howMany) {
       case 0:
         setHasMoreQuestions(false);
         break;
@@ -101,7 +102,7 @@ function QandA({ product }) {
       default:
         setQuestionCount(questionCount + 2);
     }
-  }
+  };
 
   return (
     <div className='qaContainer container'>

@@ -27,10 +27,10 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
 
   const handleAnswerChange = (event) => {
     setAnswer(event.target.value);
-  }
+  };
   const handleNicknameChange = (event) => {
     setNickname(event.target.value);
-  }
+  };
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   }
@@ -48,7 +48,7 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
     }
     addAnswer(data);
     setShow(!show);
-  }
+  };
 
   if (!show) {
     return null;
@@ -87,7 +87,7 @@ const AddAnswer = ({addAnswer, product, question, show, setShow}) => {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default AddAnswer;

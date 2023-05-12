@@ -1,30 +1,34 @@
-import React, {useState} from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 
-const AddQuestion = ({show, setShow, product, addQuestion}) => {
+function AddQuestion({
+  show, setShow, product, addQuestion,
+}) {
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
 
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
-  }
+  };
   const handleNicknameChange = (event) => {
     setNickname(event.target.value);
-  }
+  };
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
       body: question,
       name: nickname,
-      email: email,
-      product_id: product.id
-    }
+      email,
+      product_id: product.id,
+    };
     addQuestion(data);
     setShow(!show);
-  }
+  };
 
   if (!show) {
     return null;
@@ -50,7 +54,7 @@ const AddQuestion = ({show, setShow, product, addQuestion}) => {
           </div>
           <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
           <div className="modal-footer">
-            <button onClick={() => setShow(!show)} className="button">Close</button>
+            <button type="button" onClick={() => setShow(!show)} className="button">Close</button>
             <button className="button" type="submit">Submit</button>
           </div>
         </form>

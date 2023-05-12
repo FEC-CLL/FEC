@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
-import Question from './Question.jsx';
+import React from 'react';
+import Question from './Question';
 
-const QuestionList = ({product, questions, count, questionHandler}) => {
+function QuestionList({
+  product, questions, questionHandler,
+}) {
   console.log(questions);
   return (
     <div className="questions-list">
