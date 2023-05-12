@@ -9,7 +9,7 @@ import React from 'react';
 function Card({
   name, category, price, tempImg,
 }) {
-  const handleCardClick = () => {
+  const handleCardClick = (event) => {
     event.preventDefault();
     alert('New product chosen');
     // TODO: This will change the current chosen product
@@ -20,13 +20,13 @@ function Card({
     alert('Comparing current product with chosen product');
     // TODO: when a user clicks on the star, a modal table should pop up
     // comparing current product to selected product
-  }
+  };
 
   // TODO: replace button with star icon
   return (
     <div className="productCard" onClick={handleCardClick}>
       <button className="compareButton" onClick={handleCompareClick} >Star</button>
-      <img className="cardImg" src={tempImg} alt="product" />
+      <img className="cardImg" src={tempImg} alt="product"/>
 
       {category}
       <h3 className="prodName">{name}</h3>
