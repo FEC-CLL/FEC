@@ -10,16 +10,15 @@ export default function App() {
   const [allProducts, setAllProducts] = useState();
   const [currentProduct, setCurrentProduct] = useState();
   const [initProd, setInitProd] = useState({});
-  const fetchProductData = () => {
-    Promise.all([
-      axios.get('/products/40347'),
-      axios.get('/products/40347/styles'),
-    ]) // 40347
-      .then(([productResponse, stylesResponse]) => {
-        setInitProd({
-          ...productResponse.data,
-          ...stylesResponse.data,
-        });
+
+  useEffect(() => {
+    // Initial request for one product
+    axios.get('/products/40347')
+      .then((response) => {
+        // Set product data to state
+        console.log('response:', response);
+        setInitProd(response.data);
+
       })
       .catch((err) => {
         console.error(err);
