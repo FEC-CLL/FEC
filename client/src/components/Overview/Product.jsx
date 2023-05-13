@@ -16,6 +16,10 @@ export default function Product({ product = {} }) {
 
   const styleSkus = Object.keys(styles[styleIndex].skus);
   const currentSku = styles[styleIndex].skus[skuId];
+  const filteredSkuQuantities = styleSkus.filter(
+    (sku) => styles[styleIndex].skus[sku].quantity !== 0,
+  );
+  const isOutOfStock = filteredSkuQuantities.length === 0;
 
   return (
     <div className="container">
@@ -75,9 +79,9 @@ export default function Product({ product = {} }) {
           </ul>
         </div>
         <div className="product-information__options">
-          <select className="product-information__select product-information__select--size" name="size" id="size" onChange={(e) => setSkuId(e.target.value)}>
-            <option value="">Select size</option>
-            {styleSkus.map((sku) => (
+          <select className="product-information__select product-information__select--size" name="size" id="size" onChange={(e) => setSkuId(e.target.value)} disabled={isOutOfStock}>
+            <option value="">{isOutOfStock ? 'OUT OF STOCK' : 'Select size'}</option>
+            {filteredSkuQuantities.map((sku) => (
               <option value={sku} key={sku}>{styles[styleIndex].skus[sku].size}</option>
             ))}
           </select>
