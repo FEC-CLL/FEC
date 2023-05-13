@@ -24,8 +24,6 @@ function Review({ review }) {
       <div className="reviewFooter">
         <ReviewHelpfulness review={review} />
         <ReviewReport review={review} />
-        <ReviewHelpfulness review={review} />
-        <ReviewReport review={review} />
       </div>
     </div>
   );
