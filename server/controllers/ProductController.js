@@ -9,6 +9,18 @@ const instance = axios.create({
   headers: { Authorization: process.env.TOKEN },
 });
 
+const calculateAvg = (ratingsData) => {
+  let weightedSum = 0;
+  let totalCount = 0;
+  Object.keys(ratingsData).forEach((rating) => {
+    const count = parseInt(ratingsData[rating], 10);
+    weightedSum += parseInt(rating, 10) * count;
+    totalCount += count;
+  });
+  const averageRating = weightedSum / totalCount;
+  return averageRating.toFixed(2);
+};
+
 router.get('/', (req, res) => {
   instance.get('/products')
     .then((response) => {
@@ -27,12 +39,14 @@ router.get('/:id', (req, res) => {
     instance.get(`/products/${id}`),
     axios.get(`${serverUrl}/products/${id}/styles`),
     axios.get(`${serverUrl}/reviews/${id}`),
+    axios.get(`${serverUrl}/reviews/metadata/${id}`),
   ])
-    .then(([productResponse, stylesResponse, reviewsResponse]) => {
+    .then(([productResponse, stylesResponse, reviewsResponse, metadataResponse]) => {
       res.send({
         ...productResponse.data,
         styles: stylesResponse.data,
         reviewCount: reviewsResponse.data.count,
+        averageReview: calculateAvg(metadataResponse.data.ratings),
       });
     })
     .catch((error) => {
