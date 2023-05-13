@@ -15,6 +15,7 @@ export default function Product({ product = {} }) {
   }
 
   const styleSkus = Object.keys(styles[styleIndex].skus);
+  const currentSku = styles[styleIndex].skus[skuId];
 
   return (
     <div className="container">
@@ -80,11 +81,10 @@ export default function Product({ product = {} }) {
               <option value={sku} key={sku}>{styles[styleIndex].skus[sku].size}</option>
             ))}
           </select>
-          <select className="product-information__select product-information__select--quantity" name="quantity" id="quantity">
-            <option value="">Select quantity</option>
-            {[...Array(styles[styleIndex].skus[skuId]?.quantity || 1).keys()].map((number) => (
+          <select className="product-information__select product-information__select--quantity" name="quantity" id="quantity" disabled={!skuId}>
+            {skuId ? [...Array(Math.min(currentSku?.quantity, 15) || 1).keys()].map((number) => (
               <option value={number + 1}>{number + 1}</option>
-            ))}
+            )) : <option value="">--</option>}
           </select>
         </div>
         <button type="button" className="product-information__add-to-cart">
