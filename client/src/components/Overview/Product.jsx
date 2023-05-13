@@ -77,7 +77,7 @@ export default function Product({ product = {} }) {
             {styles.map((result, index) => (
               <li>
                 <button type="button" onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
-                  <span className="product-information__style-selector--selected" />
+                  {styleIndex === index && <span className="product-information__style-selector--selected" />}
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
               </li>
