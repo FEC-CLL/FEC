@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './stylesRR.css';
@@ -19,7 +18,6 @@ function RatingsAndReviewsContainer({ initProd }) {
     if (initProd.id) {
       axios.get(`/reviews/${initProd.id}?page=${page}&sort="${sortType}"`)
         .then((response) => {
-          console.log(response.data);
           setAllReviews(allReviews.concat(response.data.results));
           setReviewNum(response.data.results.length);
         })
@@ -42,7 +40,14 @@ function RatingsAndReviewsContainer({ initProd }) {
       <div className="rrTitle">RATINGS & REVIEWS</div>
       <div className="rrContainer">
         <div className="ratings1Container" />
+        <div className="ratings1Container" />
         <div className="reviewContainer">
+          <ReviewSorting
+            setSortType={setSortType}
+            setPage={setPage}
+            setAllReviews={setAllReviews}
+            allReviews={allReviews}
+          />
           <ReviewSorting
             setSortType={setSortType}
             setPage={setPage}

@@ -4,11 +4,25 @@ const axios = require('axios');
 
 const router = express.Router();
 
-const API_URL = process.env.API_ENDPOINT;
-const API_KEY = process.env.TOKEN;
+const instance = axios.create({
+  baseURL: process.env.API_ENDPOINT,
+  headers: { Authorization: process.env.TOKEN },
+});
+
+const calculateAvg = (ratingsData) => {
+  let weightedSum = 0;
+  let totalCount = 0;
+  Object.keys(ratingsData).forEach((rating) => {
+    const count = parseInt(ratingsData[rating], 10);
+    weightedSum += parseInt(rating, 10) * count;
+    totalCount += count;
+  });
+  const averageRating = weightedSum / totalCount;
+  return averageRating.toFixed(2);
+};
 
 router.get('/', (req, res) => {
-  axios.get(`${API_URL}/products`, { headers: { Authorization: API_KEY } })
+  instance.get('/products')
     .then((response) => {
       res.send(response.data);
     })
@@ -19,20 +33,33 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  axios.get(`${API_URL}/products/${req.params.id}`, { headers: { Authorization: API_KEY } })
-    .then((response) => {
-      res.send(response.data);
+  const { id } = req.params;
+  const serverUrl = `${req.protocol}://${req.get('host')}`;
+  Promise.all([
+    instance.get(`/products/${id}`),
+    axios.get(`${serverUrl}/products/${id}/styles`),
+    axios.get(`${serverUrl}/reviews/${id}`),
+    axios.get(`${serverUrl}/reviews/metadata/${id}`),
+  ])
+    .then(([productResponse, stylesResponse, reviewsResponse, metadataResponse]) => {
+      res.send({
+        ...productResponse.data,
+        styles: stylesResponse.data,
+        reviewCount: reviewsResponse.data.count,
+        averageReview: calculateAvg(metadataResponse.data.ratings),
+      });
     })
     .catch((error) => {
       console.error(error);
-      res.sendStatus(error.response.status);
+      res.sendStatus(400);
     });
 });
 
 router.get('/:id/styles', (req, res) => {
-  axios.get(`${API_URL}/products/${req.params.id}/styles`, { headers: { Authorization: API_KEY } })
+  const { id } = req.params;
+  instance.get(`/products/${id}/styles`)
     .then((response) => {
-      res.send(response.data);
+      res.send(response.data.results);
     })
     .catch((error) => {
       console.error(error);

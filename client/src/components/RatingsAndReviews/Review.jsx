@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';
 
 function Review({ review }) {
-  const date = new Date(review.date.slice(0,10)).toLocaleString('en-us', {month:'long', day: 'numeric', year:'numeric'});
+  const date = new Date(review.date.slice(0, 10)).toLocaleString('en-us', { month: 'long', day: 'numeric', year: 'numeric' });
 
   return (
     <div className="review">
@@ -24,6 +22,8 @@ function Review({ review }) {
       <div className="reviewPhotos">{review.photos.length ? review.photos.map((photo) => <ReviewPhoto photo={photo} />) : ''}</div>
       <div className="reviewResponse">{review.response ? review.response : ''}</div>
       <div className="reviewFooter">
+        <ReviewHelpfulness review={review} />
+        <ReviewReport review={review} />
         <ReviewHelpfulness review={review} />
         <ReviewReport review={review} />
       </div>

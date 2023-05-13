@@ -20,6 +20,11 @@
   flex-direction: row;
 }
 
+.reviewSorting {
+  display: flex;
+  flex-direction: row;
+}
+
 .reviewContainer {
   width: 70%;
 }
@@ -54,10 +59,12 @@
 .reviewSummary {
   margin-top: 2%;
   font-size: 16px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .reviewBody {
+  font-size: 14px;
   font-size: 14px;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -80,7 +87,25 @@
   padding: 0.3%;
 }
 
+.reviewRecommend {
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 2%;
+  margin-bottom: 2.5%;
+}
+
+.reviewPhotos {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+
+.reviewPhoto {
+  padding: 0.3%;
+}
+
 .reviewFooter {
+  font-size: 11px;
   font-size: 11px;
   display: flex;
   flex-direction: row;

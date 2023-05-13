@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import QandAContainer from '../QandAContainer.jsx';
+import QandAContainer from '../QandAContainer';
 
 describe('Questions', () => {
   test('renders Questions component', () => {
