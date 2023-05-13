@@ -1,3 +1,4 @@
+/* eslint-disable Adjacent JSX elements must be wrapped in an enclosing tag */
 // This component will contain both the related items and outfits list
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
