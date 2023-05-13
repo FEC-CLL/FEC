@@ -21,6 +21,12 @@ export default function Product({ product = {} }) {
   );
   const isOutOfStock = filteredSkuQuantities.length === 0;
 
+  const styleHandler = (i) => {
+    setSkuId(null);
+    setStyleIndex(i);
+    setMainImageIndex(0);
+  };
+
   return (
     <div className="container">
       <div className="image-gallery">
@@ -70,7 +76,7 @@ export default function Product({ product = {} }) {
           <ul>
             {styles.map((result, index) => (
               <li>
-                <button type="button" onClick={() => setStyleIndex(index)} key={result.photos[0].thumbnail_url}>
+                <button type="button" onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
                   <span className="product-information__style-selector--selected" />
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
