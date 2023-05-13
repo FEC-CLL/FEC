@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './styles.css';
+import ProductStar from './ProductStar';
 
 export default function Product({ product = {} }) {
   const {
-    name, category, styles, reviewCount,
+    name, category, styles, reviewCount, averageReview,
   } = product;
 
   const [styleIndex, setStyleIndex] = useState(0);
@@ -45,13 +46,7 @@ export default function Product({ product = {} }) {
       </div>
       <div className="product-information">
         <div className="product-information__reviews">
-          <span>
-            <span className="product-information__reviews--0" />
-            <span className="product-information__reviews--1" />
-            <span className="product-information__reviews--2" />
-            <span className="product-information__reviews--3" />
-            <span className="product-information__reviews--4" />
-          </span>
+          <ProductStar averageReview={averageReview} />
           {' '}
           {reviewCount && <a href="#reviews" className="product-information__reviews__link">{`Read all ${reviewCount} reviews`}</a>}
         </div>
