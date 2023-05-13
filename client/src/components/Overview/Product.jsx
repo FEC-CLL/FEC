@@ -3,7 +3,7 @@ import './styles.css';
 
 export default function Product({ product = {} }) {
   const {
-    name, category, styles,
+    name, category, styles, reviewCount,
   } = product;
 
   const [styleIndex, setStyleIndex] = useState(0);
@@ -42,7 +42,7 @@ export default function Product({ product = {} }) {
             <span className="product-information__reviews--4" />
           </span>
           {' '}
-          <a href="#reviews" className="product-information__reviews__link">Read all reviews</a>
+          {reviewCount && <a href="#reviews" className="product-information__reviews__link">{`Read all ${reviewCount} reviews`}</a>}
         </div>
         <p className="product-information__category">{category}</p>
         <h2 className="product-information__product-title">{name}</h2>
