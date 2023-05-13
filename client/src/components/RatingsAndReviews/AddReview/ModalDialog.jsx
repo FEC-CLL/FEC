@@ -2,7 +2,9 @@
 import React from 'react';
 import AddReview from './AddReview';
 
-function ModalDialog({ showDialog, setShowDialog, initProd, metaData }) {
+function ModalDialog({
+  showDialog, setShowDialog, initProd, metaData,
+}) {
   if (!showDialog) {
     return null;
   }

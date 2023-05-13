@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 function ReviewBody({ setReviewBody }) {
   const [charNum, setCharNum] = useState(0);
 
