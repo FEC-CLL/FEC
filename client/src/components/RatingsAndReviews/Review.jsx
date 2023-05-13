@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';
 
 function Review({ review }) {
+  const date = new Date(review.date.slice(0, 10)).toLocaleString('en-us', { month: 'long', day: 'numeric', year: 'numeric' });
+
   return (
     <div className="review">
       <div className="reviewHeader">
@@ -11,11 +14,11 @@ function Review({ review }) {
           {review.reviewer_name}
           ,
         </div>
-        <div className="reviewDate">{review.date}</div>
+        <div className="reviewDate">{date}</div>
       </div>
       <div className="reviewSummary">{review.summary}</div>
       <div className="reviewBody">{review.body}</div>
-      <div className="reviewRecommend">{review.recommend ? 'I recommend this ptoduct' : ''}</div>
+      <div className="reviewRecommend">{review.recommend ? 'I recommend this product' : ''}</div>
       <div className="reviewPhotos">{review.photos.length ? review.photos.map((photo) => <ReviewPhoto photo={photo} />) : ''}</div>
       <div className="reviewResponse">{review.response ? review.response : ''}</div>
       <div className="reviewFooter">
@@ -29,7 +32,7 @@ function Review({ review }) {
 function ReviewPhoto({ photo }) {
   return (
     <div className="reviewPhoto">
-      <img src={photo.url} width="200" height="200" alt="review" />
+      <img src={photo.url} width="200" height="200" />
     </div>
   );
 }

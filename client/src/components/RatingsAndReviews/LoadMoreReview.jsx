@@ -5,21 +5,22 @@ function LoadMoreReviews({ page, setPage, reviewNum }) {
     setPage(page + 1);
   };
 
-  return (
-    <div id="loadMoreReviews">
-      {reviewNum >= 2 ? (
-        <button
-          type="button"
-          id="loadMoreReviewsButton"
-          onClick={() => {
-            loadMoreReviewsOnClick();
-          }}
-        >
-          MORE REVIEWS
-        </button>
-      ) : ''}
-    </div>
-  );
+  if (reviewNum >= 2) {
+    return (
+      <button
+        type="button"
+        className="buttonRR"
+        id="loadMoreReviewsButton"
+        onClick={() => {
+          loadMoreReviewsOnClick();
+        }}
+      >
+        MORE REVIEWS
+      </button>
+    );
+  }
+
+  return null;
 }
 
 export default LoadMoreReviews;
