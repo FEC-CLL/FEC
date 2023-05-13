@@ -1,10 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-
+import React from 'react';
 
 function ProductRecommendation({ recommend, setRecommend }) {
-
-  const onOptionChange = e => {
+  const onOptionChange = (e) => {
     setRecommend(e.target.value === 'Yes');
   };
 

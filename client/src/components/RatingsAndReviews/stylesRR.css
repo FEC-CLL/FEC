@@ -165,12 +165,11 @@
 }
 
 .modalrr {
-
-  width: 80%;
+  width: 60%;
   position:fixed;
   overflow-y:scroll;
   overflow-x:hidden;
-  left: 10%;
+  left: 20%;
   top: 0;
   right: 0;
   bottom: 0;
@@ -182,6 +181,9 @@
   transform: scale(1);
   opacity: 1;
   visibility: visible;
+  padding-bottom: 5px;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 

@@ -40,14 +40,7 @@ function RatingsAndReviewsContainer({ initProd }) {
       <div className="rrTitle">RATINGS & REVIEWS</div>
       <div className="rrContainer">
         <div className="ratings1Container" />
-        <div className="ratings1Container" />
         <div className="reviewContainer">
-          <ReviewSorting
-            setSortType={setSortType}
-            setPage={setPage}
-            setAllReviews={setAllReviews}
-            allReviews={allReviews}
-          />
           <ReviewSorting
             setSortType={setSortType}
             setPage={setPage}

@@ -72,7 +72,6 @@ function ProductCharacteristics({ char, charProp }) {
     'Runs long'];
   const fitArr = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
 
-
   return (
     <div>
       <div>Product Characteristics*</div>
