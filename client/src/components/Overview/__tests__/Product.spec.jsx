@@ -1,16 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Product from '../Product';
-import sampleProduct from '../../../../../sampleData/product.json';
-import sampleProductStyles from '../../../../../sampleData/productStyles.json';
+import mockProduct from '../../../../../sampleData/product.json';
 
 describe('Product', () => {
   test('renders Product component', () => {
-    const data = {
-      ...sampleProduct,
-      ...sampleProductStyles,
-    };
-    render(<Product product={data} />);
+    render(<Product product={mockProduct} />);
     expect(screen.getByText('Add to Cart')).toBeInTheDocument();
   });
 });
