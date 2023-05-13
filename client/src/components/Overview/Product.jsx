@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './styles.css';
+import ProductStar from './ProductStar';
 
 export default function Product({ product = {} }) {
   const {
-    name, category, styles,
+    name, category, styles, reviewCount, averageReview,
   } = product;
 
   const [styleIndex, setStyleIndex] = useState(0);
@@ -15,6 +16,17 @@ export default function Product({ product = {} }) {
   }
 
   const styleSkus = Object.keys(styles[styleIndex].skus);
+  const currentSku = styles[styleIndex].skus[skuId];
+  const filteredSkuQuantities = styleSkus.filter(
+    (sku) => styles[styleIndex].skus[sku].quantity !== 0,
+  );
+  const isOutOfStock = filteredSkuQuantities.length === 0;
+
+  const styleHandler = (i) => {
+    setSkuId(null);
+    setStyleIndex(i);
+    setMainImageIndex(0);
+  };
 
   return (
     <div className="container">
@@ -34,15 +46,9 @@ export default function Product({ product = {} }) {
       </div>
       <div className="product-information">
         <div className="product-information__reviews">
-          <span>
-            <span className="product-information__reviews--0" />
-            <span className="product-information__reviews--1" />
-            <span className="product-information__reviews--2" />
-            <span className="product-information__reviews--3" />
-            <span className="product-information__reviews--4" />
-          </span>
+          <ProductStar averageReview={averageReview} />
           {' '}
-          <a href="#reviews" className="product-information__reviews__link">Read all reviews</a>
+          {reviewCount && <a href="#reviews" className="product-information__reviews__link">{`Read all ${reviewCount} reviews`}</a>}
         </div>
         <p className="product-information__category">{category}</p>
         <h2 className="product-information__product-title">{name}</h2>
@@ -65,8 +71,8 @@ export default function Product({ product = {} }) {
           <ul>
             {styles.map((result, index) => (
               <li>
-                <button type="button" onClick={() => setStyleIndex(index)} key={result.photos[0].thumbnail_url}>
-                  <span className="product-information__style-selector--selected" />
+                <button type="button" onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
+                  {styleIndex === index && <span className="product-information__style-selector--selected" />}
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
               </li>
@@ -74,17 +80,16 @@ export default function Product({ product = {} }) {
           </ul>
         </div>
         <div className="product-information__options">
-          <select className="product-information__select product-information__select--size" name="size" id="size" onChange={(e) => setSkuId(e.target.value)}>
-            <option value="">Select size</option>
-            {styleSkus.map((sku) => (
+          <select className="product-information__select product-information__select--size" name="size" id="size" onChange={(e) => setSkuId(e.target.value)} disabled={isOutOfStock}>
+            <option value="">{isOutOfStock ? 'OUT OF STOCK' : 'Select size'}</option>
+            {filteredSkuQuantities.map((sku) => (
               <option value={sku} key={sku}>{styles[styleIndex].skus[sku].size}</option>
             ))}
           </select>
-          <select className="product-information__select product-information__select--quantity" name="quantity" id="quantity">
-            <option value="">Select quantity</option>
-            {[...Array(styles[styleIndex].skus[skuId]?.quantity || 1).keys()].map((number) => (
+          <select className="product-information__select product-information__select--quantity" name="quantity" id="quantity" disabled={!skuId}>
+            {skuId ? [...Array(Math.min(currentSku?.quantity, 15) || 1).keys()].map((number) => (
               <option value={number + 1}>{number + 1}</option>
-            ))}
+            )) : <option value="">--</option>}
           </select>
         </div>
         <button type="button" className="product-information__add-to-cart">
