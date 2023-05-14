@@ -10,6 +10,7 @@ function RelatedProducts({ relatedProducts }) {
     <div className="relatedList" style={{ display: 'flex' }}>
       {relatedProducts.map((product) => (
         <Card
+          product={product}
           name={product.name}
           category={product.category}
           price={product.default_price}
