@@ -9,6 +9,7 @@ import axios from 'axios';
 function Card({
   product, name, category, price,
 }) {
+  // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
   const [salePrice, setSalePrice] = useState(null);
   const [defaultImages, setDefaultImages] = useState([]);
@@ -64,9 +65,29 @@ function Card({
       <button className="compareButton" type="submit" onClick={handleCompareClick}>Star</button>
       <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
 
-      {category}
+      <p className="category">{category}</p>
       <h3 className="prodName">{name}</h3>
-      <p className="price">{price}</p>
+      <div className="price">
+        {salePrice
+          ? (
+            <div className="sale">
+              <p className="oldPrice">
+                Price:
+                {product.default_price}
+              </p>
+              <p className="salePrice">
+                Sale:
+                {salePrice}
+              </p>
+            </div>
+          )
+          : (
+            <p className="noSalePrice">
+              Price:
+              {price}
+            </p>
+          )}
+      </div>
       <p className="rating">Rating</p>
     </div>
   );
