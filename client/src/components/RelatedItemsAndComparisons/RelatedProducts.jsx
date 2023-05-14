@@ -19,6 +19,7 @@ function RelatedProducts({relatedProducts}) {
           tempImg={tempImg}
           key={product.id}
         />
+      ))}
     </div>
   );
 }
