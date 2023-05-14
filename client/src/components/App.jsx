@@ -36,7 +36,7 @@ export default function App() {
         </form>
       </nav>
       <Product product={initProd} />
-      <RelatedItems />
+      <RelatedItems initProd={initProd} />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />
     </div>
