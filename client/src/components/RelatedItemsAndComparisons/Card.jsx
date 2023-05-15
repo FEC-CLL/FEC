@@ -56,10 +56,10 @@ function Card({
   };
 
   // =============GET REQUEST FOR STYLES================
-  const styles = axios.get(`/products/${product.id}/styles`);
-  const avgRating = axios.get(`/products/${product.id}`);
   // TODO: send another request to get product ratings
   useEffect(() => {
+    const styles = axios.get(`/products/${product.id}/styles`);
+    const avgRating = axios.get(`/products/${product.id}`);
     axios.all([styles, avgRating])
       .then(axios.spread((style, rating) => {
         // console.log('prod styles: ', style.data);

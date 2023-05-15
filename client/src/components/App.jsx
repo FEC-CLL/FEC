@@ -29,6 +29,8 @@ export default function App() {
       .catch((err) => {
         console.error(err);
       });
+    // console.log('new prod: ', newProd);
+    // setInitProd(newProd);
   };
 
   return (
