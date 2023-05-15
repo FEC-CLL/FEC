@@ -32,15 +32,16 @@ export default function Product({ product = {} }) {
     <div className="container">
       <div className="image-gallery">
         <div className="image-gallery__thumbnail-nav">
-          <button type="button" className="image-gallery__thumbnail-nav__up" aria-label="Up" />
+          <button type="button" className="image-gallery__thumbnail-nav__up" aria-label="Up" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
           <ul className="image-gallery__thumbnail-nav__list">
-            {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail 1" /></button></li>)}
+            {styles[styleIndex].photos?.filter((photo, index) => index < 7).map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail 1" /></button></li>)}
           </ul>
-          <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" />
+          <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
         <div className="image-gallery__image">
           <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
           <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
           <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
       </div>
