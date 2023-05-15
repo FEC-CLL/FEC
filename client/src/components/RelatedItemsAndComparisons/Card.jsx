@@ -17,7 +17,14 @@ function Card({
   const [defaultImages, setDefaultImages] = useState([]);
   const [modalView, setModalView] = useState(false);
 
+  // Default image when original image isn't available
   const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
+
+  if (modalView) {
+    document.body.classList.add('active-modal');
+  } else {
+    document.body.classList.remove('active-modal');
+  }
 
   // ===============HELPER FUNCTIONS====================
   // const handleCardClick = () => {

@@ -67,6 +67,10 @@
 }
 
 /* Comparison Table */
+body.active-modal {
+  overflow-y: hidden;
+}
+
 .modal, .overlay {
   width: 100vw;
   height: 100vh;
@@ -113,11 +117,6 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
-
-/* .compareTable {
-  min-width: 500px;
-  min-height: 500px;
-} */
 
 /* Outfit List */
 .addToOutfit {
