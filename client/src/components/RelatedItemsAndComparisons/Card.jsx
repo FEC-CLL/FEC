@@ -7,7 +7,7 @@ import axios from 'axios';
 // TODO: import image from API request
 
 function Card({
-  product, name, category, price,
+  product, name, category, price, setInitProd
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -21,6 +21,7 @@ function Card({
     event.preventDefault();
     alert('New product chosen');
     // TODO: This will change the current chosen product
+    setInitProd(product);
   };
 
   const handleCompareClick = (event) => {

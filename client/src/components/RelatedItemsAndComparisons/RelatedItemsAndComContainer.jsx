@@ -5,7 +5,7 @@ import RelatedProducts from './RelatedProducts';
 import Outfits from './Outfits';
 import './styles.css';
 
-function RelatedItemsAndComContainer({ initProd }) {
+function RelatedItemsAndComContainer({ initProd, setInitProd }) {
   // eslint-disable-next-line no-unused-vars
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -27,7 +27,7 @@ function RelatedItemsAndComContainer({ initProd }) {
     <div className="relatedContainer">
       <div className="relatedList">
         <span>Related Products</span>
-        <RelatedProducts relatedProducts={relatedProducts} />
+        <RelatedProducts relatedProducts={relatedProducts} setInitProd={setInitProd} />
       </div>
 
       <div className="outfitsList">
