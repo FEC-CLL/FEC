@@ -1,4 +1,8 @@
 /* Card List */
+.relatedList {
+  overflow: auto;
+}
+
 .productCard {
   border-style: solid;
   border-width: thin;
