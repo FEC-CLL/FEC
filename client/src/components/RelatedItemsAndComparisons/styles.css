@@ -14,8 +14,8 @@
   transition: background-color 1s ease-out 50ms;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  margin-left: 1%;
-  margin-left: 1%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .productCard:hover {

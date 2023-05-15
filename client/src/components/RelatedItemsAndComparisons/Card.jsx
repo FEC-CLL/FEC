@@ -19,12 +19,12 @@ function Card({
   const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
   // ===============HELPER FUNCTIONS====================
-  const handleCardClick = (event) => {
-    event.preventDefault();
-    alert('New product chosen');
-    // TODO: This will change the current chosen product
-    // setInitProd(product);
-  };
+  // const handleCardClick = () => {
+  //   // event.stopPropagation();
+  //   alert('New product chosen');
+  //   // TODO: This will change the current chosen product
+  //   // setInitProd(product);
+  // };
 
   const handleCompareClick = () => {
     // event.stopPropagation();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function ComparisonModal({
-  modalView, handleCompareClick, initProd, product,
+  handleCompareClick, initProd, product,
 }) {
   const xMark = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#E51515" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>;
 
@@ -16,6 +16,23 @@ function ComparisonModal({
           </div>
           <div className="rp-modal-body">
             Here will contain comparison of features of two products
+            <table>
+              <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+              </tr>
+              <tr>
+                <td>Row 1, Cell 1</td>
+                <td>Row 1, Cell 2</td>
+                <td>Row 1, Cell 3</td>
+              </tr>
+              <tr>
+                <td>Row 2, Cell 1</td>
+                <td>Row 2, Cell 2</td>
+                <td>Row 2, Cell 3</td>
+              </tr>
+            </table>
           </div>
           <button
             className="closeModal"
