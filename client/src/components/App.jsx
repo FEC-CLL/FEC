@@ -21,6 +21,16 @@ export default function App() {
       });
   }, []);
 
+  const updateProduct = (newProdID) => {
+    axios.get(`/products/${newProdID}`)
+      .then((response) => {
+        setInitProd(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div id="App">
       <nav className="navBar">
@@ -36,7 +46,7 @@ export default function App() {
         </form>
       </nav>
       <Product product={initProd} />
-      <RelatedItems initProd={initProd} setInitProd={setInitProd} />
+      <RelatedItems initProd={initProd} updateProduct={updateProduct} />
       <QandA product={initProd} />
       <Ratings initProd={initProd} />
     </div>

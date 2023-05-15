@@ -9,7 +9,7 @@ import ProductStar from '../Overview/ProductStar';
 // TODO: import image from API request
 
 function Card({
-  initProd, setInitProd, product, name, category, price,
+  initProd, updateProduct, product, name, category, price,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -20,6 +20,7 @@ function Card({
   // Default image when original image isn't available
   const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
+  // Prevents scrolling of web page when modal is visible
   if (modalView) {
     document.body.classList.add('active-modal');
   } else {
@@ -27,12 +28,13 @@ function Card({
   }
 
   // ===============HELPER FUNCTIONS====================
-  // const handleCardClick = () => {
-  //   // event.stopPropagation();
-  //   alert('New product chosen');
-  //   // TODO: This will change the current chosen product
-  //   // setInitProd(product);
-  // };
+  const handleCardClick = () => {
+    // event.stopPropagation();
+    alert('New product chosen');
+    // TODO: This will change the current chosen product
+    // setInitProd(product);
+    updateProduct(product.id);
+  };
 
   const handleCompareClick = () => {
     // event.stopPropagation();
@@ -68,6 +70,7 @@ function Card({
       });
   }, []);
 
+  // TODO: create my own CardStar component
   return (
     <div>
       {modalView && (
@@ -77,8 +80,15 @@ function Card({
           product={product}
         />
       )}
-      <div className="productCard">
-        <button className="compareButton" type="button" onClick={handleCompareClick}>
+      <div className="productCard" onClick={handleCardClick}>
+        <button
+          className="compareButton"
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            handleCompareClick();
+          }}
+        >
           ⭐
         </button>
         <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
