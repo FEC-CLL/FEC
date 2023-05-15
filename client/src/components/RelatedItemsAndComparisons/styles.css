@@ -23,18 +23,14 @@
 }
 
 .cardImg {
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 300px;
-  width: auto; */
+  display: flex;
   min-width: 300px;
   max-width: 300px;
   min-height: 300px;
   max-height: 300px;
   border: solid;
   border-radius: 8px;
-  margin: 10px;
+  margin: auto;
   object-fit: cover;
 }
 
@@ -69,6 +65,59 @@
 .rating {
   margin-top: 0px;
 }
+
+/* Comparison Table */
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+
+.modal {
+  border-style: solid;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  width: 500px;
+  background-color: white;
+}
+
+.rp-modal-header {
+  padding: 10px;
+}
+
+.rp-modal-title {
+  margin: 0;
+}
+
+.rp-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+/* .compareTable {
+  min-width: 500px;
+  min-height: 500px;
+} */
 
 /* Outfit List */
 .addToOutfit {

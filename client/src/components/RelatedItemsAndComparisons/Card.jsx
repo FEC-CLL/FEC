@@ -2,17 +2,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ComparisonModal from './ComparisonModal';
 
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
 
 function Card({
-  product, name, category, price, setInitProd
+  initProd, setInitProd, product, name, category, price,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
   const [salePrice, setSalePrice] = useState(null);
   const [defaultImages, setDefaultImages] = useState([]);
+  const [modalView, setModalView] = useState(false);
 
   const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
@@ -21,14 +23,12 @@ function Card({
     event.preventDefault();
     alert('New product chosen');
     // TODO: This will change the current chosen product
-    setInitProd(product);
+    // setInitProd(product);
   };
 
-  const handleCompareClick = (event) => {
-    event.stopPropagation();
-    alert('Comparing current product with chosen product');
-    // TODO: when a user clicks on the star, a modal table should pop up
-    // comparing current product to selected product
+  const handleCompareClick = () => {
+    // event.stopPropagation();
+    setModalView(!modalView);
   };
 
   const findDefault = (prodStyles) => {
@@ -62,34 +62,46 @@ function Card({
 
   // TODO: replace button with star icon
   return (
-    <div className="productCard" onClick={handleCardClick}>
-      <button className="compareButton" type="submit" onClick={handleCompareClick}>Star</button>
-      <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
+    <div>
+      {modalView && (
+        <ComparisonModal
+          modalView={modalView}
+          handleCompareClick={handleCompareClick}
+          initProd={initProd}
+          product={product}
+        />
+      )}
+      <div className="productCard">
+        <button className="compareButton" type="button" onClick={handleCompareClick}>
+          ⭐
+        </button>
+        <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
 
-      <p className="category">{category}</p>
-      <h3 className="prodName">{name}</h3>
-      <div className="price">
-        {salePrice
-          ? (
-            <div className="sale">
-              <p className="oldPrice">
+        <p className="category">{category}</p>
+        <h3 className="prodName">{name}</h3>
+        <div className="price">
+          {salePrice
+            ? (
+              <div className="sale">
+                <p className="oldPrice">
+                  Price:
+                  {product.default_price}
+                </p>
+                <p className="salePrice">
+                  Sale:
+                  {salePrice}
+                </p>
+              </div>
+            )
+            : (
+              <p className="noSalePrice">
                 Price:
-                {product.default_price}
+                {price}
               </p>
-              <p className="salePrice">
-                Sale:
-                {salePrice}
-              </p>
-            </div>
-          )
-          : (
-            <p className="noSalePrice">
-              Price:
-              {price}
-            </p>
-          )}
+            )}
+        </div>
+        <p className="rating">Rating</p>
       </div>
-      <p className="rating">Rating</p>
     </div>
   );
 }

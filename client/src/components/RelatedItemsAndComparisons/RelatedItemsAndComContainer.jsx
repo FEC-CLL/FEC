@@ -27,7 +27,11 @@ function RelatedItemsAndComContainer({ initProd, setInitProd }) {
     <div className="relatedContainer">
       <div className="relatedList">
         <span>Related Products</span>
-        <RelatedProducts relatedProducts={relatedProducts} setInitProd={setInitProd} />
+        <RelatedProducts
+          initProd={initProd}
+          relatedProducts={relatedProducts}
+          setInitProd={setInitProd}
+        />
       </div>
 
       <div className="outfitsList">
