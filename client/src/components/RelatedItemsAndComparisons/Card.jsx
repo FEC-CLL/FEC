@@ -14,6 +14,7 @@ function Card({
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
   const [salePrice, setSalePrice] = useState(null);
+  const [averageReview, setAverageReview] = useState(null);
   const [defaultImages, setDefaultImages] = useState([]);
   const [modalView, setModalView] = useState(false);
 
@@ -56,12 +57,13 @@ function Card({
 
   // =============GET REQUEST FOR STYLES================
   const styles = axios.get(`/products/${product.id}/styles`);
-
+  const avgRating = axios.get(`/products/${product.id}`);
   // TODO: send another request to get product ratings
   useEffect(() => {
-    axios.all([styles])
-      .then(axios.spread((style) => {
-        console.log('prod styles: ', style.data);
+    axios.all([styles, avgRating])
+      .then(axios.spread((style, rating) => {
+        // console.log('prod styles: ', style.data);
+        setAverageReview(rating.data.averageReview);
         findDefault(style.data);
         setProductStyles(style.data);
       }))
@@ -119,7 +121,7 @@ function Card({
         <p className="rating">
           Rating:
           {' '}
-          <ProductStar averageReview={product.averageReview} />
+          <ProductStar averageReview={averageReview} />
         </p>
       </div>
     </div>
