@@ -60,12 +60,10 @@ function Card({
       });
   }, []);
 
-  // TODO: replace button with star icon
   return (
     <div>
       {modalView && (
         <ComparisonModal
-          modalView={modalView}
           handleCompareClick={handleCompareClick}
           initProd={initProd}
           product={product}

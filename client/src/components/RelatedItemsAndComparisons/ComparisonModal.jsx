@@ -17,11 +17,13 @@ function ComparisonModal({
           <div className="rp-modal-body">
             Here will contain comparison of features of two products
             <table>
-              <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>{initProd.name}</th>
+                  <th>Characteristics</th>
+                  <th>{product.name}</th>
+                </tr>
+              </thead>
               <tr>
                 <td>Row 1, Cell 1</td>
                 <td>Row 1, Cell 2</td>
