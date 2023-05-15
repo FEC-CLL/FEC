@@ -33,6 +33,7 @@
   border: solid;
   border-radius: 8px;
   margin: 10px;
+  object-fit: cover;
 }
 
 .category {
