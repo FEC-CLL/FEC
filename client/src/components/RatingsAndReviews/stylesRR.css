@@ -15,6 +15,23 @@
   margin-right: 3%;
 }
 
+.ratingOverall {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratingOverallNum {
+  font-size: 50px;
+  font-weight: bold;
+  margin-right: 5%;
+  color: var(--secondary);
+
+}
+
+.ratingsOverallStars {
+  margin-top: 3%;
+}
+
 .reviewSorting {
   display: flex;
   flex-direction: row;
@@ -59,12 +76,10 @@
 .reviewSummary {
   margin-top: 2%;
   font-size: 16px;
-  font-size: 16px;
   font-weight: bold;
 }
 
 .reviewBody {
-  font-size: 14px;
   font-size: 14px;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -105,7 +120,6 @@
 }
 
 .reviewFooter {
-  font-size: 11px;
   font-size: 11px;
   display: flex;
   flex-direction: row;
