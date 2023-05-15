@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ComparisonModal from './ComparisonModal';
+import ProductStar from '../Overview/ProductStar';
 
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
@@ -98,7 +99,11 @@ function Card({
               </p>
             )}
         </div>
-        <p className="rating">Rating</p>
+        <p className="rating">
+          Rating:
+          {' '}
+          <ProductStar averageReview={product.averageReview} />
+        </p>
       </div>
     </div>
   );
