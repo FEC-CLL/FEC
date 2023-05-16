@@ -2,19 +2,26 @@ import React from 'react';
 import Question from './Question';
 
 function QuestionList({
-  product, questions, questionHandler,
+  isLoaded, questions, product, questionHandler,
 }) {
-  console.log(questions);
   return (
-    <div className="questions-list">
-      {questions.map((question) => (
-        <Question
-          key={question.question_id}
-          product={product}
-          questionHandler={questionHandler}
-          question={question}
-        />
-      ))}
+    <div>
+      {isLoaded
+        ? (
+          <p>Loading...</p>
+        )
+        : (
+          <div className="questions-list">
+            {questions.map((question) => (
+              <Question
+                key={question.question_id}
+                product={product}
+                questionHandler={questionHandler}
+                question={question}
+              />
+            ))}
+          </div>
+        )}
     </div>
   );
 }

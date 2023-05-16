@@ -125,7 +125,6 @@ function Question({
           <span className="question-info">
             Helpful?
             {isClicked ? <div className="regular">Yes</div> : <button type="button" onClick={yesHandler} className="astext">Yes</button>}
-
             (
             {question.question_helpfulness}
             )
