@@ -9,8 +9,15 @@
   text-align: center;
 }
 
-.image-gallery__thumbnail-nav__up {
+.image-gallery__thumbnail-nav__button--up {
   background: url('http://localhost:3000/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
+}
+
+.image-gallery__thumbnail-nav__button--hidden {
+  visibility: hidden;
+}
+
+.image-gallery__thumbnail-nav__button {
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -25,6 +32,14 @@
   display: inline-block;
   border-style: none;
   transform: rotate(180deg);
+}
+
+.image-gallery__image-expand {
+  background: url('http://localhost:3000/assets/icons/fullscreen.png') 0 0 / 16px no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-style: none;
 }
 
 .image-gallery__image-left {
@@ -42,6 +57,11 @@
   display: inline-block;
   border-style: none;
   transform: rotate(180deg);
+}
+
+.image-gallery__thumbnail-nav__list-wrapper {
+  height: 490px;
+  overflow: hidden;
 }
 
 .image-gallery__thumbnail-nav ul {
