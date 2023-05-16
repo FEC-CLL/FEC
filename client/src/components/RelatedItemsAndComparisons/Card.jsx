@@ -8,22 +8,8 @@ import ProductStar from '../Overview/ProductStar';
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
 
-function Card({ initProd, updateProduct, product }) {
-  // eslint-disable-next-line no-unused-vars
-  const [productStyles, setProductStyles] = useState({});
-  const [salePrice, setSalePrice] = useState(null);
-  const [defaultImages, setDefaultImages] = useState([]);
-
-  // Default image when original image isn't available
-  const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
-
-  // ===============HELPER FUNCTIONS====================
-  const handleCardClick = (event) => {
-    event.preventDefault();
-    alert('New product chosen');
-    // TODO: This will change the current chosen product
 function Card({
-  initProd, updateProduct, product, name, category, price,
+  initProd, updateProduct, product,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -32,7 +18,8 @@ function Card({
   const [defaultImages, setDefaultImages] = useState([]);
   const [modalView, setModalView] = useState(false);
 
-
+  // Default image when original image isn't available
+  const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
   // Prevents scrolling of web page when modal is visible
   if (modalView) {
@@ -100,10 +87,10 @@ function Card({
         >
           ⭐
         </button>
-        <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
+        <img className="cardImg" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 
-        <p className="category">{category}</p>
-        <h3 className="prodName">{name}</h3>
+        <p className="category">{product.category}</p>
+        <h3 className="prodName">{product.name}</h3>
         <div className="price">
           {salePrice
             ? (
@@ -121,7 +108,7 @@ function Card({
             : (
               <p className="noSalePrice">
                 Price:
-                {price}
+                {product.default_price}
               </p>
             )}
         </div>
