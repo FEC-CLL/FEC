@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import QandAContainer from '../QandAContainer';
 
-
 describe('Questions', () => {
   const testData = {
     id: 40344,
