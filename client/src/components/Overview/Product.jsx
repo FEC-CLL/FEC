@@ -44,7 +44,7 @@ export default function Product({ product = {} }) {
         </div>
         <div className="image-gallery__image">
           <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
-          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt={styles[styleIndex].name} />
           <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
           <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>

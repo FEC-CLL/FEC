@@ -8,4 +8,11 @@ describe('Product', () => {
     render(<Product product={mockProduct} />);
     expect(screen.getByText('Add to Cart')).toBeInTheDocument();
   });
+  test('changes main image upon style selection', () => {
+    render(<Product product={mockProduct} />);
+    expect(screen.queryByAltText('Desert Brown & Tan').toHaveBeenCalledTimes(1));
+  });
 });
+
+//mock product
+//change main image upon style change
