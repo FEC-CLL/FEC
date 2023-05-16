@@ -37,7 +37,7 @@ function ComparisonModal({
     setViewProduct(view);
     setCompareProduct(compare);
     setFeatures(feature);
-  });
+  }, []);
 
   // Helper functions that return features html
   const sameCategory = (feature) => (
