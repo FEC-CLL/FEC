@@ -1,8 +1,8 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from './Search';
 import QuestionList from './QuestionList';
-import AddQuestion from './AddQuestion';
+import Buttons from './Buttons';
 import './styles.css';
 
 function QandA({ product }) {
@@ -16,41 +16,45 @@ function QandA({ product }) {
   const [hasMoreQuestions, setHasMoreQuestions] = useState(false);
 
   const getProduct = () => {
-    axios.get('qa/questions', {
-      params: {
-        product_id: 40347,
-        page: 1,
-        count: 200,
-      },
-    })
-      .then((res) => {
-        setQuestions(res.data.results);
-        if (res.data.results.length < questionCount) {
-          setQuestionCount(res.data.results.length);
-        }
-        if (res.data.results.length > 2) {
-          setHasMoreQuestions(true);
-        }
+    if (product.id) {
+      axios.get('qa/questions', {
+        params: {
+          product_id: product.id,
+          page: 1,
+          count: 200, // make this dynamic
+        },
       })
-      .then(() => {
-        setIsReady(false);
-      })
-      .catch(() => {
-        console.log('erropr');
-      });
+        .then((res) => {
+          setQuestions(res.data.results);
+          if (res.data.results.length < questionCount) {
+            setQuestionCount(res.data.results.length);
+          }
+          if (res.data.results.length > 2) {
+            setHasMoreQuestions(true);
+          }
+        })
+        .then(() => {
+          setIsReady(false);
+        })
+        .catch(() => {
+          console.log('erropr');
+        });
+    }
   };
 
-  useLayoutEffect(() => {
-    getProduct();
-  }, []);
+  useEffect(() => {
+    if (product.id) {
+      getProduct();
+    }
+  }, [product.id]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isReady) {
       setIsLoaded(false);
 
       const newQuestions = [];
       for (let i = 0; i < questionCount; i += 1) {
-        if (questions[i].question_body.includes(search)) {
+        if (questions[i].question_body.toLowerCase().includes(search.toLowerCase())) {
           newQuestions.push(questions[i]);
         }
       }
@@ -73,7 +77,6 @@ function QandA({ product }) {
   };
 
   const addQuestionHandler = (data) => {
-    console.log(data.product_id);
     axios.post('/qa/questions', {
       body: data.body,
       name: data.name,
@@ -90,7 +93,6 @@ function QandA({ product }) {
 
   const handleMoreAnsweredQuestions = () => {
     const howMany = questions.length - questionCount;
-    console.log(howMany);
     switch (howMany) {
       case 0:
         setHasMoreQuestions(false);
@@ -105,29 +107,29 @@ function QandA({ product }) {
   };
 
   return (
-    <div className="qaContainer">
-      Questions & Answers
-      <Search filter={setSearch} />
-      {isLoaded
-        ? <p>Loading...</p>
-        : (
-          <QuestionList
-            product={product}
-            questionHandler={questionHelpfulHandler}
-            questions={currentQuestions}
-            count={questionCount}
-          />
-        )}
-      <div className="buttonContainer">
-        {hasMoreQuestions
-          ? <button type="button" onClick={handleMoreAnsweredQuestions} className="answeredButton">MORE ANSWERED QUESTIONS</button>
-          : null}
-        <button type="button" onClick={() => setShow(true)} className="imageButton"> ADD A QUESTION </button>
-        <AddQuestion
-          addQuestion={addQuestionHandler}
+    <div className="qaContainer container">
+      <div className="qaComponent">
+        QUESTIONS & ANSWERS
+      </div>
+      <div className="qaComponent">
+        <Search filter={setSearch} />
+      </div>
+      <div className="qaComponent">
+        <QuestionList
+          isLoaded={isLoaded}
+          questions={currentQuestions}
+          product={product}
+          questionHandler={questionHelpfulHandler}
+        />
+      </div>
+      <div className="qaComponent">
+        <Buttons
+          hasMoreQuestions={hasMoreQuestions}
+          handleMoreAnsweredQuestions={handleMoreAnsweredQuestions}
+          setShow={setShow}
+          addQuestionHandler={addQuestionHandler}
           product={product}
           show={show}
-          setShow={setShow}
         />
       </div>
     </div>

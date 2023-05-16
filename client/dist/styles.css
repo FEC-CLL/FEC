@@ -42,8 +42,6 @@ body {
 
 /* Sasha */
 .qaContainer {
-  border-style: solid;
-  border-color: red;
   height: auto;
   display: flex;
   flex-direction: column;

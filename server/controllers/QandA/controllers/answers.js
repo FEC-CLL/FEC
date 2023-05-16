@@ -21,11 +21,9 @@ module.exports = {
       },
     })
       .then((data) => {
-        console.log(data.data.results);
         res.status(200).send(data.data);
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
@@ -51,7 +49,6 @@ module.exports = {
         res.status(201).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
@@ -68,7 +65,6 @@ module.exports = {
         res.status(204).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
@@ -85,7 +81,6 @@ module.exports = {
         res.status(204).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
