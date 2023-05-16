@@ -41,29 +41,29 @@ function ComparisonModal({
 
   // Helper functions that return features html
   const sameCategory = (feature) => (
-    <tr className="cm-same">
+    <tr className="compare-same">
       {viewProduct[feature]
-        ? <th>{viewProduct[feature] || '√'}</th>
+        ? <th>{viewProduct[feature] || (<div>√</div>)}</th>
         : <th><p>X</p></th>}
 
       <h3>{feature}</h3>
 
       {compareProduct[feature]
-        ? <th>{compareProduct[feature] || '√'}</th>
+        ? <th>{compareProduct[feature] || (<div>√</div>)}</th>
         : <th><p>X</p></th>}
     </tr>
   );
 
   const diffCategory = (feature) => (
-    <tr className="cm-diff">
+    <tr className="compare-diff">
       {viewProduct[feature]
-        ? <th>{viewProduct[feature] || '√'}</th>
+        ? <th>{viewProduct[feature] || (<div>√</div>)}</th>
         : <th><p>X</p></th>}
 
-      <h3>{feature}</h3>
+      <h3 className="compare-feature">{feature}</h3>
 
       {compareProduct[feature]
-        ? <th>{compareProduct[feature] || '√'}</th>
+        ? <th>{compareProduct[feature] || (<div>√</div>)}</th>
         : <th><p>X</p></th>}
     </tr>
   );
@@ -76,19 +76,12 @@ function ComparisonModal({
             <h2 className="rp-modal-title">Comparing</h2>
           </div>
           <div className="rp-modal-body">
-            Comparing
-            {' '}
-            {initProd.name}
-            {' '}
-            to
-            {' '}
-            {product.name}
             <table>
               <thead>
                 <tr>
-                  <th>{initProd.name}</th>
-                  <th>Characteristics</th>
-                  <th>{product.name}</th>
+                  <th className="current-product">{initProd.name}</th>
+                  <th className="characteristics-header">Characteristics</th>
+                  <th className="compare-product">{product.name}</th>
                 </tr>
               </thead>
               <tbody>

@@ -118,6 +118,38 @@ body.active-modal {
   border-bottom: 1px solid #eee;
 }
 
+/* Comparison Modal Features */
+.current-product, .compare-product, .characteristics-header {
+  display: inline-block;
+  text-align: justify;
+  justify-content: center;
+}
+
+.current-product {
+  text-align: left;
+}
+
+.compare-product {
+  text-align: right;
+}
+
+.characteristics-header {
+  text-align: center;
+}
+.compare-feature {
+  text-align: center;
+}
+.compare-same {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.compare-deff {
+  width: 20px;
+  height: 20px;
+}
+
 /* Outfit List */
 .addToOutfit {
   border-style: solid;
