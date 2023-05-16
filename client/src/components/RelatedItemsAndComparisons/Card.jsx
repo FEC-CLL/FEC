@@ -28,7 +28,7 @@ function Card({ product }) {
     // comparing current product to selected product
   };
 
-  const findDefault = (prodStyles) => {
+  const findDefaultImages = (prodStyles) => {
     const defaultImgs = [];
     for (let i = 0; i < prodStyles.length; i += 1) {
       if (prodStyles[i]['default?']) {
@@ -48,7 +48,7 @@ function Card({ product }) {
   useEffect(() => {
     axios.all([styles])
       .then(axios.spread((style) => {
-        findDefault(style.data);
+        findDefaultImages(style.data);
         setProductStyles(style.data);
       }))
       .catch((err) => {
