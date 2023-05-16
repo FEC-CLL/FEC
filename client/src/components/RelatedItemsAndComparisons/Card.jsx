@@ -12,7 +12,7 @@ function Card({ product }) {
   const [salePrice, setSalePrice] = useState(null);
   const [defaultImages, setDefaultImages] = useState([]);
 
-  const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
+  const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
   // ===============HELPER FUNCTIONS====================
   const handleCardClick = (event) => {
@@ -48,7 +48,6 @@ function Card({ product }) {
   useEffect(() => {
     axios.all([styles])
       .then(axios.spread((style) => {
-        console.log('prod styles: ', style.data);
         findDefault(style.data);
         setProductStyles(style.data);
       }))
@@ -60,11 +59,11 @@ function Card({ product }) {
   // TODO: replace button with star icon
   return (
     <div className="productCard" onClick={handleCardClick}>
-      <button className="compareButton" type="submit" onClick={handleCompareClick}>Star</button>
-      <img className="cardImg" src={defaultImages[0] || defaultImgURL} alt="product" />
+      <button className="compareButton" type="button" onClick={handleCompareClick}>Star</button>
+      <img className="cardImg" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 
-      <p className="category">{category}</p>
-      <h3 className="prodName">{name}</h3>
+      <p className="category">{product.category}</p>
+      <h3 className="prodName">{product.name}</h3>
       <div className="price">
         {salePrice
           ? (
@@ -82,7 +81,7 @@ function Card({ product }) {
           : (
             <p className="noSalePrice">
               Price:
-              {price}
+              {product.default_price}
             </p>
           )}
       </div>
