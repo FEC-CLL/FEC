@@ -14,8 +14,7 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
     if (initProd.id) {
       axios.get(`/related/${initProd.id}`)
         .then((response) => {
-          console.log('Array of related products data: ', response.data);
-          // setRelatedProducts(response.data);
+          // console.log('Array of related products data: ', response.data);
           setRelatedProducts(response.data.filter((product) => product.id !== initProd.id));
         })
         .catch((err) => {
