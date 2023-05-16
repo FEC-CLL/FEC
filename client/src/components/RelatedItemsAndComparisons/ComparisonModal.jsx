@@ -3,11 +3,70 @@ import React, { useState, useEffect } from 'react';
 function ComparisonModal({
   handleCompareClick, initProd, product,
 }) {
-  // xMark and checkMark will be rendered next to comparing features
-  // Or I can just use '√' and 'X'...
-  const xMark = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#E51515" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>;
+  const [features, setFeatures] = useState([]);
+  const [viewProduct, setViewProduct] = useState(null);
+  const [compareProduct, setCompareProduct] = useState(null);
 
-  const checkMark = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="14C011" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" /></svg>;
+  // Or I can just use '√' and 'X'...
+
+  useEffect(() => {
+    const view = {};
+    const compare = {};
+    const feature = [];
+
+    const featuresContainer = [...initProd.features, ...product.features];
+
+    featuresContainer.forEach((featuresObj) => {
+      if (!feature.includes(featuresObj)) {
+        feature.push(featuresObj.feature);
+      }
+    });
+
+    initProd.features.forEach((featureObj) => {
+      if (!view[featureObj.feature]) {
+        view[featureObj.feature] = featureObj.value;
+      }
+    });
+
+    product.features.forEach((featureObj) => {
+      if (!compare[featureObj.feature]) {
+        compare[featureObj.feature] = featureObj.value;
+      }
+    });
+
+    setViewProduct(view);
+    setCompareProduct(compare);
+    setFeatures(feature);
+  });
+
+  // Helper functions that return features html
+  const sameCategory = (feature) => (
+    <tr className="cm-same">
+      {viewProduct[feature]
+        ? <th>{viewProduct[feature] || '√'}</th>
+        : <th><p>X</p></th>}
+
+      <h3>{feature}</h3>
+
+      {compareProduct[feature]
+        ? <th>{compareProduct[feature] || '√'}</th>
+        : <th><p>X</p></th>}
+    </tr>
+  );
+
+  const diffCategory = (feature) => (
+    <tr className="cm-diff">
+      {viewProduct[feature]
+        ? <th>{viewProduct[feature] || '√'}</th>
+        : <th><p>X</p></th>}
+
+      <h3>{feature}</h3>
+
+      {compareProduct[feature]
+        ? <th>{compareProduct[feature] || '√'}</th>
+        : <th><p>X</p></th>}
+    </tr>
+  );
 
   return (
     <div className="modal">
@@ -34,14 +93,9 @@ function ComparisonModal({
               </thead>
               <tbody>
                 <tr>
-                  <td>Row 1, Cell 1</td>
-                  <td>Row 1, Cell 2</td>
-                  <td>Row 1, Cell 3</td>
-                </tr>
-                <tr>
-                  <td>Row 2, Cell 1</td>
-                  <td>Row 2, Cell 2</td>
-                  <td>Row 2, Cell 3</td>
+                  {initProd.category === product.category && features.length
+                    ? features.map((compare) => sameCategory(compare))
+                    : features.map((compare) => diffCategory(compare))}
                 </tr>
               </tbody>
             </table>
