@@ -15,7 +15,8 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
       axios.get(`/related/${initProd.id}`)
         .then((response) => {
           console.log('Array of related products data: ', response.data);
-          setRelatedProducts(response.data);
+          // setRelatedProducts(response.data);
+          setRelatedProducts(response.data.filter((product) => product.id !== initProd.id));
         })
         .catch((err) => {
           console.error('Couldnt get back array of related', err);

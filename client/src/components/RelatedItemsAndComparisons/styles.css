@@ -1,6 +1,6 @@
 /* Card List */
 .relatedList {
-  overflow: auto;
+  overflow-x: scroll;
 }
 
 .productCard {

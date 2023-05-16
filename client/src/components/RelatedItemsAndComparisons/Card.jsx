@@ -30,10 +30,6 @@ function Card({
 
   // ===============HELPER FUNCTIONS====================
   const handleCardClick = () => {
-    // event.stopPropagation();
-    alert('New product chosen');
-    // TODO: This will change the current chosen product
-    // setInitProd(product);
     updateProduct(product.id);
   };
 
@@ -56,7 +52,6 @@ function Card({
   };
 
   // =============GET REQUEST FOR STYLES================
-  // TODO: send another request to get product ratings
   useEffect(() => {
     const styles = axios.get(`/products/${product.id}/styles`);
     const avgRating = axios.get(`/products/${product.id}`);
@@ -72,7 +67,6 @@ function Card({
       });
   }, []);
 
-  // TODO: create my own CardStar component
   return (
     <div>
       {modalView && (
