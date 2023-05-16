@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from './Search';
 import QuestionList from './QuestionList';
@@ -42,11 +42,13 @@ function QandA({ product }) {
     }
   };
 
-  useLayoutEffect(() => {
-    getProduct();
+  useEffect(() => {
+    if (product.id) {
+      getProduct();
+    }
   }, [product.id]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isReady) {
       setIsLoaded(false);
 
