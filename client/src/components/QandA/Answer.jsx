@@ -30,9 +30,11 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
         <div className="by">
           by
         </div>
-        {answer.answerer_name.toLowerCase() === "seller" ? <div className="seller">{answer.answerer_name}</div> : <div>{answer.answerer_name}</div>}
+        {answer.answerer_name.toLowerCase() === 'seller' ? <div className="seller">{answer.answerer_name}</div> : <div>{answer.answerer_name}</div>}
         <div>
-          , {date}
+          ,
+          { }
+          {date}
         </div>
         <div className="pole"> | </div>
         <div>Helpful?</div>

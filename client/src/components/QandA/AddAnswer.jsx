@@ -11,60 +11,29 @@ function AddAnswer({
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 
-
-  // cloudinary.config({
-  //   cloud_name: 'daakpfwlp',
-  //   api_key: '655296814393677',
-  //   api_secret: 'ZFPKwcMvGtuohx8f0RGnZleQZeo',
-  // });
-
-
-
   useEffect(() => {
     if (images.length < 1) return;
-    // var fileReader = new FileReader();
     const newImageURLs = [];
     images.forEach((image) => {
-      // const pics = new FormData();
-      var reader = new FileReader();
-      //console.log(URL.createObjectURL(image).slice(5));
+      const reader = new FileReader();
       reader.readAsDataURL(image);
-      reader.onloadend = function() {
-        var base64data=reader.result;
-        console.log(base64data);
+      reader.onloadend = function () {
+        const base64data = reader.result;
         axios.post('https://api.cloudinary.com/v1_1/daakpfwlp/upload', {
           file: base64data,
-          upload_preset: "RFPFEC",
-          cloud_name: "daakpfwlp"
+          upload_preset: 'RFPFEC',
+          cloud_name: 'daakpfwlp',
         })
-        .then((res) => {
-          console.log(res);
-          photos.push(res.data.secure_url);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-
-      }
-      // pics.append('file', image);
-      // pics.append("upload_preset", "RFPFEC");
-      // pics.append("cloud_name", "daakpfwlp");
-      // const myImage = new CloudinaryImage(URL.createObjectURL(image), {cloudName: 'daakpfwlp'}).resize(fill().width(100).height(150));
-
-      // const cloudinaryResponse = cloudinary.uploader.upload(, {
-      //   public_id: image.name,
-      //   resource_type: 'image',
-      // });
-      // console.log(myImage);
-      // fileReader.onload = function(event) {
-      //   //set state for url
-      //   console.log(event.target.result);
-      // }
-      // fileReader.readAsDataURL(image);
+          .then((res) => {
+            console.log(res);
+            photos.push(res.data.secure_url); //concat
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
       newImageURLs.push(URL.createObjectURL(image));
-      // photos.push(image.name);
     });
-    console.log(newImageURLs);
     setImageURLs(newImageURLs);
   }, [images]);
 
