@@ -21,7 +21,7 @@ function Review({ review }) {
       </div>
       <div className="reviewSummary">{review.summary}</div>
       <div className="reviewBody">{review.body}</div>
-      <div className="reviewRecommend">{review.recommend ? 'I recommend this product' : ''}</div>
+      <div className="reviewRecommend">{review.recommend ? '\u2713 I recommend this product' : ''}</div>
       <div className="reviewPhotos">{review.photos.length ? review.photos.map((photo) => <ReviewPhoto photo={photo} />) : ''}</div>
       <div className="reviewResponse">{review.response ? review.response : ''}</div>
       <div className="reviewFooter">
