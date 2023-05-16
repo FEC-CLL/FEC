@@ -20,7 +20,7 @@ function QandA({ product }) {
       params: {
         product_id: 40347,
         page: 1,
-        count: 200, //make this dynamic
+        count: 200, // make this dynamic
       },
     })
       .then((res) => {

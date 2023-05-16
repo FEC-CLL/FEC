@@ -14,6 +14,7 @@ function AddAnswer({
   useEffect(() => {
     if (images.length < 1) return;
     const newImageURLs = [];
+    const newPhotos = [];
     images.forEach((image) => {
       const reader = new FileReader();
       reader.readAsDataURL(image);
@@ -26,7 +27,7 @@ function AddAnswer({
         })
           .then((res) => {
             console.log(res);
-            photos.push(res.data.secure_url); //concat
+            newPhotos.push(res.data.secure_url);
           })
           .catch((err) => {
             console.log(err);
@@ -35,6 +36,7 @@ function AddAnswer({
       newImageURLs.push(URL.createObjectURL(image));
     });
     setImageURLs(newImageURLs);
+    setPhotos(newPhotos);
   }, [images]);
 
   const handleAnswerChange = (event) => {
@@ -67,7 +69,9 @@ function AddAnswer({
     return null;
   }
   return (
+    // eslint-disable-next-line
     <div className="modal" onClick={() => setShow(!show)}>
+      {/* eslint-disable-next-line */}
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h4 className="modal-title">Submit your Answer</h4>

@@ -19,9 +19,9 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
         {answer.photos.length
           ? (
             <div className="photos">
-              {answer.photos.map((photo) => {
-                return <img className="answer-photo" src={photo.url} alt="" />
-              })}
+              {answer.photos.map((photo) => (
+                <img className="answer-photo" src={photo.url} alt="" />
+              ))}
             </div>
           )
           : null}
@@ -33,7 +33,7 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
         {answer.answerer_name.toLowerCase() === 'seller' ? <div className="seller">{answer.answerer_name}</div> : <div>{answer.answerer_name}</div>}
         <div>
           ,
-          { }
+          {' '}
           {date}
         </div>
         <div className="pole"> | </div>
