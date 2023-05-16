@@ -8,6 +8,20 @@ import ProductStar from '../Overview/ProductStar';
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
 
+function Card({ initProd, updateProduct, product }) {
+  // eslint-disable-next-line no-unused-vars
+  const [productStyles, setProductStyles] = useState({});
+  const [salePrice, setSalePrice] = useState(null);
+  const [defaultImages, setDefaultImages] = useState([]);
+
+  // Default image when original image isn't available
+  const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
+
+  // ===============HELPER FUNCTIONS====================
+  const handleCardClick = (event) => {
+    event.preventDefault();
+    alert('New product chosen');
+    // TODO: This will change the current chosen product
 function Card({
   initProd, updateProduct, product, name, category, price,
 }) {
@@ -18,8 +32,7 @@ function Card({
   const [defaultImages, setDefaultImages] = useState([]);
   const [modalView, setModalView] = useState(false);
 
-  // Default image when original image isn't available
-  const defaultImgURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
+
 
   // Prevents scrolling of web page when modal is visible
   if (modalView) {
@@ -38,7 +51,7 @@ function Card({
     setModalView(!modalView);
   };
 
-  const findDefault = (prodStyles) => {
+  const findDefaultImages = (prodStyles) => {
     const defaultImgs = [];
     for (let i = 0; i < prodStyles.length; i += 1) {
       if (prodStyles[i]['default?']) {
@@ -59,7 +72,7 @@ function Card({
       .then(axios.spread((style, rating) => {
         // console.log('prod styles: ', style.data);
         setAverageReview(rating.data.averageReview);
-        findDefault(style.data);
+        findDefaultImages(style.data);
         setProductStyles(style.data);
       }))
       .catch((err) => {

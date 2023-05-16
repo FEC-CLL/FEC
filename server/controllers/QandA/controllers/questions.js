@@ -19,7 +19,6 @@ module.exports = {
       },
     })
       .then((data) => {
-        console.log(data.data.results);
         res.status(200).send(data.data);
       })
       .catch((err) => {
@@ -27,7 +26,6 @@ module.exports = {
       });
   },
   post(req, res) {
-    console.log(req.body.body);
     axios.post(
       `${api}/qa/questions`,
       {
@@ -46,7 +44,6 @@ module.exports = {
         res.status(201).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
@@ -60,11 +57,9 @@ module.exports = {
       },
     })
       .then(() => {
-        console.log('hi0');
         res.status(204).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
@@ -81,7 +76,6 @@ module.exports = {
         res.status(204).send();
       })
       .catch((err) => {
-        console.log(err);
         res.status(404).send(err);
       });
   },
