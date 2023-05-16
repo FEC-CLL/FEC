@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function AddAnswer({
   addAnswer, product, question, show, setShow,
@@ -10,18 +11,58 @@ function AddAnswer({
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 
+
+  // cloudinary.config({
+  //   cloud_name: 'daakpfwlp',
+  //   api_key: '655296814393677',
+  //   api_secret: 'ZFPKwcMvGtuohx8f0RGnZleQZeo',
+  // });
+
+
+
   useEffect(() => {
     if (images.length < 1) return;
     // var fileReader = new FileReader();
     const newImageURLs = [];
     images.forEach((image) => {
+      // const pics = new FormData();
+      var reader = new FileReader();
+      //console.log(URL.createObjectURL(image).slice(5));
+      reader.readAsDataURL(image);
+      reader.onloadend = function() {
+        var base64data=reader.result;
+        console.log(base64data);
+        axios.post('https://api.cloudinary.com/v1_1/daakpfwlp/upload', {
+          file: base64data,
+          upload_preset: "RFPFEC",
+          cloud_name: "daakpfwlp"
+        })
+        .then((res) => {
+          console.log(res);
+          photos.push(res.data.secure_url);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+      }
+      // pics.append('file', image);
+      // pics.append("upload_preset", "RFPFEC");
+      // pics.append("cloud_name", "daakpfwlp");
+      // const myImage = new CloudinaryImage(URL.createObjectURL(image), {cloudName: 'daakpfwlp'}).resize(fill().width(100).height(150));
+
+      // const cloudinaryResponse = cloudinary.uploader.upload(, {
+      //   public_id: image.name,
+      //   resource_type: 'image',
+      // });
+      // console.log(myImage);
       // fileReader.onload = function(event) {
       //   //set state for url
       //   console.log(event.target.result);
       // }
       // fileReader.readAsDataURL(image);
       newImageURLs.push(URL.createObjectURL(image));
-      photos.push(image.name);
+      // photos.push(image.name);
     });
     console.log(newImageURLs);
     setImageURLs(newImageURLs);
@@ -37,6 +78,7 @@ function AddAnswer({
     setEmail(event.target.value);
   };
   const onImageChange = (event) => {
+    console.log(event.target.files);
     setImages([...event.target.files]);
   };
   const handleSubmit = (event) => {

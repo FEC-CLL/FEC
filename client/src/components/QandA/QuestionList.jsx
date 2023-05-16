@@ -9,6 +9,7 @@ function QuestionList({
     <div className="questions-list">
       {questions.map((question) => (
         <Question
+          key={question.question_id}
           product={product}
           questionHandler={questionHandler}
           question={question}

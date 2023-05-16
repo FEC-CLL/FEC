@@ -242,4 +242,17 @@
   flex-direction: row;
 }
 
+.answer-photo {
+  height: 80px;
+  margin: 10px 0px;
+  margin-right: 10px;
+}
+
+.seller {
+  font-weight: bold;
+}
+
+.by {
+  margin-right: 2px;
+}
 

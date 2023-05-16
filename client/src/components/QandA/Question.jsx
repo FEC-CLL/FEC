@@ -144,8 +144,10 @@ function Question({
       <div className="answers" style={{ overflow: answersIsExpanded ? 'auto' : 'none' }}>
         {answers.length ? 'A:' : null}
         <div className="answer">
+          {console.log(currentAnswers)}
           {currentAnswers.map((answer) => (
             <Answer
+              key={answer.answer_id}
               reportHandler={answerReportHandler}
               helpfulHandler={answerHelpfulHandler}
               answer={answer}

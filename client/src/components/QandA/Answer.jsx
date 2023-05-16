@@ -19,17 +19,20 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
         {answer.photos.length
           ? (
             <div className="photos">
-              <img src="" alt="" />
+              {answer.photos.map((photo) => {
+                return <img className="answer-photo" src={photo.url} alt="" />
+              })}
             </div>
           )
           : null}
       </div>
       <div className="answer-info">
-        <div>
+        <div className="by">
           by
-          {answer.answerer_name}
-          ,
-          {date}
+        </div>
+        {answer.answerer_name.toLowerCase() === "seller" ? <div className="seller">{answer.answerer_name}</div> : <div>{answer.answerer_name}</div>}
+        <div>
+          , {date}
         </div>
         <div className="pole"> | </div>
         <div>Helpful?</div>
