@@ -10,9 +10,6 @@ function RelatedProducts({ relatedProducts }) {
       {relatedProducts.map((product) => (
         <Card
           product={product}
-          name={product.name}
-          category={product.category}
-          price={product.default_price}
           key={product.id}
         />
       ))}

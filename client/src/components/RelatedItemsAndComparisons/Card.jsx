@@ -6,9 +6,7 @@ import axios from 'axios';
 // TODO: have a set dimension size for each card
 // TODO: import image from API request
 
-function Card({
-  product, name, category, price,
-}) {
+function Card({ product }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
   const [salePrice, setSalePrice] = useState(null);
