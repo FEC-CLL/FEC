@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Product from '../Product';
 import mockProduct from '../../../../../sampleData/product.json';
 
@@ -8,11 +9,9 @@ describe('Product', () => {
     render(<Product product={mockProduct} />);
     expect(screen.getByText('Add to Cart')).toBeInTheDocument();
   });
-  test('changes main image upon style selection', () => {
+  test('changes main image upon style selection', async () => {
     render(<Product product={mockProduct} />);
-    expect(screen.queryByAltText('Desert Brown & Tan').toHaveBeenCalledTimes(1));
+    userEvent.click(screen.getByTitle('Desert Brown & Tan'));
+    expect(await screen.findByAltText('Desert Brown & Tan')).toBeInTheDocument();
   });
 });
-
-//mock product
-//change main image upon style change
