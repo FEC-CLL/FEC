@@ -5,15 +5,11 @@ import Card from './Card';
 // Need to send another API request to retrieve images
 
 function RelatedProducts({ relatedProducts }) {
-  const tempImg = 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80';
   return (
     <div className="relatedList" style={{ display: 'flex' }}>
       {relatedProducts.map((product) => (
         <Card
-          name={product.name}
-          category={product.category}
-          price={product.default_price}
-          tempImg={tempImg}
+          product={product}
           key={product.id}
         />
       ))}

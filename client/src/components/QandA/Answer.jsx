@@ -15,20 +15,30 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
   return (
     <div className="answerContainer">
       <div className="answerBody">
-        A:
-        {' '}
         {answer.body}
+        {answer.photos.length
+          ? (
+            <div className="photos">
+              {answer.photos.map((photo) => (
+                <img className="answer-photo" src={photo.url} alt="" />
+              ))}
+            </div>
+          )
+          : null}
       </div>
-      <div className="answerStats">
-        <div>
+      <div className="answer-info">
+        <div className="by">
           by
-          {answer.answerer_name}
+        </div>
+        {answer.answerer_name.toLowerCase() === 'seller' ? <div className="seller">{answer.answerer_name}</div> : <div>{answer.answerer_name}</div>}
+        <div>
           ,
+          {' '}
           {date}
         </div>
         <div className="pole"> | </div>
         <div>Helpful?</div>
-        {helpClicked ? <div>Yes</div> : <button type="button" onClick={helpHandler} className="astext">Yes</button>}
+        {helpClicked ? <div className="regular">Yes</div> : <button type="button" onClick={helpHandler} className="astext">Yes</button>}
         (
         {answer.helpfulness}
         )

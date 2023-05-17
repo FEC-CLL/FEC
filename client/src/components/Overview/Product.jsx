@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './styles.css';
 import ProductStar from './ProductStar';
 
@@ -28,6 +29,10 @@ export default function Product({ product = {} }) {
     setStyleIndex(i);
     setMainImageIndex(0);
     setThumbnailIndex(0);
+  };
+
+  const submitCart = () => {
+    axios.post('/cart', { sku_id: skuId });
   };
 
   return (
@@ -97,7 +102,7 @@ export default function Product({ product = {} }) {
             )) : <option value="">--</option>}
           </select>
         </div>
-        <button type="button" className="product-information__add-to-cart">
+        <button type="button" disabled={!skuId} className="product-information__add-to-cart" onClick={submitCart}>
           Add to Cart
         </button>
       </div>
