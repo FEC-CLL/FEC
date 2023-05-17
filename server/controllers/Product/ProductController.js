@@ -37,29 +37,6 @@ const getProduct = async (id) => {
   };
 };
 
-// router.get('/:id', (req, res) => {
-//   const { id } = req.params;
-//   const serverUrl = `${req.protocol}://${req.get('host')}`;
-//   Promise.all([
-//     apiInstance.get(`/products/${id}`),
-//     axios.get(`${serverUrl}/products/${id}/styles`),
-//     axios.get(`${serverUrl}/reviews/${id}`),
-//     axios.get(`${serverUrl}/reviews/metadata/${id}`),
-//   ])
-//     .then(([productResponse, stylesResponse, reviewsResponse, metadataResponse]) => {
-//       res.send({
-//         ...productResponse.data,
-//         styles: stylesResponse.data,
-//         reviewCount: reviewsResponse.data.count,
-//         averageReview: calculateAvg(metadataResponse.data.ratings),
-//       });
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.sendStatus(400);
-//     });
-// });
-
 module.exports = {
   getProducts,
   getProduct,
