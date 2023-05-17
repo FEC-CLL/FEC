@@ -4,9 +4,11 @@ import {
 import React from 'react';
 import axios from 'axios';
 import QandAContainer from '../QandAContainer';
+import AddQuestion from '../AddQuestion';
+import AddAnswer from '../AddAnswer';
 import Search from '../Search';
-import QuestionList from '../QuestionList';
-import Buttons from '../Buttons';
+import Question from '../Question';
+import Answer from '../Answer';
 
 const answerData = {
   question: '644820',
@@ -88,6 +90,28 @@ const answerData = {
           url: 'https://res.cloudinary.com/daakpfwlp/image/upload/v1684200081/ggx67xjwopgsnctzabo2.jpg',
         },
       ],
+    },
+  ],
+};
+
+const product = {
+  id: 40347,
+  campus: 'hr-rfp',
+  name: "Slacker's Slacks",
+  slogan: 'Comfortable for everything, or nothing',
+  description: "I'll tell you how great they are after I nap for a bit.",
+  category: 'Pants',
+  default_price: '65.00',
+  created_at: '2021-08-13T14:38:44.509Z',
+  updated_at: '2021-08-13T14:38:44.509Z',
+  features: [
+    {
+      feature: 'Fabric',
+      value: '99% Cotton 1% Elastic',
+    },
+    {
+      feature: 'Cut',
+      value: 'Loose',
     },
   ],
 };
@@ -247,6 +271,132 @@ describe('Questions Component', () => {
     await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
 
     expect(screen.getByText('Submit your Answer')).toBeInTheDocument();
+  });
+
+  it('should test AddQuestion', async () => {
+    render(<AddQuestion
+      product={product}
+      addQuestion={() => {}}
+      show
+      setShowDialog={() => {}}
+    />);
+    const body = await screen.getByPlaceholderText('Why did you like the product or not?');
+    const email = await screen.getByPlaceholderText('Example: jack@email.com');
+    const nickname = await screen.getByPlaceholderText('Example: jackson11!');
+
+    const button = await screen.getByText('Submit');
+
+    expect(button).toBeInTheDocument();
+
+    fireEvent.change(body, { target: { value: 'a' } });
+    fireEvent.change(email, { target: { value: 'a' } });
+    fireEvent.change(nickname, { target: { value: 'a' } });
+
+    const clicked = fireEvent.click(button);
+
+    expect(clicked).toBe(true);
+  });
+
+  it('should test AddAnswer', async () => {
+    const { container } = render(<AddAnswer
+      product={product}
+      addAnswer={() => {}}
+      show
+      setShowDialog={() => {}}
+      question={data.results[0]}
+    />);
+    const body = await container.getElementsByClassName('modal-textArea')[0];
+    const email = await screen.getByPlaceholderText('Example: jack@email.com');
+    const nickname = await screen.getByPlaceholderText('Example: jack543!');
+
+    const fileInput = await container.getElementsByClassName('file-input')[0];
+    const button = await screen.getByText('Submit');
+
+    expect(button).toBeInTheDocument();
+    expect(fileInput).toBeInTheDocument();
+
+    fireEvent.change(body, { target: { value: 'a' } });
+    fireEvent.change(email, { target: { value: 'a' } });
+    fireEvent.change(nickname, { target: { value: 'a' } });
+    fireEvent.click(fileInput);
+
+    const clicked = fireEvent.click(button);
+
+    expect(clicked).toBe(true);
+  });
+
+  it('should filter results on search bar change', async () => {
+    render(<Search
+      filter
+    />);
+    const searchBar = screen.getByPlaceholderText('HAVE A QUESTION? SEARCH FOR ANSWERS...');
+    fireEvent.change(searchBar, { target: { value: 'are' } });
+  });
+
+  it('should add to helpfulness count on yes button click', async () => {
+    render(<Question
+      product={product}
+      question={data.results[0]}
+      questionHandler={() => {}}
+    />);
+    const answerIsHelpful = await screen.getByText('Yes');
+    expect(answerIsHelpful).toBeInTheDocument();
+    fireEvent.click(answerIsHelpful);
+    // expect(43).toBeInTheDocument();
+    //expect answers.length to be + 2;
+  });
+
+  it('should report question on report button click', async () => {
+    render(<Answer
+      answer={answerData.results[0]}
+      helpfulHandler={() => {}}
+      reportHandler={() => {}}
+    />);
+    const answerIsReported = await screen.getByText('Report');
+    expect(answerIsReported).toBeInTheDocument();
+    fireEvent.click(answerIsReported);
+    // expect(43).toBeInTheDocument();
+    //expect answers.length to be + 2;
+  });
+
+  it('should expand answers on see more answers click', async () => {
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({ data });
+
+    jest.spyOn(axios, 'get').mockImplementationOnce(() => Promise.resolve({
+      data: answerData,
+    }));
+    render(<QandAContainer product={testData} />);
+    // await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
+    await waitFor(() => screen.getByText('A:'));
+
+    const showMoreAnswers = await screen.getByText('See More answers');
+    expect(showMoreAnswers).toBeInTheDocument();
+
+    fireEvent.click(showMoreAnswers);
+
+    // expect(screen.getByText('A:')).toBeInTheDocument();
+  });
+
+  it('should collapse answers on see more answers click', async () => {
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({ data });
+
+    jest.spyOn(axios, 'get').mockImplementationOnce(() => Promise.resolve({
+      data: answerData,
+    }));
+    render(<QandAContainer product={testData} />);
+    // await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
+    await waitFor(() => screen.getByText('A:'));
+
+    const showMoreAnswers = await screen.getByText('See More answers');
+    fireEvent.click(showMoreAnswers);
+
+    await waitFor(() => {
+      const collapseAnswers = screen.getByText('Collapse answers');
+      expect(collapseAnswers).toBeInTheDocument();
+      fireEvent.click(collapseAnswers);
+    });
+
+    // expect(screen.getByText('A:')).toBeInTheDocument();
   });
 
   // it('should render modal on add answer button click', async () => {
