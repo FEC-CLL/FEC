@@ -9,7 +9,7 @@ function ProductRecommendation({ recommend, setRecommend }) {
 
   return (
     <div>
-      <div> Do you recommend this product?*</div>
+      <div className="modal-component-title">*Do you recommend this product?</div>
       <input
         type="radio"
         name="recommend"

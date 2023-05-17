@@ -77,8 +77,8 @@ function AddReview({ initProd, metaData, setShowDialog }) {
   /// ///////////////////////
   return (
     <div className="AddReviewModal content">
-      <div>Write Your Review</div>
-      <div>
+      <h4 className="reviewHeader1 modal-title">Write Your Review</h4>
+      <div className="reviewHeader2 modal-subtitle">
         About the
         {' '}
         {initProd.name}
@@ -113,8 +113,10 @@ function AddReview({ initProd, metaData, setShowDialog }) {
       <br />
       <ReviewEmail setReviewEmail={setReviewEmail} />
       <br />
-      <button type="button" id="submitButton" className="buttonRR" onClick={onSubmitClick}>SUBMIT</button>
-      <button type="button" id="cancelButton" className="buttonRR" onClick={() => setShowDialog(false)}>CANCEL</button>
+      <div className="reviewButtons">
+        <button type="button" id="cancelButton" className="buttonRR" onClick={() => setShowDialog(false)}>CANCEL</button>
+        <button type="button" id="submitButton" className="buttonRR" onClick={onSubmitClick}>SUBMIT</button>
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ function OverallRating({ overallRating, setOverallRating }) {
 
   return (
     <div>
-      <div className="addReviewHeader">Overall rating*</div>
+      <div className="addReviewHeader modal-component-title">*Overall Rating</div>
       {
         ['1', '2', '3', '4', '5'].map((n) => (
           <OverallRatingRadioButton

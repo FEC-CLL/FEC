@@ -10,9 +10,9 @@ function ReviewBody({ setReviewBody }) {
 
   return (
     <div>
-      <div>Review Body*</div>
-      <textarea maxLength="1000" placeholder="Why did you like the product or not?" onChange={onInputChange} />
-      <div id="reviewBodyCharCount">
+      <div className="addReviewBodyText modal-component-title">*Review Body</div>
+      <textarea className="addReviewBodyTextArea" maxLength="1000" placeholder="Why did you like the product or not?" onChange={onInputChange} />
+      <div id="reviewBodyCharCount modal-warning">
         {charNum >= 0 ? charNum : 'Minimum reached'}
       </div>
     </div>
