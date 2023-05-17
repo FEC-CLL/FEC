@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './styles.css';
 import ProductStar from './ProductStar';
 
@@ -37,6 +38,9 @@ export default function Product({ product = {} }) {
   const mainImgZoomHandler = (e) => {
     const { target: { offsetLeft, offsetTop }, clientX, clientY } = e;
     setMousePosition({ x: clientX - offsetLeft, y: clientY - offsetTop });
+  };
+  const submitCart = () => {
+    axios.post('/cart', { sku_id: skuId });
   };
 
   return (
@@ -108,7 +112,7 @@ export default function Product({ product = {} }) {
             )) : <option value="">--</option>}
           </select>
         </div>
-        <button type="button" className="product-information__add-to-cart">
+        <button type="button" disabled={!skuId} className="product-information__add-to-cart" onClick={submitCart}>
           Add to Cart
         </button>
       </div>
