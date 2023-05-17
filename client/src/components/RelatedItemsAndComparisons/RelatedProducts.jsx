@@ -6,7 +6,7 @@ import Card from './Card';
 
 function RelatedProducts({ relatedProducts }) {
   return (
-    <div className="relatedList" style={{ display: 'flex' }}>
+    <div className="relatedList" data-testid="rp-list" style={{ display: 'flex' }}>
       {relatedProducts.map((product) => (
         <Card
           product={product}

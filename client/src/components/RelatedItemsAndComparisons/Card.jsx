@@ -58,13 +58,13 @@ function Card({ product }) {
 
   // TODO: replace button with star icon
   return (
-    <div className="productCard" onClick={handleCardClick}>
-      <button className="compareButton" type="button" onClick={handleCompareClick}>Star</button>
-      <img className="cardImg" src={defaultImages[0] || imgUnavailableURL} alt="product" />
+    <div className="productCard" data-testid="rp-card" onClick={handleCardClick}>
+      <button className="compareButton" data-testid="rp-comparebtn" type="button" onClick={handleCompareClick}>Star</button>
+      <img className="cardImg" data-testid="rp-cimage" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 
-      <p className="category">{product.category}</p>
-      <h3 className="prodName">{product.name}</h3>
-      <div className="price">
+      <p className="category" data-testid="rp-category">{product.category}</p>
+      <h3 className="prodName" data-testid="rp-name">{product.name}</h3>
+      <div className="price" data-testid="rp-price">
         {salePrice
           ? (
             <div className="sale">
@@ -85,7 +85,7 @@ function Card({ product }) {
             </p>
           )}
       </div>
-      <p className="rating">Rating</p>
+      <p className="rating" data-testid="rp-rating">Rating</p>
     </div>
   );
 }
