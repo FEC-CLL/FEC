@@ -2,10 +2,11 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const productController = require('./controllers/ProductController');
+const productRoute = require('./controllers/Product');
 const reviewsController = require('./controllers/ReviewsController');
 const relatedController = require('./controllers/RelatedItemsController');
 const questionsController = require('./controllers/QandA/QandARouter');
+const cartRoute = require('./controllers/Cart');
 
 const app = express();
 
@@ -18,7 +19,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
-app.use('/products', productController);
+app.use('/products', productRoute);
+app.use('/cart', cartRoute);
 app.use('/reviews', reviewsController);
 app.use('/qa', questionsController);
 app.use('/related', relatedController);

@@ -6,11 +6,17 @@ const axios = require('axios');
 const API_URL = process.env.API_ENDPOINT;
 const API_KEY = process.env.TOKEN;
 
+const options = {
+  headers: {
+    Authorization: API_KEY,
+  },
+};
+
 // API request for related products based off a product ID
 router.get('/:id', (req, res) => {
-  axios.get(`${API_URL}/products/${req.params.id}/related`, { headers: { Authorization: API_KEY } })
+  axios.get(`${API_URL}/products/${req.params.id}/related`, options)
     .then(({ data }) => {
-      const relatedProducts = Promise.all(data.map((id) => axios.get(`${API_URL}/products/${id}`, { headers: { Authorization: API_KEY } })
+      const relatedProducts = Promise.all(data.map((id) => axios.get(`${API_URL}/products/${id}`, options)
         .then((product) => product.data)));
       return relatedProducts;
     })
