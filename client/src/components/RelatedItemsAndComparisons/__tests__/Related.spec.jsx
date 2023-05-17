@@ -4,12 +4,12 @@ import axios from 'axios';
 import RelatedItemsAndComContainer from '../RelatedItemsAndComContainer';
 import RelatedProducts from '../RelatedProducts';
 import Card from '../Card';
-import Outfits from '../Outfits';
+// import Outfits from '../Outfits';
 
 // Import mock data
 import mockProduct from '../../../../../sampleData/product.json';
 import mockProductsRelated from '../../../../../sampleData/productRelated.json';
-import mockRelatedData from './mockData.json';
+// import mockRelatedData from './mockData.json';
 
 const testProduct = {
   id: 40346,
@@ -33,46 +33,55 @@ const testProduct = {
 };
 
 jest.mock('axios');
-// axios.get.mockResolvedValue({ data: mockProductsRelated });
-
+// const handleCardClick = jest.fn();
 // Testing Container
 describe('Related Products and Outfits Container', () => {
   beforeEach(() => {
     axios.all.mockResolvedValue({ data: mockProductsRelated });
     axios.get.mockResolvedValue({ data: testProduct });
   });
+
+  // afterEach(cleanup);
+
   it('Should render Related Products title', () => {
     render(<RelatedItemsAndComContainer initProd={mockProduct} />);
     expect(screen.getByText('Related Products')).toBeInTheDocument();
   });
+
   it('Should render Outfits title', () => {
     render(<RelatedItemsAndComContainer initProd={mockProduct} />);
     expect(screen.getByText('Outfits')).toBeInTheDocument();
   });
+
   it('Should render Related Products List', () => {
     render(<RelatedProducts relatedProducts={mockProductsRelated} />);
     expect(screen.getByTestId(/rp-list/i)).toBeTruthy();
   });
+
   it('Should render a product card', () => {
     render(<Card product={testProduct} />);
     expect(screen.getByTestId(/rp-card/i)).toBeTruthy();
   });
+
   it('Product card name should match test name', () => {
     render(<Card product={mockProduct} key={mockProduct.id} />);
     expect(screen.getByText('Camo Onesie')).toBeInTheDocument();
   });
+
   it('Should render compare button on a product card', () => {
     render(<Card product={mockProduct} key={mockProduct.id} />);
     const compareButton = screen.getByTestId(/rp-comparebtn/i);
     const clicked = fireEvent.click(compareButton);
     expect(clicked).toBeTruthy();
   });
-  // it('Product card should be clickable', () => {
-  //   render(<Card product={mockProduct} key={mockProduct.id} />);
-  //   const cardButton = screen.getByTestId(/rp-card/i);
-  //   const clicked = fireEvent.click(cardButton);
-  //   expect(clicked).toBeTruthy();
-  // });
+
+  it('Product card should be clickable', () => {
+    render(<Card product={mockProduct} key={mockProduct.id} />);
+    const cardButton = screen.getByTestId(/rp-card/i);
+    const clicked = fireEvent.click(cardButton);
+    expect(clicked).toBeTruthy();
+  });
+
   it('Product card should render dynamic data', () => {
     render(<Card product={testProduct} />);
     expect(screen.getByTestId(/rp-cimage/i)).toBeTruthy();
@@ -82,19 +91,3 @@ describe('Related Products and Outfits Container', () => {
     expect(screen.getByTestId(/rp-rating/i)).toBeTruthy();
   });
 });
-
-// Testing Related Products List
-// describe('Related Products List', () => {
-//   test('Should render related products list', () => {
-//     render(<RelatedProducts mockData={mockData} />);
-//     const rpList = screen.getByText();
-//   });
-// });
-
-// // Testing Outfits List
-// describe('Outfits List', () => {
-//   test('Should render an Add To Outfit card', () => {
-//     render(<Outfits initProd={mockProduct} />);
-//     expect(screen.getByText('Add To Outfit')).toBeInTheDocument();
-//   });
-// });

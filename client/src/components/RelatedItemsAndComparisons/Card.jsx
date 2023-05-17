@@ -15,8 +15,8 @@ function Card({ product }) {
   const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
 
   // ===============HELPER FUNCTIONS====================
-  const handleCardClick = (event) => {
-    event.preventDefault();
+  const handleCardClick = () => {
+    // event.preventDefault();
     alert('New product chosen');
     // TODO: This will change the current chosen product
   };
