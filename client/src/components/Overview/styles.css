@@ -92,11 +92,17 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.image-gallery__image__main-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
 .image-gallery__image__main {
   object-fit: contain;
   height: 600px;
   max-width: 720px;
+}
+.image-gallery__image__main:hover {
+  transform: scale(2);
 }
 
 

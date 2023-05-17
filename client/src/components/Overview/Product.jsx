@@ -11,6 +11,10 @@ export default function Product({ product = {} }) {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [skuId, setSkuId] = useState(null);
   const [thumbnailIndex, setThumbnailIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   if (!styles?.length) {
     return null;
@@ -30,6 +34,11 @@ export default function Product({ product = {} }) {
     setThumbnailIndex(0);
   };
 
+  const mainImgZoomHandler = (e) => {
+    const { target: { offsetLeft, offsetTop }, clientX, clientY } = e;
+    setMousePosition({ x: clientX - offsetLeft, y: clientY - offsetTop });
+  };
+
   return (
     <div className="container">
       <div className="image-gallery">
@@ -44,7 +53,9 @@ export default function Product({ product = {} }) {
         </div>
         <div className="image-gallery__image">
           <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
-          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          <div className="image-gallery__image__main-wrapper">
+            <img className="image-gallery__image__main" style={{ transformOrigin: `${mousePosition.x}px ${mousePosition.y}px` }} onMouseMove={mainImgZoomHandler} src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          </div>
           <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
           <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
