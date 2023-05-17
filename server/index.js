@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+var session = require('express-session');
 const productController = require('./controllers/ProductController');
 const reviewsController = require('./controllers/ReviewsController');
 const relatedController = require('./controllers/RelatedItemsController');
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.use(session());
 
 // ROUTES
 app.use('/products', productController);
