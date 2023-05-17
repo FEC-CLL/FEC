@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './styles.css';
 import ProductStar from './ProductStar';
 
@@ -30,6 +31,10 @@ export default function Product({ product = {} }) {
     setThumbnailIndex(0);
   };
 
+  const submitCart = () => {
+    axios.post('/cart', { sku_id: skuId });
+  };
+
   return (
     <div className="container">
       <div className="image-gallery">
@@ -44,7 +49,7 @@ export default function Product({ product = {} }) {
         </div>
         <div className="image-gallery__image">
           <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
-          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt={styles[styleIndex].name} />
           <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
           <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
@@ -76,7 +81,7 @@ export default function Product({ product = {} }) {
           <ul>
             {styles.map((result, index) => (
               <li>
-                <button type="button" onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
+                <button type="button" title={result.name} onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
                   {styleIndex === index && <span className="product-information__style-selector--selected" />}
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
@@ -97,7 +102,7 @@ export default function Product({ product = {} }) {
             )) : <option value="">--</option>}
           </select>
         </div>
-        <button type="button" className="product-information__add-to-cart">
+        <button type="button" disabled={!skuId} className="product-information__add-to-cart" onClick={submitCart}>
           Add to Cart
         </button>
       </div>

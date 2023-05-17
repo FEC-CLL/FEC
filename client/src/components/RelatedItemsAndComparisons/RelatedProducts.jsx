@@ -8,7 +8,7 @@ function RelatedProducts({
   initProd, relatedProducts, updateProduct,
 }) {
   return (
-    <div className="relatedList" style={{ display: 'flex' }}>
+    <div className="relatedList" data-testid="rp-list" style={{ display: 'flex' }}>
       {relatedProducts.map((product) => (
         <Card
           initProd={initProd}

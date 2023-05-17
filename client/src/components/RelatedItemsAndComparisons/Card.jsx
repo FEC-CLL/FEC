@@ -76,9 +76,10 @@ function Card({
           product={product}
         />
       )}
-      <div className="productCard" onClick={handleCardClick}>
+      <div className="productCard" data-testid="rp-card" onClick={handleCardClick}>
         <button
           className="compareButton"
+          data-testid="rp-comparebtn"
           type="button"
           onClick={(event) => {
             event.stopPropagation();
@@ -87,11 +88,11 @@ function Card({
         >
           ⭐
         </button>
-        <img className="cardImg" src={defaultImages[0] || imgUnavailableURL} alt="product" />
+        <img className="cardImg" data-testid="rp-cimage" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 
-        <p className="category">{product.category}</p>
-        <h3 className="prodName">{product.name}</h3>
-        <div className="price">
+        <p className="category" data-testid="rp-category">{product.category}</p>
+        <h3 className="prodName" data-testid="rp-name">{product.name}</h3>
+        <div className="price" data-testid="rp-price">
           {salePrice
             ? (
               <div className="sale">
@@ -112,7 +113,7 @@ function Card({
               </p>
             )}
         </div>
-        <p className="rating">
+        <p className="rating" data-testid="rp-rating">
           Rating:
           {' '}
           <ProductStar averageReview={averageReview} />
