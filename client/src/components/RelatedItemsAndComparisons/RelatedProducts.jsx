@@ -18,14 +18,6 @@ function RelatedProducts({
     transform: `translate(${width}px)`,
   };
 
-  // Move right: if there is a product that exists in the next index
-  // remove first product from currentView and push next product into currentView
-
-  // Move left: if there is a product that exists towards the left
-  // remove last product and insert left product to the beginning of currentView
-
-  // When component first mounts, store first 3 products to currentView
-
   useEffect(() => {
     setIndex(1);
     setWidth(0);

@@ -14,7 +14,7 @@
 .rp-card-map {
   display: flex;
   flex-direction: row;
-  overflow-x: hidden;
+  overflow: hidden;
   transition-duration: 0.5s;
   margin-left: 4.5%;
   margin-right: 4.5%;
@@ -161,6 +161,7 @@ body.active-modal {
   position: fixed;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .modalContent {
