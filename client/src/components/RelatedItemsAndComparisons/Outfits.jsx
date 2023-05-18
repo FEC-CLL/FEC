@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-function Outfits({ initProd, updateProduct }) {
+function Outfits({ initProd }) {
   const [closet, setCloset] = useState([]);
   const [index, setIndex] = useState(1);
   const [width, setWidth] = useState(0);
@@ -88,7 +88,6 @@ function Outfits({ initProd, updateProduct }) {
             {closet.map((product) => (
               <Card
                 initProd={initProd}
-                updateProduct={updateProduct}
                 product={product}
                 key={product.id}
                 removeFromOutfit={removeFromOutfit}

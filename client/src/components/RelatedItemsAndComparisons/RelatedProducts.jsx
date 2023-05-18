@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
 function RelatedProducts({
-  initProd, relatedProducts, updateProduct,
+  initProd, relatedProducts,
 }) {
   // Will only render 3 products at a time
   const [currentView, setCurrentView] = useState([]);
@@ -60,7 +60,6 @@ function RelatedProducts({
           {currentView.map((product) => (
             <Card
               initProd={initProd}
-              updateProduct={updateProduct}
               product={product}
               key={product.id}
             />

@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ComparisonModal from './ComparisonModal';
 import ProductStar from '../Overview/ProductStar';
 
-// TODO: have a set dimension size for each card
-// TODO: import image from API request
-
 function Card({
-  initProd, updateProduct, product, removeFromOutfit,
+  initProd, product, removeFromOutfit,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -17,6 +15,7 @@ function Card({
   const [averageReview, setAverageReview] = useState(null);
   const [defaultImages, setDefaultImages] = useState([]);
   const [modalView, setModalView] = useState(false);
+  const navigate = useNavigate();
 
   // Default image when original image isn't available
   const imgUnavailableURL = 'https://www.freeiconspng.com/uploads/no-image-icon-15.png';
@@ -30,7 +29,10 @@ function Card({
 
   // ===============HELPER FUNCTIONS====================
   const handleCardClick = () => {
-    updateProduct(product.id);
+    // updateProduct(product.id);
+    // TODO: import Link and return Link component here
+    // with new endpoint containing new product id
+    navigate(`/products/${product.id}`);
   };
 
   const handleCompareClick = () => {
