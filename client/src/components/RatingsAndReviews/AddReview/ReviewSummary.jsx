@@ -8,8 +8,8 @@ function ReviewSummary({ setReviewSummary }) {
 
   return (
     <div>
-      <div className="addReviewHeader">Review Summary</div>
-      <input className="addReviewSummary" maxLength="60" placeholder="Example: Best purchase ever!" onChange={onInputChange} />
+      <div className="addReviewHeader modal-component-title">Review Summary</div>
+      <input className="addReviewSummaryTextArea" maxLength="60" placeholder="Example: Best purchase ever!" onChange={onInputChange} />
     </div>
   );
 }

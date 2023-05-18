@@ -1,12 +1,10 @@
 import React from 'react';
 
 function ReviewSorting({
-  setSortType, setPage, setAllReviews, allReviews,
+  setSortType, allReviews,
 }) {
   function onSortTypeChange(event) {
-    setAllReviews([]);
     setSortType(event.target.value);
-    setPage(1);
   }
 
   return (
