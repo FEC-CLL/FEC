@@ -8,57 +8,59 @@ function ProductCharacteristics({ char, charProp }) {
 
   function charRadioButtons(charVar, setCharVar, charName, charDescriptionArr) {
     return (
-      <div>
-        <div>{charName}</div>
-        <input
-          type="radio"
-          name={charName}
-          value={1}
-          id="1"
-          checked={charVar === '1'}
-          onChange={(e) => { onOptionChange(e, setCharVar); }}
-        />
-        <label htmlFor="1">{charDescriptionArr[0]}</label>
+      <div className="addReviewChar">
+        <div className="addReviewCharName">{charName}</div>
+        <div className="addReviewChoices">
+          <input
+            type="radio"
+            name={charName}
+            value={1}
+            id="1"
+            checked={charVar === '1'}
+            onChange={(e) => { onOptionChange(e, setCharVar); }}
+          />
+          <label htmlFor="1">{charDescriptionArr[0]}</label>
 
-        <input
-          type="radio"
-          name={charName}
-          value={2}
-          id="2"
-          checked={charVar === '2'}
-          onChange={(e) => { onOptionChange(e, setCharVar); }}
-        />
-        <label htmlFor="2">{charDescriptionArr[1]}</label>
+          <input
+            type="radio"
+            name={charName}
+            value={2}
+            id="2"
+            checked={charVar === '2'}
+            onChange={(e) => { onOptionChange(e, setCharVar); }}
+          />
+          <label htmlFor="2">{charDescriptionArr[1]}</label>
 
-        <input
-          type="radio"
-          name={charName}
-          value={3}
-          id="3"
-          checked={charVar === '3'}
-          onChange={(e) => { onOptionChange(e, setCharVar); }}
-        />
-        <label htmlFor="3">{charDescriptionArr[2]}</label>
+          <input
+            type="radio"
+            name={charName}
+            value={3}
+            id="3"
+            checked={charVar === '3'}
+            onChange={(e) => { onOptionChange(e, setCharVar); }}
+          />
+          <label htmlFor="3">{charDescriptionArr[2]}</label>
 
-        <input
-          type="radio"
-          name={charName}
-          value={4}
-          id="4"
-          checked={charVar === '4'}
-          onChange={(e) => { onOptionChange(e, setCharVar); }}
-        />
-        <label htmlFor="4">{charDescriptionArr[3]}</label>
+          <input
+            type="radio"
+            name={charName}
+            value={4}
+            id="4"
+            checked={charVar === '4'}
+            onChange={(e) => { onOptionChange(e, setCharVar); }}
+          />
+          <label htmlFor="4">{charDescriptionArr[3]}</label>
 
-        <input
-          type="radio"
-          name={charName}
-          value={5}
-          id="5"
-          checked={charVar === '5'}
-          onChange={(e) => { onOptionChange(e, setCharVar); }}
-        />
-        <label htmlFor="5">{charDescriptionArr[4]}</label>
+          <input
+            type="radio"
+            name={charName}
+            value={5}
+            id="5"
+            checked={charVar === '5'}
+            onChange={(e) => { onOptionChange(e, setCharVar); }}
+          />
+          <label htmlFor="5">{charDescriptionArr[4]}</label>
+        </div>
       </div>
     );
   }
@@ -74,7 +76,7 @@ function ProductCharacteristics({ char, charProp }) {
 
   return (
     <div>
-      <div>Product Characteristics*</div>
+      <div className="modal-component-title">*Product Characteristics</div>
 
       {char && char.Size ? charRadioButtons(charProp.size, charProp.setSize, 'Size', sizeArr) : ''}
       {char && char.Width ? charRadioButtons(charProp.width, charProp.setWidth, 'Width', widthArr) : ''}

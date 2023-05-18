@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
@@ -20,13 +21,13 @@ function ReviewHelpfulness({ review }) {
 
   return (
     <div className="reviewHelpfulness">
-      <p>Helpful?</p>
-      <p className="yes" onClick={onHelpYesClick}>Yes</p>
-      <p>
+      <div className="reviewHelpfulness1">Helpful?</div>
+      <div className="yes" onClick={onHelpYesClick}>Yes</div>
+      <div className="reviewHelpfulness2">
         (
         {helpYes}
         )
-      </p>
+      </div>
     </div>
   );
 }
