@@ -9,6 +9,7 @@ function Outfits({ initProd, updateProduct }) {
   const [width, setWidth] = useState(0);
   const listLength = closet.length;
   const styles = {
+    // chang width name to offset
     transform: `translate(${width}px)`,
   };
 
@@ -21,7 +22,6 @@ function Outfits({ initProd, updateProduct }) {
   };
 
   const removeFromOutfit = (prodID) => {
-    // TODO: remove from local storage
     alert('removing from outfit');
     const outfitsArray = JSON.parse(window.localStorage.getItem('userCloset'));
     outfitsArray.forEach((item, i) => {
@@ -34,20 +34,18 @@ function Outfits({ initProd, updateProduct }) {
 
   // Carousel event handlers
   const moveRight = () => {
-    // TODO: shift products list to right
     alert('Moving right');
-    if (index <= listLength - 3) {
+    if (index <= listLength - 2) {
       setIndex(index + 1);
-      setWidth(-((index) * 380));
+      setWidth(-((index) * 450));
     }
   };
 
   const moveLeft = () => {
-    // TODO: shift products list to left
     alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
-      setWidth(width + 380);
+      setWidth(width + 450);
     }
   };
 
@@ -77,27 +75,32 @@ function Outfits({ initProd, updateProduct }) {
 
       {/* add to outfit card */}
       <div className="add-to-outfit-card" onClick={() => { addToOutfit(); }}>
-        Add to Outfit
+        <h3 className="add-to-outfit-text">Add to Outfit</h3>
         <svg className="plus-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path fill="#000000" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
         </svg>
       </div>
 
-      {/* closet list */}
-      <div className="outfits-map" data-testid="outfits-map" style={styles}>
-        {closet.map((product) => (
-          <Card
-            initProd={initProd}
-            updateProduct={updateProduct}
-            product={product}
-            key={product.id}
-            removeFromOutfit={removeFromOutfit}
-          />
-        ))}
+      <div className="outfits-map-wrap">
+        {/* closet list */}
+        <div className="outfits-map-wrap">
+          <div className="outfits-map" data-testid="outfits-map" style={styles}>
+            {closet.map((product) => (
+              <Card
+                initProd={initProd}
+                updateProduct={updateProduct}
+                product={product}
+                key={product.id}
+                removeFromOutfit={removeFromOutfit}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
+
       {/* right arrow */}
-      {(index <= listLength - 3 && listLength >= 3)
+      {(index <= listLength - 2 && listLength >= 2)
         ? (
           <div className="outfits-right-arrow" onClick={() => moveRight()}>
             <button type="button">&#5171;</button>

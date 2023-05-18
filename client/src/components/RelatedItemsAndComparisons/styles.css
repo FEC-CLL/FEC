@@ -5,16 +5,29 @@
   flex-direction: column;
 } */
 
+.rp-title {
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  padding: 5px;
+  margin: auto;
+  transform: scale(2);
+}
+
 .rp-list-container {
   display: flex;
   margin-left: 4.5%;
   margin-right: 4.5%;
 }
 
+.rp-card-map-wrap {
+  overflow: hidden;
+}
+
 .rp-card-map {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition-duration: 0.5s;
   margin-left: 4.5%;
   margin-right: 4.5%;
@@ -31,12 +44,16 @@
   min-width: 380px;
   transition: background-color 1s ease-out 40ms;
   margin-right: 5%;
-  margin-left: 5%;
+  /* margin-left: 5%; */
   /* padding: 10px; */
 }
 
 .productCard:hover {
   background-color: #BFBFA7;
+}
+
+.compareButton {
+  position: relative;
 }
 
 .cardImg {
@@ -210,6 +227,15 @@ body.active-modal {
 }
 
 /* Outfit List */
+.outfits-title {
+  border-style: thin;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #BFBFA7;
+  margin: auto;
+  transform: scale(2);
+}
+
 .plus-icon {
   transform: scale(0.25);
 }
@@ -219,6 +245,14 @@ body.active-modal {
   margin-left: 4.5%;
   margin-right: 4.5%;
 }
+
+.add-to-outfit-text {
+  /* position: absolute; */
+  /* align-items: center; */
+  width: 50%;
+  margin: auto;
+}
+
 .add-to-outfit-card {
   border-style: solid;
   border-width: thin;
@@ -229,8 +263,7 @@ body.active-modal {
   min-width: 380px;
   /* margin: auto; */
   transition: background-color 1s ease-out 50ms;
-  /* margin-right: 5%;
-  margin-left: 5%; */
+  margin-left: 5%;
   /* padding: 10px; */
 }
 
@@ -238,10 +271,14 @@ body.active-modal {
   background-color: #BFBFA7;
 }
 
+.outfits-map-wrap {
+  overflow: hidden;
+}
+
 .outfits-map {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition-duration: 0.5s;
   /* margin-left: 4.5%;
   margin-right: 4.5%; */

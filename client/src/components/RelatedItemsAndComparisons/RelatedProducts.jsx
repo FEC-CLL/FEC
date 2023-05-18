@@ -3,9 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-// Need to have max number of card rendered between 3-4
-// Need to send another API request to retrieve images
-
 function RelatedProducts({
   initProd, relatedProducts, updateProduct,
 }) {
@@ -22,34 +19,28 @@ function RelatedProducts({
     setIndex(1);
     setWidth(0);
     if (relatedProducts.length) {
-      // Store relatedProducts to currentView
       setCurrentView(relatedProducts);
     }
   }, [relatedProducts]);
 
-  // Need to translate 380px
   const moveRight = () => {
-    // TODO: shift products list to right
     alert('Moving right');
     if (index <= listLength - 3) {
       setIndex(index + 1);
-      setWidth(-((index) * 380));
+      setWidth(-((index) * 450));
     }
   };
 
   const moveLeft = () => {
-    // TODO: shift products list to left
     alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
-      setWidth(width + 380);
+      setWidth(width + 450);
     }
   };
 
-  // Below in the html I need to add left and right arrow buttons
-  // Arrow buttons should be hidden/unclickable based on position of list
-  // Should do movement validation within html
   return (
+    // left arrow
     <div className="rp-list-container">
       {index !== 1
         ? (
@@ -63,17 +54,21 @@ function RelatedProducts({
           </div>
         )}
 
-      <div className="rp-card-map" data-testid="rp-list" style={styles}>
-        {currentView.map((product) => (
-          <Card
-            initProd={initProd}
-            updateProduct={updateProduct}
-            product={product}
-            key={product.id}
-          />
-        ))}
+      {/* Related products list */}
+      <div className="rp-card-map-wrap">
+        <div className="rp-card-map" data-testid="rp-list" style={styles}>
+          {currentView.map((product) => (
+            <Card
+              initProd={initProd}
+              updateProduct={updateProduct}
+              product={product}
+              key={product.id}
+            />
+          ))}
+        </div>
       </div>
 
+      {/* right arrow */}
       {(index <= listLength - 3 && listLength >= 3)
         ? (
           <div className="rp-right-arrow" onClick={() => moveRight()}>
@@ -84,7 +79,6 @@ function RelatedProducts({
           <div className="rp-right-arrow">
             <button type="button">&#5171;</button>
           </div>
-
         )}
     </div>
   );

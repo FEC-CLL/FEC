@@ -35,8 +35,8 @@ body {
 
 /* Frank */
 .relatedContainer {
-  border-style: solid;
-  border-color: red;
+  /* border-style: solid;
+  border-color: red; */
   height: 1050px;
   /* overflow: auto; */
 }
