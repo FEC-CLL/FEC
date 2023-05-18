@@ -10,16 +10,18 @@ function OverallRating({ overallRating, setOverallRating }) {
   return (
     <div>
       <div className="addReviewHeader modal-component-title">*Overall Rating</div>
-      {
-        ['1', '2', '3', '4', '5'].map((n) => (
-          <OverallRatingRadioButton
-            n={n}
-            onChange={onOptionChange}
-            rating={overallRating}
-            key={n}
-          />
-        ))
-      }
+      <div className="rating">
+        {
+          ['1', '2', '3', '4', '5'].map((n) => (
+            <OverallRatingRadioButton
+              n={n}
+              onChange={onOptionChange}
+              rating={overallRating}
+              key={n}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }
@@ -34,8 +36,9 @@ function OverallRatingRadioButton({ n, onChange, rating }) {
         id={n}
         checked={rating === n}
         onChange={onChange}
+        required
       />
-      <label htmlFor={n}>{n}</label>
+      <label htmlFor={n} className="star" aria-hidden="true">{n}</label>
     </>
   );
 }

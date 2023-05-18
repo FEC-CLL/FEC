@@ -9,7 +9,7 @@ function ReviewNickname({ setReviewNickname }) {
   return (
     <div className="addReviewNickname">
       <div className="addReviewHeader modal-component-title">*What is your nickname</div>
-      <input className="addReviewNicknameInput" maxLength="60" placeholder="Example: jackson11!" onChange={onInputChange} />
+      <input className="addReviewNicknameInput" maxLength="60" placeholder="Example: jackson11!" onChange={onInputChange} required />
       <div className="addReviewFooter modal-warning">*For privacy reasons, do not use your full name or email address</div>
     </div>
   );

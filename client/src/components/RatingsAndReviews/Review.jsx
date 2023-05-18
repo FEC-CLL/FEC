@@ -11,6 +11,8 @@ function Review({ review }) {
       <div className="reviewHeader">
         <div className="reviewRating">{review.rating}</div>
         <div className="reviewReviewerName">
+          by
+          {' '}
           {review.reviewer_name}
           ,
         </div>
@@ -23,6 +25,7 @@ function Review({ review }) {
       <div className="reviewResponse">{review.response ? review.response : ''}</div>
       <div className="reviewFooter">
         <ReviewHelpfulness review={review} />
+        <div className="reviewFooterDivider">|</div>
         <ReviewReport review={review} />
       </div>
     </div>
