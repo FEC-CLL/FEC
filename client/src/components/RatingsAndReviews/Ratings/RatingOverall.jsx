@@ -44,7 +44,6 @@ function RatingOverall({ metaData, starsFilter, setStarsFilter }) {
         <CharsBreakdown metaData={metaData} />
       </div>
     </div>
-
   );
 }
 

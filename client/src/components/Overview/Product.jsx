@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './styles.css';
 import ProductStar from './ProductStar';
 
@@ -10,6 +11,7 @@ export default function Product({ product = {} }) {
   const [styleIndex, setStyleIndex] = useState(0);
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [skuId, setSkuId] = useState(null);
+  const [thumbnailIndex, setThumbnailIndex] = useState(0);
 
   if (!styles?.length) {
     return null;
@@ -26,21 +28,29 @@ export default function Product({ product = {} }) {
     setSkuId(null);
     setStyleIndex(i);
     setMainImageIndex(0);
+    setThumbnailIndex(0);
+  };
+
+  const submitCart = () => {
+    axios.post('/cart', { sku_id: skuId });
   };
 
   return (
     <div className="container">
       <div className="image-gallery">
         <div className="image-gallery__thumbnail-nav">
-          <button type="button" className="image-gallery__thumbnail-nav__up" aria-label="Up" />
-          <ul className="image-gallery__thumbnail-nav__list">
-            {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail 1" /></button></li>)}
-          </ul>
-          <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" />
+          <button type="button" className={thumbnailIndex !== 0 ? 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--up' : 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--hidden'} aria-label="Up" onClick={() => setThumbnailIndex(Math.max(0, thumbnailIndex - 1))} />
+          <div className="image-gallery__thumbnail-nav__list-wrapper">
+            <ul className="image-gallery__thumbnail-nav__list" style={{ transform: `translateY(${thumbnailIndex * -70}px)` }}>
+              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail 1" /></button></li>)}
+            </ul>
+          </div>
+          {thumbnailIndex !== styles[styleIndex].photos.length - 6 && styles[styleIndex].photos.length > 7 && <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" onClick={() => setThumbnailIndex(Math.min(thumbnailIndex + 1, styles[styleIndex].photos.length - 6))} />}
         </div>
         <div className="image-gallery__image">
           <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
-          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+          <img className="image-gallery__image__main" src={styles[styleIndex].photos[mainImageIndex].url} alt={styles[styleIndex].name} />
+          <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
           <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
       </div>
@@ -71,7 +81,7 @@ export default function Product({ product = {} }) {
           <ul>
             {styles.map((result, index) => (
               <li>
-                <button type="button" onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
+                <button type="button" title={result.name} onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
                   {styleIndex === index && <span className="product-information__style-selector--selected" />}
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
@@ -92,7 +102,7 @@ export default function Product({ product = {} }) {
             )) : <option value="">--</option>}
           </select>
         </div>
-        <button type="button" className="product-information__add-to-cart">
+        <button type="button" disabled={!skuId} className="product-information__add-to-cart" onClick={submitCart}>
           Add to Cart
         </button>
       </div>

@@ -1,42 +1,18 @@
-
-.astext {
-  background: none;
-  border: none;
-  margin: 0;
-  padding:0;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-left: 5px;
-  margin-right: 5px;
+.qaComponent {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 300;
 }
 
-.question {
+.buttonContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 25px;
+  font-size: 13px;
 }
 
-.answerStats, .questionHelp {
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-}
-
-.pole {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.answer {
-  display:flex;
-  flex-direction: column;
-  font-size: 25px;
-}
-
+/* search css */
 .searchForm {
   display:flex;
-  padding: 2px;
+  padding: 12px;
   border: 1px solid;
   border-radius: 5px;
   justify-content: space-between;
@@ -44,15 +20,16 @@
 
 .searchInput {
   border: none;
-  display:flex;
   background: transparent;
   margin: 0;
   width: 100%;
-  padding: 7px 8px;
-  font-size: 14px;
-  color: inherit;
-  border: 1px solid transparent;
-  border-radius: inherit;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 16px;
+}
+
+.searchInput:focus {
+  outline:none;
 }
 
 .searchButton {
@@ -72,6 +49,72 @@
   opacity:1;
 }
 
+/* questions css */
+.questions-list {
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+
+/* question css */
+.question {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 8px;
+}
+
+.answer-info, .question-info {
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  font-weight: 100;
+}
+
+.astext {
+  background: none;
+  border: none;
+  margin: 0;
+  padding:0;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: fit-content;
+}
+
+.regular {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pole {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* answers css */
+
+.answers {
+  display: flex;
+  flex-direction: row;
+  font-weight: 700;
+}
+
+.answer {
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+/* modal css */
 .modal {
   position:fixed;
   left: 0;
@@ -102,23 +145,37 @@
 
 .modal-title {
   margin: 0;
+  font-size: large;
+  padding-bottom: 10px;
+}
+
+.modal-subtitle {
+  font-size: small;
+  font-weight: 400;
 }
 
 .modal-body {
   margin-left: 10px;
   margin-right: 15px;
   border-top: 1px solid #eee;
-  /* border-bottom: 1px solid #eee; */
 }
 
-.addAnswerInput {
+.modal-textArea {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  max-height: 100px;
+  resize: vertical;
 }
 
 .modal-body-title-container {
   margin-bottom: 10px;
 }
+
+.modal-body-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .modal-body-container {
   display: flex;
   justify-content: space-between;
@@ -126,50 +183,30 @@
   margin-top: 10px;
 }
 
-.modalTitle {
+.modal-component-title {
   font-weight: bold;
-  /* margin-right: 20px; */
+  padding: 5px;
 }
 
-.modalBodyTitle {
-  font-weight: bold;
-  margin-bottom: 20px;
-}
 
-.nicknameText {
+.modal-warning {
   font-size: 12px;
 }
 
-.answer {
-  max-height: 200px;
+/* answer css */
+.answerContainer {
+  font-weight: 300;
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
-.questions {
-  max-height: 100vh;
-  overflow: auto;
-
-}
-
-.buttonContainer {
-  display: flex;
-}
-
-.imageButton {
-  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
-  border: 1px solid;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  height: 60px;
-  padding: 10px 20px;
-  padding-right: 50px;
-  text-align: left;
-  width: auto;
-  margin: 10px;
+.answerBody {
+  padding-bottom: 5px;
 
 }
 
-.answeredButton {
+/* button css */
+.qa-button {
   background: var(--primary);
   border: 1px solid;
   cursor: pointer;
@@ -178,6 +215,44 @@
   height: 60px;
   padding: 10px 20px;
   text-align: left;
-  width:auto;
-  margin: 10px;
+  width: auto;
+  margin: 0px 10px;
 }
+
+.imageButton {
+  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  padding-right: 50px;
+}
+
+/* photo css */
+
+.photo {
+  height: 60px;
+  padding: 5px;
+}
+
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.photos {
+  display: flex;
+  flex-direction: row;
+}
+
+.answer-photo {
+  height: 80px;
+  margin: 10px 0px;
+  margin-right: 10px;
+}
+
+.seller {
+  font-weight: bold;
+}
+
+.by {
+  margin-right: 2px;
+}
+
