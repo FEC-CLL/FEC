@@ -239,3 +239,9 @@
   text-align: left;
   width: 100%;
 }
+
+.share-links__twitter {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+}
