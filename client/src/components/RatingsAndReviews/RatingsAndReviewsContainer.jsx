@@ -48,7 +48,7 @@ function RatingsAndReviewsContainer({ initProd }) {
   }, [initProd.id, count, sortType, reported]);
 
   return (
-    <div className="ratingsContainer">
+    <div className="ratingsContainer container">
       <div className="rrTitle">RATINGS & REVIEWS</div>
       <div className="rrContainer">
         <div className="ratings1Container">
