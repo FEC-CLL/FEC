@@ -67,6 +67,8 @@ function Card({
       });
   }, []);
 
+  // TODO: need to have a conditional render of compare btn or remove from outfit button
+  // maybe trying use a state isOutfit? similar to modalView
   return (
     <div>
       {modalView && (

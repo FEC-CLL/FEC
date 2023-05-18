@@ -89,7 +89,7 @@
   margin-top: 0px;
 }
 
-/* Carousel Buttons */
+/* RP Carousel Buttons */
 .rp-left-arrow {
   position: relative;
   border-style: thin;
@@ -216,7 +216,7 @@ body.active-modal {
 }
 
 /* Outfit List */
-.addToOutfit {
+.add-to-outfit-card {
   border-style: solid;
   border-width: thin;
   border-color: grey;
@@ -228,6 +228,47 @@ body.active-modal {
   overflow-wrap: break-word;
 }
 
-.addToOutfit:hover {
+.add-to-outfit-card:hover {
   background-color: #BFBFA7;
 }
+
+/* Outfits Carousel Buttons */
+/* .outfits-left-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.outfits-left-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.outfits-left-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+}
+
+.outfits-right-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.outfits-right-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.outfits-right-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+} */
