@@ -51,7 +51,7 @@ export default function Product({ product = {} }) {
           <button type="button" className={thumbnailIndex !== 0 ? 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--up' : 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--hidden'} aria-label="Up" onClick={() => setThumbnailIndex(Math.max(0, thumbnailIndex - 1))} />
           <div className="image-gallery__thumbnail-nav__list-wrapper">
             <ul className="image-gallery__thumbnail-nav__list" style={{ transform: `translateY(${thumbnailIndex * -70}px)` }}>
-              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail" /></button></li>)}
+              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className={index === mainImageIndex ? 'image-gallery__thumbnail-nav__image image-gallery__thumbnail-nav__image--selected' : 'image-gallery__thumbnail-nav__image'} src={photo.thumbnail_url} alt="Thumbnail" /></button></li>)}
             </ul>
           </div>
           {thumbnailIndex !== styles[styleIndex].photos.length - 6 && styles[styleIndex].photos.length > 7 && <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" onClick={() => setThumbnailIndex(Math.min(thumbnailIndex + 1, styles[styleIndex].photos.length - 6))} />}
@@ -101,13 +101,13 @@ export default function Product({ product = {} }) {
           </ul>
         </div>
         <div className="product-information__options">
-          <select className="product-information__select product-information__select--size" name="size" id="size" onChange={(e) => setSkuId(e.target.value)} disabled={isOutOfStock}>
+          <select className="product-information__select" name="size" id="size" onChange={(e) => setSkuId(e.target.value)} disabled={isOutOfStock}>
             <option value="">{isOutOfStock ? 'OUT OF STOCK' : 'Select size'}</option>
             {filteredSkuQuantities.map((sku) => (
               <option value={sku} key={sku}>{styles[styleIndex].skus[sku].size}</option>
             ))}
           </select>
-          <select className="product-information__select product-information__select--quantity" name="quantity" id="quantity" disabled={!skuId}>
+          <select className="product-information__select" name="quantity" id="quantity" disabled={!skuId}>
             {skuId ? [...Array(Math.min(currentSku?.quantity, 15) || 1).keys()].map((number) => (
               <option value={number + 1}>{number + 1}</option>
             )) : <option value="">--</option>}
