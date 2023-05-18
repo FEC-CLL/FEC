@@ -51,7 +51,7 @@ export default function Product({ product = {} }) {
           <button type="button" className={thumbnailIndex !== 0 ? 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--up' : 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--hidden'} aria-label="Up" onClick={() => setThumbnailIndex(Math.max(0, thumbnailIndex - 1))} />
           <div className="image-gallery__thumbnail-nav__list-wrapper">
             <ul className="image-gallery__thumbnail-nav__list" style={{ transform: `translateY(${thumbnailIndex * -70}px)` }}>
-              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className={index === mainImageIndex ? 'image-gallery__thumbnail-nav__image image-gallery__thumbnail-nav__image--selected' : 'image-gallery__thumbnail-nav__image'} src={photo.thumbnail_url} alt="Thumbnail" /></button></li>)}
+              {styles[styleIndex].photos?.map((photo, index) => <li key={photo.thumbnail_url}><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button"><img className={index === mainImageIndex ? 'image-gallery__thumbnail-nav__image image-gallery__thumbnail-nav__image--selected' : 'image-gallery__thumbnail-nav__image'} src={photo.thumbnail_url} alt="Thumbnail" /></button></li>)}
             </ul>
           </div>
           {thumbnailIndex !== styles[styleIndex].photos.length - 6 && styles[styleIndex].photos.length > 7 && <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" onClick={() => setThumbnailIndex(Math.min(thumbnailIndex + 1, styles[styleIndex].photos.length - 6))} />}
@@ -91,8 +91,8 @@ export default function Product({ product = {} }) {
           </p>
           <ul>
             {styles.map((result, index) => (
-              <li>
-                <button type="button" title={result.name} onClick={() => styleHandler(index)} key={result.photos[0].thumbnail_url}>
+              <li key={result.photos[0].thumbnail_url}>
+                <button type="button" title={result.name} onClick={() => styleHandler(index)}>
                   {styleIndex === index && <span className="product-information__style-selector--selected" />}
                   <img className="product-information__style-selector__thumbnail" src={result.photos[0].thumbnail_url} alt="Add to Cart Icon" />
                 </button>
@@ -109,7 +109,7 @@ export default function Product({ product = {} }) {
           </select>
           <select className="product-information__select" name="quantity" id="quantity" disabled={!skuId}>
             {skuId ? [...Array(Math.min(currentSku?.quantity, 15) || 1).keys()].map((number) => (
-              <option value={number + 1}>{number + 1}</option>
+              <option value={number + 1} key={number}>{number + 1}</option>
             )) : <option value="">--</option>}
           </select>
         </div>
