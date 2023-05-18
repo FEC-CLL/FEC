@@ -35,7 +35,8 @@ function AddReview({ initProd, metaData, setShowDialog }) {
     if (fit && char.Fit) { charsObj[char.Fit.id] = fit * 1; }
   }
 
-  const onSubmitClick = () => {
+  const onSubmitClick = (event) => {
+    event.preventDefault();
     const data = {
       product_id: initProd.id,
       rating: overallRating * 1,
@@ -47,21 +48,6 @@ function AddReview({ initProd, metaData, setShowDialog }) {
       photos: [],
       characteristics: charsObj,
     };
-
-    if ((Object.keys(char).length !== Object.keys(charsObj).length)
-        || (!data.rating) || (!data.body) || (!data.recommend)
-        || (!data.name) || (!data.email)) {
-      alert('You must enter the following: mandatory fields');
-    }
-
-    if (data.body.length < 50) {
-      alert('The review body is less than 50 characters');
-    }
-
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(data.email)) {
-      alert('The email address provided is not in correct email format');
-    }
 
     axios.post('/reviews', data)
       .then(() => {
@@ -77,44 +63,48 @@ function AddReview({ initProd, metaData, setShowDialog }) {
   /// ///////////////////////
   return (
     <div className="AddReviewModal content">
-      <div className="AddReviewText1">Write Your Review</div>
-      <div className="AddReviewText2">
+      <h4 className="reviewHeader1 modal-title">Write Your Review</h4>
+      <div className="reviewHeader2 modal-subtitle">
         About the
         {' '}
         {initProd.name}
       </div>
-      <OverallRating overallRating={overallRating} setOverallRating={setOverallRating} />
-      <br />
-      <ProductRecommendation recommend={recommend} setRecommend={setRecommend} />
-      <br />
-      <ProductCharacteristics
-        char={char}
-        charProp={{
-          setSize,
-          setWidth,
-          setComfort,
-          setQuality,
-          setLength,
-          setFit,
-          size,
-          width,
-          comfort,
-          quality,
-          length,
-          fit,
-        }}
-      />
-      <br />
-      <ReviewSummary setReviewSummary={setReviewSummary} />
-      <br />
-      <ReviewBody setReviewBody={setReviewBody} />
-      <br />
-      <ReviewNickname setReviewNickname={setReviewNickname} />
-      <br />
-      <ReviewEmail setReviewEmail={setReviewEmail} />
-      <br />
-      <button type="button" id="submitButton" className="buttonRR" onClick={onSubmitClick}>SUBMIT</button>
-      <button type="button" id="cancelButton" className="buttonRR" onClick={() => setShowDialog(false)}>CANCEL</button>
+      <form onSubmit={onSubmitClick}>
+        <OverallRating overallRating={overallRating} setOverallRating={setOverallRating} />
+        <br />
+        <ProductRecommendation recommend={recommend} setRecommend={setRecommend} />
+        <br />
+        <ProductCharacteristics
+          char={char}
+          charProp={{
+            setSize,
+            setWidth,
+            setComfort,
+            setQuality,
+            setLength,
+            setFit,
+            size,
+            width,
+            comfort,
+            quality,
+            length,
+            fit,
+          }}
+        />
+        <br />
+        <ReviewSummary setReviewSummary={setReviewSummary} />
+        <br />
+        <ReviewBody setReviewBody={setReviewBody} />
+        <br />
+        <ReviewNickname setReviewNickname={setReviewNickname} />
+        <br />
+        <ReviewEmail setReviewEmail={setReviewEmail} />
+        <br />
+        <div className="reviewButtons">
+          <button type="button" id="cancelButton" className="buttonRR" onClick={() => setShowDialog(false)}>CANCEL</button>
+          <button type="submit" id="submitButton" className="buttonRR">SUBMIT</button>
+        </div>
+      </form>
     </div>
   );
 }

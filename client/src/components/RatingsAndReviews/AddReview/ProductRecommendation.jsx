@@ -8,8 +8,8 @@ function ProductRecommendation({ recommend, setRecommend }) {
   };
 
   return (
-    <div>
-      <div> Do you recommend this product?*</div>
+    <div className="productRecommendation">
+      <div className="modal-component-title">*Do you recommend this product?</div>
       <input
         type="radio"
         name="recommend"
@@ -17,6 +17,7 @@ function ProductRecommendation({ recommend, setRecommend }) {
         id="yes"
         checked={recommend === true}
         onChange={onOptionChange}
+        required
       />
       <label htmlFor="yes">Yes</label>
 

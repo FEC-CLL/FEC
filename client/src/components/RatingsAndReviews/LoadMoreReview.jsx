@@ -1,8 +1,8 @@
 import React from 'react';
 
-function LoadMoreReviews({ page, setPage, reviewNum }) {
+function LoadMoreReviews({ count, setCount, reviewNum }) {
   const loadMoreReviewsOnClick = () => {
-    setPage(page + 1);
+    setCount(count + 2);
   };
 
   if (reviewNum >= 2) {
