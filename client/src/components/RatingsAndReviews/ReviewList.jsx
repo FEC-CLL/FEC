@@ -14,7 +14,6 @@ function ReviewList({ allReviews, reported, setReported }) {
           />
         ))
       }
-
     </div>
   );
 }

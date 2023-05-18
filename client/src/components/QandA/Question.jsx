@@ -129,7 +129,7 @@ function Question({
             {question.question_helpfulness}
             )
             <div className="pole"> | </div>
-            <button type="button" onClick={() => setShow(true)} className="astext">Add Answer</button>
+            <button type="button" onClick={() => setShow(true)} className="addAnswerButton astext">Add Answer</button>
             <AddAnswer
               addAnswer={addAnswerHandler}
               product={product}

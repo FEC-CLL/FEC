@@ -98,7 +98,7 @@ function AddAnswer({
           <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
           <div className="photo-container">
             <div className="modal-component-title">Photos:</div>
-            {images.length < 5 ? <input type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
+            {images.length < 5 ? <input className="file-input" type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
             <div className="photos">
               { imageURLs.map((imageSrc) => <img className="photo" alt="this is a ..." src={imageSrc} />)}
             </div>
