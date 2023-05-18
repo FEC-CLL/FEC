@@ -97,7 +97,6 @@ function Outfits({ initProd }) {
         </div>
       </div>
 
-
       {/* right arrow */}
       {(index <= listLength - 2 && listLength >= 2)
         ? (
