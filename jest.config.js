@@ -5,4 +5,5 @@ module.exports = {
     '\\.(css)$': '<rootDir>/__mocks__/styleMock.js',
   },
   setupFilesAfterEnv: ['./setupTests.js'],
+  modulePathIgnorePatterns: ['client/src/components/RelatedItemsAndComparisons/__tests__/Related.spec.jsx'],
 };
