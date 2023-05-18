@@ -14,7 +14,7 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
     if (initProd.id) {
       axios.get(`/related/${initProd.id}`)
         .then((response) => {
-          // console.log('Array of related products data: ', response.data);
+          console.log('Array of related products data: ', response.data);
           setRelatedProducts(response.data.filter((product) => product.id !== initProd.id));
         })
         .catch((err) => {
@@ -24,15 +24,14 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
   }, [initProd.id]);
 
   return (
-    <div className="relatedContainer">
-      <div className="relatedList">
-        <span>Related Products</span>
-        <RelatedProducts
-          initProd={initProd}
-          relatedProducts={relatedProducts}
-          updateProduct={updateProduct}
-        />
-      </div>
+    <div className="relatedContainer relatedList">
+
+      <span>Related Products</span>
+      <RelatedProducts
+        initProd={initProd}
+        relatedProducts={relatedProducts}
+        updateProduct={updateProduct}
+      />
 
       <div className="outfitsList">
         <span>Outfits</span>

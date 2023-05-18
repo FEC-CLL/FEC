@@ -1,6 +1,17 @@
 /* Card List */
 .relatedList {
   overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-card-map, .rp-list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.rp-card-map {
+  justify-content: space-between;
 }
 
 .productCard {
@@ -10,12 +21,13 @@
   background-color: white;
   height: 470px;
   width: 380px;
-  margin: auto;
+  /* margin: auto; */
   transition: background-color 1s ease-out 50ms;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  /* overflow-wrap: break-word; */
+  /* word-wrap: break-word; */
   margin-right: 5%;
   margin-left: 5%;
+  padding: 10px;
 }
 
 .productCard:hover {
@@ -64,6 +76,45 @@
 /* Star Ratings */
 .rating {
   margin-top: 0px;
+}
+
+/* Carousel Buttons */
+.rp-left-arrow {
+  position: relative;
+  border: none;
+  background: none;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.rp-left-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rp-left-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+}
+
+.rp-right-arrow {
+  position: relative;
+  border: none;
+  background: none;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.rp-right-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rp-right-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
 }
 
 /* Comparison Table */

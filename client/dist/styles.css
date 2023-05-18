@@ -37,8 +37,8 @@ body {
 .relatedContainer {
   border-style: solid;
   border-color: red;
-  height: 1000px;
-  overflow: auto;
+  height: 1050px;
+  /* overflow: auto; */
 }
 
 /* Sasha */
