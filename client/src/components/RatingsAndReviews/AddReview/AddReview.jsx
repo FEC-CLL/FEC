@@ -77,8 +77,8 @@ function AddReview({ initProd, metaData, setShowDialog }) {
   /// ///////////////////////
   return (
     <div className="AddReviewModal content">
-      <div>Write Your Review</div>
-      <div>
+      <div className="AddReviewText1">Write Your Review</div>
+      <div className="AddReviewText2">
         About the
         {' '}
         {initProd.name}

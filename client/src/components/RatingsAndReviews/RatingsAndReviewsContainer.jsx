@@ -14,6 +14,15 @@ function RatingsAndReviewsContainer({ initProd }) {
   const [reviewNum, setReviewNum] = useState(0);
   const [sortType, setSortType] = useState('relevant');
   const [showDialog, setShowDialog] = useState(false);
+  const starsState = {
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+  };
+  const [starsFilter, setStarsFilter] = useState(starsState);
+  const filteredReviews = allReviews.filter((review) => starsFilter[review.rating.toString()]);
 
   useEffect(() => {
     if (initProd.id) {
@@ -41,16 +50,20 @@ function RatingsAndReviewsContainer({ initProd }) {
       <div className="rrTitle">RATINGS & REVIEWS</div>
       <div className="rrContainer">
         <div className="ratings1Container">
-          <RatingOverall metaData={metaData} />
+          <RatingOverall
+            metaData={metaData}
+            starsFilter={starsFilter}
+            setStarsFilter={setStarsFilter}
+          />
         </div>
         <div className="reviewContainer">
           <ReviewSorting
             setSortType={setSortType}
             setPage={setPage}
             setAllReviews={setAllReviews}
-            allReviews={allReviews}
+            allReviews={filteredReviews}
           />
-          <ReviewList allReviews={allReviews} />
+          <ReviewList allReviews={filteredReviews} />
           <div>
             <LoadMoreReviews page={page} setPage={setPage} reviewNum={reviewNum} />
             <button type="button" className="buttonRR" id="addReviewButton" onClick={() => setShowDialog(true)}>ADD REVIEW</button>
