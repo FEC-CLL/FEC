@@ -12,6 +12,7 @@ export default function Product({ product = {} }) {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [skuId, setSkuId] = useState(null);
   const [thumbnailIndex, setThumbnailIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -45,26 +46,26 @@ export default function Product({ product = {} }) {
 
   return (
     <div className="container">
-      <div className="image-gallery">
+      <div className="image-gallery" style={{ width: isExpanded ? '100%' : '66.66%' }}>
         <div className="image-gallery__thumbnail-nav">
           <button type="button" className={thumbnailIndex !== 0 ? 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--up' : 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--hidden'} aria-label="Up" onClick={() => setThumbnailIndex(Math.max(0, thumbnailIndex - 1))} />
           <div className="image-gallery__thumbnail-nav__list-wrapper">
             <ul className="image-gallery__thumbnail-nav__list" style={{ transform: `translateY(${thumbnailIndex * -70}px)` }}>
-              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail 1" /></button></li>)}
+              {styles[styleIndex].photos?.map((photo, index) => <li><button onClick={() => setMainImageIndex(index)} onKeyPress={() => setMainImageIndex(index)} type="button" key={photo.thumbnail_url}><img className="image-gallery__thumbnail-nav__image" src={photo.thumbnail_url} alt="Thumbnail" /></button></li>)}
             </ul>
           </div>
           {thumbnailIndex !== styles[styleIndex].photos.length - 6 && styles[styleIndex].photos.length > 7 && <button type="button" className="image-gallery__thumbnail-nav__down" aria-label="Down" onClick={() => setThumbnailIndex(Math.min(thumbnailIndex + 1, styles[styleIndex].photos.length - 6))} />}
         </div>
         <div className="image-gallery__image">
-          <button type="button" className="image-gallery__image-left" aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
+          <button type="button" className={mainImageIndex !== 0 ? 'image-gallery__image-left' : 'image-gallery__thumbnail-nav__button--hidden'} aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
           <div className="image-gallery__image__main-wrapper">
-            <img className="image-gallery__image__main" style={{ transformOrigin: `${mousePosition.x}px ${mousePosition.y}px` }} onMouseMove={mainImgZoomHandler} src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+            <img className={isExpanded ? 'image-gallery__image__main image-gallery__image__main--zoom' : 'image-gallery__image__main'} style={{ transformOrigin: `${mousePosition.x}px ${mousePosition.y}px` }} onMouseMove={mainImgZoomHandler} src={styles[styleIndex].photos[mainImageIndex].url} alt="Main Product" />
+            <button className="image-gallery__image__main-expand" type="button" aria-label="Expand" onClick={() => setIsExpanded(!isExpanded)} />
           </div>
-          <button className="image-gallery__image-expand" type="button" aria-label="Expand" />
-          <button type="button" className="image-gallery__image-right" aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
+          <button type="button" className={mainImageIndex !== styles[styleIndex].photos.length - 1 ? 'image-gallery__image-right' : 'image-gallery__thumbnail-nav__button--hidden'} aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
       </div>
-      <div className="product-information">
+      <div className={isExpanded ? 'product-information--collapsed' : 'product-information--expanded'}>
         <div className="product-information__reviews">
           <ProductStar averageReview={averageReview} />
           {' '}
