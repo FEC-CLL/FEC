@@ -18,9 +18,6 @@
   transition-duration: 0.5s;
   margin-left: 4.5%;
   margin-right: 4.5%;
-}
-
-.rp-card-map {
   justify-content: space-between;
 }
 
@@ -32,13 +29,10 @@
   background-color: white;
   min-height: 470px;
   min-width: 380px;
-  /* margin: auto; */
   transition: background-color 1s ease-out 40ms;
-  /* overflow-wrap: break-word; */
-  /* word-wrap: break-word; */
   margin-right: 5%;
   margin-left: 5%;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .productCard:hover {
@@ -220,7 +214,7 @@ body.active-modal {
   transform: scale(0.25);
 }
 
-.outfits-container {
+.outfits-list {
   display: flex;
   margin-left: 4.5%;
   margin-right: 4.5%;
@@ -231,21 +225,30 @@ body.active-modal {
   border-color: grey;
   background-color: white;
   border-radius: 8px;
-  height: 470px;
-  width: 380px;
-  margin: auto;
+  min-height: 470px;
+  min-width: 380px;
+  /* margin: auto; */
   transition: background-color 1s ease-out 50ms;
-  margin-right: 5%;
-  margin-left: 5%;
-  padding: 10px;
+  /* margin-right: 5%;
+  margin-left: 5%; */
+  /* padding: 10px; */
 }
 
 .add-to-outfit-card:hover {
   background-color: #BFBFA7;
 }
 
+.outfits-map {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  /* margin-left: 4.5%;
+  margin-right: 4.5%; */
+}
+
 /* Outfits Carousel Buttons */
-/* .outfits-left-arrow {
+.outfits-left-arrow {
   position: relative;
   border-style: thin;
   border-radius: 8px;
@@ -283,4 +286,4 @@ body.active-modal {
 
 .outfits-right-arrow button:hover {
   transform: scale(1.5) perspective(1px);
-} */
+}
