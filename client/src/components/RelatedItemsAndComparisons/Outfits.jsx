@@ -34,7 +34,7 @@ function Outfits({ initProd }) {
 
   // Carousel event handlers
   const moveRight = () => {
-    alert('Moving right');
+    // alert('Moving right');
     if (index <= listLength - 2) {
       setIndex(index + 1);
       setWidth(-((index) * 450));
@@ -42,7 +42,7 @@ function Outfits({ initProd }) {
   };
 
   const moveLeft = () => {
-    alert('Moving left');
+    // alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
       setWidth(width + 450);

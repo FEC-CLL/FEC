@@ -24,18 +24,18 @@ function RelatedProducts({
   }, [relatedProducts]);
 
   const moveRight = () => {
-    alert('Moving right');
+    // alert('Moving right');
     if (index <= listLength - 3) {
       setIndex(index + 1);
-      setWidth(-((index) * 450));
+      setWidth(-((index) * 500));
     }
   };
 
   const moveLeft = () => {
-    alert('Moving left');
+    // alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
-      setWidth(width + 450);
+      setWidth(width + 500);
     }
   };
 

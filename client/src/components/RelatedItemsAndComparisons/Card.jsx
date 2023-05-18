@@ -82,32 +82,35 @@ function Card({
       )}
       <div className="productCard" data-testid="rp-card" onClick={handleCardClick}>
 
-        {removeFromOutfit === undefined ? (
-          <button
-            className="compareButton"
-            data-testid="rp-comparebtn"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              handleCompareClick();
-            }}
-          >
-            ⭐
-          </button>
-        )
-          : (
+        <div className="btns-wrapper">
+          <div />
+          {removeFromOutfit === undefined ? (
             <button
-              className="remove-button"
-              data-testid="outfit-remove"
+              className="compareButton"
+              data-testid="rp-comparebtn"
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                removeFromOutfit(product.id);
+                handleCompareClick();
               }}
             >
-              X
+              ⭐
             </button>
-          )}
+          )
+            : (
+              <button
+                className="remove-button"
+                data-testid="outfit-remove"
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  removeFromOutfit(product.id);
+                }}
+              >
+                X
+              </button>
+            )}
+        </div>
 
         <img className="cardImg" data-testid="rp-cimage" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 

@@ -52,6 +52,12 @@
   background-color: #BFBFA7;
 }
 
+.btns-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .compareButton {
   position: relative;
 }
