@@ -216,16 +216,28 @@ body.active-modal {
 }
 
 /* Outfit List */
+.plus-icon {
+  transform: scale(0.25);
+}
+
+.outfits-container {
+  display: flex;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+}
 .add-to-outfit-card {
   border-style: solid;
   border-width: thin;
   border-color: grey;
   background-color: white;
+  border-radius: 8px;
   height: 470px;
   width: 380px;
   margin: auto;
   transition: background-color 1s ease-out 50ms;
-  overflow-wrap: break-word;
+  margin-right: 5%;
+  margin-left: 5%;
+  padding: 10px;
 }
 
 .add-to-outfit-card:hover {

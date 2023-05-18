@@ -33,7 +33,7 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
       />
       <div className="outfits-container">
         <span>Outfits</span>
-        <Outfits initProd={initProd} />
+        <Outfits initProd={initProd} updateProduct={updateProduct} />
       </div>
 
     </div>

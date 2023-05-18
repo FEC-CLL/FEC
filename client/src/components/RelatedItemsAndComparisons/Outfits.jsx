@@ -14,7 +14,7 @@ import Card from './Card';
 // There should be validation so no duplicate products are added
 // if already exists in array state
 
-function Outfits({ initProd }) {
+function Outfits({ initProd, updateProduct }) {
   const [closet, setCloset] = useState([]);
   const [index, setIndex] = useState(1);
   const [width, setWidth] = useState(0);
@@ -33,6 +33,7 @@ function Outfits({ initProd }) {
 
   const removeFromOutfit = () => {
     // TODO: remove from local storage
+    alert('removing from outfit');
   };
 
   // Carousel event handlers
@@ -65,6 +66,7 @@ function Outfits({ initProd }) {
   return (
     <div className="outfits-list">
 
+      {/* left arrow */}
       {index !== 1
         ? (
           <div className="outfits-left-arrow" onClick={() => moveLeft()}>
@@ -77,12 +79,27 @@ function Outfits({ initProd }) {
           </div>
         )}
 
+      {/* add to outfit card */}
       <div className="add-to-outfit-card" onClick={() => { addToOutfit(); }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <svg className="plus-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path fill="#000000" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
         </svg>
       </div>
 
+      {/* closet list */}
+      <div className="outfits-map" data-testid="outfits-map" style={styles}>
+        {closet.map((product) => (
+          <Card
+            initProd={initProd}
+            updateProduct={updateProduct}
+            product={product}
+            key={product.id}
+            removeFromOutfit={removeFromOutfit}
+          />
+        ))}
+      </div>
+
+      {/* right arrow */}
       {(index <= listLength - 3 && listLength >= 3)
         ? (
           <div className="outfits-right-arrow" onClick={() => moveRight()}>
