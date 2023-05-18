@@ -24,15 +24,13 @@ function RelatedItemsAndComContainer({ initProd, updateProduct }) {
   }, [initProd.id]);
 
   return (
-    <div className="relatedContainer relatedList">
-
+    <div className="relatedContainer">
       <span>Related Products</span>
       <RelatedProducts
         initProd={initProd}
         relatedProducts={relatedProducts}
         updateProduct={updateProduct}
       />
-
       <div className="outfitsList">
         <span>Outfits</span>
         <Outfits />

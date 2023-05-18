@@ -1,13 +1,23 @@
 /* Card List */
-.relatedList {
+/* .relatedList {
   overflow-x: scroll;
   display: flex;
   flex-direction: column;
+} */
+
+.rp-list-container {
+  display: flex;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
 }
 
-.rp-card-map, .rp-list-container {
+.rp-card-map {
   display: flex;
   flex-direction: row;
+  overflow-x: hidden;
+  transition-duration: 0.5s;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
 }
 
 .rp-card-map {
@@ -18,11 +28,12 @@
   border-style: solid;
   border-width: thin;
   border-color: grey;
+  border-radius: 8px;
   background-color: white;
-  height: 470px;
-  width: 380px;
+  min-height: 470px;
+  min-width: 380px;
   /* margin: auto; */
-  transition: background-color 1s ease-out 50ms;
+  transition: background-color 1s ease-out 40ms;
   /* overflow-wrap: break-word; */
   /* word-wrap: break-word; */
   margin-right: 5%;
@@ -81,8 +92,9 @@
 /* Carousel Buttons */
 .rp-left-arrow {
   position: relative;
-  border: none;
-  background: none;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
   z-index: 10;
   margin: auto;
   transform: scale(2);
@@ -100,8 +112,9 @@
 
 .rp-right-arrow {
   position: relative;
-  border: none;
-  background: none;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
   z-index: 10;
   margin: auto;
   transform: scale(2);
