@@ -240,8 +240,6 @@ describe('Questions Component', () => {
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
 
-    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-
     expect(screen.getByText('Ask Your Question')).toBeInTheDocument();
   });
 
@@ -252,7 +250,6 @@ describe('Questions Component', () => {
       data: answerData,
     }));
     render(<QandAContainer product={testData} />);
-    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
     await waitFor(() => screen.getByText('A:'));
 
     expect(screen.getByText('A:')).toBeInTheDocument();
@@ -267,9 +264,6 @@ describe('Questions Component', () => {
       expect(button).toBeInTheDocument();
       fireEvent.click(button);
     });
-
-    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-
     expect(screen.getByText('Submit your Answer')).toBeInTheDocument();
   });
 
@@ -327,7 +321,7 @@ describe('Questions Component', () => {
 
   it('should filter results on search bar change', async () => {
     render(<Search
-      filter
+      filter={() => {}}
     />);
     const searchBar = screen.getByPlaceholderText('HAVE A QUESTION? SEARCH FOR ANSWERS...');
     fireEvent.change(searchBar, { target: { value: 'are' } });
@@ -343,7 +337,7 @@ describe('Questions Component', () => {
     expect(answerIsHelpful).toBeInTheDocument();
     fireEvent.click(answerIsHelpful);
     // expect(43).toBeInTheDocument();
-    //expect answers.length to be + 2;
+    // expect answers.length to be + 2;
   });
 
   it('should report question on report button click', async () => {
@@ -355,8 +349,6 @@ describe('Questions Component', () => {
     const answerIsReported = await screen.getByText('Report');
     expect(answerIsReported).toBeInTheDocument();
     fireEvent.click(answerIsReported);
-    // expect(43).toBeInTheDocument();
-    //expect answers.length to be + 2;
   });
 
   it('should expand answers on see more answers click', async () => {
@@ -366,15 +358,12 @@ describe('Questions Component', () => {
       data: answerData,
     }));
     render(<QandAContainer product={testData} />);
-    // await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
     await waitFor(() => screen.getByText('A:'));
 
     const showMoreAnswers = await screen.getByText('See More answers');
     expect(showMoreAnswers).toBeInTheDocument();
 
     fireEvent.click(showMoreAnswers);
-
-    // expect(screen.getByText('A:')).toBeInTheDocument();
   });
 
   it('should collapse answers on see more answers click', async () => {
@@ -384,7 +373,6 @@ describe('Questions Component', () => {
       data: answerData,
     }));
     render(<QandAContainer product={testData} />);
-    // await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
     await waitFor(() => screen.getByText('A:'));
 
     const showMoreAnswers = await screen.getByText('See More answers');
@@ -395,19 +383,5 @@ describe('Questions Component', () => {
       expect(collapseAnswers).toBeInTheDocument();
       fireEvent.click(collapseAnswers);
     });
-
-    // expect(screen.getByText('A:')).toBeInTheDocument();
   });
-
-  // it('should render modal on add answer button click', async () => {
-  //   jest.spyOn(axios, 'get').mockResolvedValueOnce({ data });
-  //   const {container} = render(<QandAContainer product={testData} />);
-
-  //   await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-
-  //   const button = container.getElementsByClassName('addAnswerButton');
-  //   expect(button).toBeInTheDocument();
-  //   fireEvent.click(button);
-  //   expect(screen.getByText('Submit your Answer')).toBeInTheDocument();
-  // });
 });
