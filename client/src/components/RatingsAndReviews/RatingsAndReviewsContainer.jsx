@@ -47,7 +47,7 @@ function RatingsAndReviewsContainer({ initProd }) {
             allReviews={allReviews}
           />
           <ReviewList allReviews={allReviews} reported={reported} setReported={setReported} />
-          <div>
+          <div className="reviewFooterButtons">
             <LoadMoreReviews count={count} setCount={setCount} reviewNum={reviewNum} />
             <button type="button" className="buttonRR" id="addReviewButton" onClick={() => setShowDialog(true)}>ADD REVIEW</button>
           </div>

@@ -1,6 +1,9 @@
 /* Julie */
 .rrTitle {
   text-align: left;
+  font-size: 22px;
+  font-weight: 100;
+  margin-bottom: 15px;
 }
 
 .rrContainer {
@@ -18,11 +21,19 @@
 .reviewSorting {
   display: flex;
   flex-direction: row;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.reviewSorting {
-  display: flex;
-  flex-direction: row;
+.reviewSortingText {
+  margin-right: 4px;
+}
+
+.sortDropdown {
+  margin-left: 4px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .reviewContainer {
@@ -30,7 +41,7 @@
 }
 
 .reviewList {
-  max-height: 100vh;
+  max-height: 60vh;
   overflow: auto;
 }
 
@@ -68,7 +79,7 @@
 }
 
 .reviewSummary {
-  /*margin-top: 2%;*/
+  margin-bottom: 4px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -95,7 +106,7 @@
 }
 
 .reviewPhoto {
-  padding: 0.1%;
+  /*padding: 5px;*/
 }
 
 .reviewFooter {
@@ -120,7 +131,7 @@
 .yes {
   text-decoration: underline;
   margin-left: 3%;
-  margin-right: 2px;
+  margin-right: 5px;
   font-family: Arial;
   font-size: 13.3px;
   cursor: pointer;
@@ -139,10 +150,16 @@
   /*margin-left: 3%;*/
 }
 
+.reviewFooterButtons {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
 .reviewButtons {
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 10px;
 }
 
 .buttonRR {
@@ -155,7 +172,7 @@
   text-align: left;
   width: 20%;
   border: 1px solid;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 #loadMoreReviewsButton {
