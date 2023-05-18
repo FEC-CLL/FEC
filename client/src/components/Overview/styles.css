@@ -272,8 +272,13 @@
   width: 100%;
 }
 
-.share-links__twitter {
+.share-links-wrapper {
+  margin-top: 10px;
+}
+
+.share-links__icon {
   height: 32px;
   width: 32px;
   object-fit: contain;
+  padding: 10px;
 }

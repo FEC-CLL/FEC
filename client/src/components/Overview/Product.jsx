@@ -116,12 +116,15 @@ export default function Product({ product = {} }) {
         <button type="button" disabled={!skuId} className="product-information__add-to-cart" onClick={submitCart}>
           Add to Cart
         </button>
-        <div className="share-links">
+        <div className="share-links-wrapper">
           <a href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=`} target="_blank" rel="noreferrer">
             <img className="share-links__icon" src="/assets/icons/twitter.png" alt="twitter" />
           </a>
           <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noreferrer">
             <img className="share-links__icon" src="/assets/icons/facebook.png" alt="facebook" />
+          </a>
+          <a href={`https://pinterest.com/pin/create/button/?url=${window.location.href}&media=&description=`} target="_blank" rel="noreferrer">
+            <img className="share-links__icon" src="/assets/icons/pinterest.png" alt="pinterest" />
           </a>
         </div>
       </div>
