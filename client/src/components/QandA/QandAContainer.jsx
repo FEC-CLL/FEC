@@ -107,6 +107,20 @@ function QandA({ product }) {
     }
   };
 
+  // eslint-disable-next-line camelcase
+  const handleReportQuestion = (question_id) => {
+    axios.put('/qa/questions/report', {
+      // eslint-disable-next-line camelcase
+      question_id,
+    })
+      .then(() => {
+        console.log('reported');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="qaContainer container">
       <div className="qaComponent">
@@ -121,6 +135,7 @@ function QandA({ product }) {
           questions={currentQuestions}
           product={product}
           questionHandler={questionHelpfulHandler}
+          reportHandler={handleReportQuestion}
         />
       </div>
       <div className="qaComponent">

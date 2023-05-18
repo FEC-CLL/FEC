@@ -63,6 +63,7 @@ function AddAnswer({
     };
     addAnswer(data);
     setShow(!show);
+    setImageURLs([]);
   };
 
   if (!show) {
@@ -74,7 +75,7 @@ function AddAnswer({
       {/* eslint-disable-next-line */}
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h4 className="modal-title">Submit your Answer</h4>
+          <h4 className="modal-title">Submit Your Answer</h4>
           <div className="modal-subtitle">
             {product.name}
             :
@@ -83,24 +84,26 @@ function AddAnswer({
             {' '}
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="modal-body">
-          <div className="modal-body-title">Your answer: </div>
-          <textarea onChange={handleAnswerChange} maxLength="1000" className="modal-textArea" required />
-          <div className="modal-body-container">
-            <div className="modal-component-title">Nickname:</div>
-            <input onChange={handleNicknameChange} type="text" maxLength="60" placeholder="Example: jack543!" required />
-          </div>
-          <div className="modal-warning">*For privacy reasons, do not use your full name or email address </div>
-          <div className="modal-body-container">
-            <div className="modal-component-title">Email:</div>
-            <input onChange={handleEmailChange} id="email" type="email" maxLength="60" placeholder="Example: jack@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
-          </div>
-          <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
-          <div className="photo-container">
-            <div className="modal-component-title">Photos:</div>
-            {images.length < 5 ? <input className="file-input" type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
-            <div className="photos">
-              { imageURLs.map((imageSrc) => <img className="photo" alt="this is a ..." src={imageSrc} />)}
+        <form onSubmit={handleSubmit}>
+          <div className="modal-body">
+            <div className="modal-body-title">Your Answer: </div>
+            <textarea onChange={handleAnswerChange} maxLength="1000" className="modal-textArea" required />
+            <div className="modal-body-container">
+              <div className="modal-component-title">Nickname:</div>
+              <input onChange={handleNicknameChange} type="text" maxLength="60" placeholder="Example: jack543!" required />
+            </div>
+            <div className="modal-warning">*For privacy reasons, do not use your full name or email address </div>
+            <div className="modal-body-container">
+              <div className="modal-component-title">Email:</div>
+              <input onChange={handleEmailChange} id="email" type="email" maxLength="60" placeholder="Example: jack@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+            </div>
+            <div className="modal-warning">*For authentication reasons, you will not be emailed </div>
+            <div className="photo-container">
+              <div className="modal-component-title">Photos:</div>
+              {images.length < 5 ? <input className="file-input" type="file" multiple accept="image/*" onChange={onImageChange} /> : null}
+              <div className="photos">
+                { imageURLs.map((imageSrc) => <img className="photo" alt="this is a ..." src={imageSrc} />)}
+              </div>
             </div>
           </div>
           <div className="modal-footer">

@@ -2,7 +2,7 @@ import React from 'react';
 import Question from './Question';
 
 function QuestionList({
-  isLoaded, questions, product, questionHandler,
+  isLoaded, questions, product, questionHandler, reportHandler,
 }) {
   return (
     <div>
@@ -18,6 +18,7 @@ function QuestionList({
                 product={product}
                 questionHandler={questionHandler}
                 question={question}
+                reportHandler={reportHandler}
               />
             ))}
           </div>

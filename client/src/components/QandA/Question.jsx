@@ -4,7 +4,7 @@ import Answer from './Answer';
 import AddAnswer from './AddAnswer';
 
 function Question({
-  product, question, questionHandler,
+  product, question, questionHandler, reportHandler,
 }) {
   const [answers, setAnswers] = useState([]);
   const [currentAnswers, setCurrentAnswers] = useState([]);
@@ -13,6 +13,7 @@ function Question({
   const [isClicked, setIsClicked] = useState(false);
   const [show, setShow] = useState(false);
   const [answersIsExpanded, setAnswersIsExpanded] = useState(false);
+  const [reportClicked, setReportClicked] = useState(false);
 
   const getAnswers = () => {
     axios.get('/qa/answers', {
@@ -23,6 +24,16 @@ function Question({
       },
     })
       .then((res) => {
+        // sort newAnswers by seller
+        res.data.results.sort((a, b) => {
+          if (a.answerer_name.toLowerCase() === 'seller' && b.answerer_name.toLowerCase() !== 'seller') {
+            return -1;
+          }
+          if (a.answerer_name.toLowerCase() !== 'seller' && b.answerer_name.toLowerCase() === 'seller') {
+            return 1;
+          }
+          return 0;
+        });
         setAnswers(res.data.results);
         if (res.data.results.length < 2) {
           setAnswerCount(res.data.results.length);
@@ -114,6 +125,11 @@ function Question({
     setAnswersIsExpanded(false);
   };
 
+  const reportingHandler = () => {
+    reportHandler(question.question_id);
+    setReportClicked(true);
+  };
+
   return (
     <div className="qa-container">
       <div className="question-container">
@@ -137,6 +153,8 @@ function Question({
               show={show}
               setShow={setShow}
             />
+            <div className="pole"> | </div>
+            {reportClicked ? <div>Reported</div> : <button type="button" onClick={reportingHandler} className="astext">Report</button>}
           </span>
         </div>
       </div>

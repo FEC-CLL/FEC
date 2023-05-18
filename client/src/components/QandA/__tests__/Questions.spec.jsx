@@ -264,7 +264,7 @@ describe('Questions Component', () => {
       expect(button).toBeInTheDocument();
       fireEvent.click(button);
     });
-    expect(screen.getByText('Submit your Answer')).toBeInTheDocument();
+    expect(screen.getByText('Submit Your Answer')).toBeInTheDocument();
   });
 
   it('should test AddQuestion', async () => {
