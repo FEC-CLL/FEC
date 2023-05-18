@@ -9,7 +9,7 @@ function ReviewSorting({
 
   return (
     <div className="reviewSorting">
-      <div>
+      <div className="reviewSortingText">
         {allReviews.length}
         {' '}
         reviews, sorted by
