@@ -21,7 +21,7 @@ function QandA({ product }) {
         params: {
           product_id: product.id,
           page: 1,
-          count: 200, // make this dynamic
+          count: 100, // make this dynamic
         },
       })
         .then((res) => {
@@ -36,7 +36,8 @@ function QandA({ product }) {
         .then(() => {
           setIsReady(false);
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           console.log('erropr');
         });
     }

@@ -1,18 +1,117 @@
 /* Julie */
 .rrTitle {
   text-align: left;
+  margin-left: 4%;
 }
 
 .rrContainer {
   display: flex;
   flex-direction: row;
+  max-width: 1280px;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .ratings1Container {
   width: 30%;
-  border-style: solid;
-  border-color: blue;
   margin-right: 3%;
+}
+
+.ratingOverall {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratingOverallNum {
+  font-size: 50px;
+  font-weight: bold;
+  margin-right: 5%;
+  color: var(--secondary);
+
+}
+
+.ratingsOverallStars {
+  margin-top: 3%;
+  margin-bottom: 8%;
+}
+
+.starsName {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.RatingsSide {
+  float: left;
+  width: 23%;
+  margin-top:3px;
+}
+
+.RatingsMiddle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Clear floats after the columns */
+.RatingsRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar {height: 10px; background-color: #606060;}
+.charbar {height: 10px; text-align: right; color: black;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 100px) {
+  .RatingsSide, .RatingsMiddle {
+    width: 100%;
+  }
+}
+
+.ratingsCharsBreakdown {
+  margin-top: 3%;
+}
+
+.ratingCharBreakdown {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3%;
+}
+
+.ratingCharMiddle {
+  margin-top:10px;
+  float: left;
+  width: 93%;
+}
+
+.ratingCharName {
+  margin-bottom: -1%;
+  margin-top: 3%;
+}
+
+.ratingCharValues {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 93%;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--secondary);
+  margin-top: 1%;
+}
+
+.ratingCharPointer {
+  padding-bottom: 8%;
 }
 
 .reviewSorting {
@@ -27,6 +126,11 @@
 
 .reviewContainer {
   width: 70%;
+}
+
+.reviewList {
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .review {
@@ -49,81 +153,95 @@
 }
 
 .reviewReviewerName {
-
+  margin-right: 0.5%;
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
 }
 
 .reviewDate {
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
 
 }
 
 .reviewSummary {
-  margin-top: 2%;
-  font-size: 16px;
-  font-size: 16px;
+  /*margin-top: 2%;*/
+  font-size: 20px;
   font-weight: bold;
 }
 
 .reviewBody {
-  font-size: 14px;
-  font-size: 14px;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  font-size: 18px;
+  /*margin-top: 2%;
+  margin-bottom: 2%; */
+  font-weight: 100;
 }
 
 .reviewRecommend {
-  font-size: 12px;
+  font-size: 13px;
   font-style: italic;
   margin-left: 2%;
-  margin-bottom: 2.5%;
+  margin-bottom: 1.5%;
+  margin-top: 1%;
 }
 
 .reviewPhotos {
   display: flex;
   flex-direction: row;
-  margin-bottom: 2%;
+  margin-bottom: 0.5%;
 }
 
 .reviewPhoto {
-  padding: 0.3%;
-}
-
-.reviewRecommend {
-  font-size: 12px;
-  font-style: italic;
-  margin-left: 2%;
-  margin-bottom: 2.5%;
-}
-
-.reviewPhotos {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 2%;
-}
-
-.reviewPhoto {
-  padding: 0.3%;
+  padding: 0.1%;
 }
 
 .reviewFooter {
-  font-size: 11px;
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 100;
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .reviewHelpfulness {
   display: flex;
   flex-direction: row;
-  margin-right: 3%;
+  /*margin-right: 3%; */
+}
+
+.reviewHelpfulness1 {
+  margin-right: 5px;
+
 }
 
 .yes {
   text-decoration: underline;
-  margin-left: 1%;
+  margin-left: 3%;
+  margin-right: 2px;
+  font-family: Arial;
+  font-size: 13.3px;
+  cursor: pointer;
+}
+
+.reviewFooterDivider {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .reportText {
   text-decoration: underline;
+  font-family: Arial;
+  font-size: 13.3px;
+  cursor: pointer;
+  /*margin-left: 3%;*/
+}
+
+.reviewButtons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
 }
 
 .buttonRR {
@@ -135,6 +253,8 @@
   padding: 10px 20px;
   text-align: left;
   width: 20%;
+  border: 1px solid;
+  font-weight: bolder;
 }
 
 #loadMoreReviewsButton {
@@ -165,7 +285,7 @@
 }
 
 .modalrr {
-  width: 60%;
+  width: 70%;
   position:fixed;
   overflow-y:scroll;
   overflow-x:hidden;
@@ -174,18 +294,103 @@
   right: 0;
   bottom: 0;
   background: white;
-  border: 1px solid #ccc;
+  border: 1px solid var(--secondary);
   transition: 1.1s ease-out;
-  box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
+  box-shadow: -2rem 2rem 2rem rgba(black, 0.4);
   filter: blur(0);
   transform: scale(1);
   opacity: 1;
   visibility: visible;
-  padding-bottom: 5px;
-  margin-bottom: 5%;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.modal-subtitle-addReview {
+  font-size: small;
+  font-weight: 400;
+}
+
+.rating {
+  float:left;
+  border:none;
+}
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+  clip:rect(0, 0, 0, 0);
+}
+.rating:not(:checked) > label {
+  float:right;
+  width:1em;
+  padding:0 .1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:200%;
+  line-height:1.2;
+  color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+  content:'★ ';
+}
+.rating > input:checked ~ label {
+  color: #acac96;
+}
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+  color: #d2d2c1;
+}
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+  color: #BFBFA7;
+}
+.rating > label:active {
+  position:relative;
+}
+
+.reviewHeader2 {
+  margin-bottom: 20px;
+}
+
+.productRecommendation {
   margin-top: 5%;
 }
 
+.addReviewChar {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1%;
+  font-size: 15px;
+}
+
+.addReviewCharName {
+  margin-top: 1%;
+  margin-right: 1%;
+  text-decoration: underline;
+}
+
+.addReviewChoices {
+  margin-top: 1%;
+}
+
+.addReviewBodyTextArea {
+  width: 80%;
+  min-height: 50px;
+  max-height: 100px;
+  resize: vertical;
+}
+
+.addReviewSummaryTextArea {
+  width: 80%;
+  resize: vertical;
+}
+
+
+
+.reviewBodyCharCount {
+  font-size: 12px;
+}
 
 
 
