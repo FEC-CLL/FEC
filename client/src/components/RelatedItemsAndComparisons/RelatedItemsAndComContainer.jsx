@@ -24,7 +24,7 @@ function RelatedItemsAndComContainer({ initProd }) {
   }, [initProd.id]);
 
   return (
-    <div className="relatedContainer">
+    <div className="relatedContainer container">
       <span className="rp-title">Related Products</span>
       <RelatedProducts
         initProd={initProd}

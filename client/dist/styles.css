@@ -31,9 +31,13 @@ body {
 
 /* Frank */
 .relatedContainer {
+  display: flex;
+  flex-direction: column;
   /* border-style: solid;
   border-color: red; */
-  height: 1050px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
   /* overflow: auto; */
 }
 
@@ -42,10 +46,13 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 /* Julie */
 .ratingsContainer {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 5%;
   padding-bottom: 3%;
   height: auto;
