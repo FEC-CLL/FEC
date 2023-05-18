@@ -1,18 +1,117 @@
 /* Julie */
 .rrTitle {
   text-align: left;
+  margin-left: 4%;
 }
 
 .rrContainer {
   display: flex;
   flex-direction: row;
+  max-width: 1280px;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .ratings1Container {
   width: 30%;
-  border-style: solid;
-  border-color: blue;
   margin-right: 3%;
+}
+
+.ratingOverall {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratingOverallNum {
+  font-size: 50px;
+  font-weight: bold;
+  margin-right: 5%;
+  color: var(--secondary);
+
+}
+
+.ratingsOverallStars {
+  margin-top: 3%;
+  margin-bottom: 8%;
+}
+
+.starsName {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.RatingsSide {
+  float: left;
+  width: 23%;
+  margin-top:3px;
+}
+
+.RatingsMiddle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Clear floats after the columns */
+.RatingsRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar {height: 10px; background-color: #606060;}
+.charbar {height: 10px; text-align: right; color: black;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 100px) {
+  .RatingsSide, .RatingsMiddle {
+    width: 100%;
+  }
+}
+
+.ratingsCharsBreakdown {
+  margin-top: 3%;
+}
+
+.ratingCharBreakdown {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3%;
+}
+
+.ratingCharMiddle {
+  margin-top:10px;
+  float: left;
+  width: 93%;
+}
+
+.ratingCharName {
+  margin-bottom: -1%;
+  margin-top: 3%;
+}
+
+.ratingCharValues {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 93%;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--secondary);
+  margin-top: 1%;
+}
+
+.ratingCharPointer {
+  padding-bottom: 8%;
 }
 
 .reviewSorting {

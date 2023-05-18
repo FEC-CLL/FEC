@@ -5,7 +5,8 @@ function ReviewList({ allReviews }) {
   return (
     <div className="reviewList">
       {
-        allReviews.map((review) => <Review review={review} key={review.review_id} />)
+        allReviews
+          .map((review) => <Review review={review} key={review.review_id} />)
       }
 
     </div>
