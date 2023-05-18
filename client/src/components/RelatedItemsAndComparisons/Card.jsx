@@ -9,7 +9,7 @@ import ProductStar from '../Overview/ProductStar';
 // TODO: import image from API request
 
 function Card({
-  initProd, updateProduct, product,
+  initProd, updateProduct, product, removeFromOutfit,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -79,17 +79,34 @@ function Card({
         />
       )}
       <div className="productCard" data-testid="rp-card" onClick={handleCardClick}>
-        <button
-          className="compareButton"
-          data-testid="rp-comparebtn"
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            handleCompareClick();
-          }}
-        >
-          ⭐
-        </button>
+
+        {removeFromOutfit === undefined ? (
+          <button
+            className="compareButton"
+            data-testid="rp-comparebtn"
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleCompareClick();
+            }}
+          >
+            ⭐
+          </button>
+        )
+          : (
+            <button
+              className="remove-button"
+              data-testid="outfit-remove"
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                removeFromOutfit(product.id);
+              }}
+            >
+              X
+            </button>
+          )}
+
         <img className="cardImg" data-testid="rp-cimage" src={defaultImages[0] || imgUnavailableURL} alt="product" />
 
         <p className="category" data-testid="rp-category">{product.category}</p>
