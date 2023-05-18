@@ -31,10 +31,10 @@ body {
 
 /* Frank */
 .relatedContainer {
-  border-style: solid;
-  border-color: red;
-  height: 1000px;
-  overflow: auto;
+  /* border-style: solid;
+  border-color: red; */
+  height: 1050px;
+  /* overflow: auto; */
 }
 
 /* Sasha */

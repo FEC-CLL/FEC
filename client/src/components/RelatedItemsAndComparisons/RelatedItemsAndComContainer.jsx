@@ -15,7 +15,7 @@ function RelatedItemsAndComContainer({ initProd }) {
       axios.get(`/related/${initProd.id}`)
         .then((response) => {
           console.log('Array of related products data: ', response.data);
-          setRelatedProducts(response.data);
+          setRelatedProducts(response.data.filter((product) => product.id !== initProd.id));
         })
         .catch((err) => {
           console.error('Couldnt get back array of related', err);
@@ -25,14 +25,14 @@ function RelatedItemsAndComContainer({ initProd }) {
 
   return (
     <div className="relatedContainer">
-      <div className="relatedList">
-        <span>Related Products</span>
-        <RelatedProducts relatedProducts={relatedProducts} />
-      </div>
-
-      <div className="outfitsList">
-        <span>Outfits</span>
-        <Outfits />
+      <span className="rp-title">Related Products</span>
+      <RelatedProducts
+        initProd={initProd}
+        relatedProducts={relatedProducts}
+      />
+      <div className="outfits-container">
+        <span className="outfits-title">Outfits</span>
+        <Outfits initProd={initProd} />
       </div>
 
     </div>

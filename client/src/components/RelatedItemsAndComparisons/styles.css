@@ -1,34 +1,77 @@
 /* Card List */
+/* .relatedList {
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+} */
+
+.rp-title {
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  padding: 5px;
+  margin: auto;
+  transform: scale(2);
+}
+
+.rp-list-container {
+  display: flex;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+}
+
+.rp-card-map-wrap {
+  overflow: hidden;
+}
+
+.rp-card-map {
+  display: flex;
+  flex-direction: row;
+  /* overflow: hidden; */
+  transition-duration: 0.5s;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+  justify-content: space-between;
+}
+
 .productCard {
   border-style: solid;
   border-width: thin;
   border-color: grey;
+  border-radius: 8px;
   background-color: white;
-  height: 470px;
-  width: 380px;
-  margin: auto;
-  transition: background-color 2s ease-out 50ms;
-  overflow-wrap: break-word;
-  word-wrap: break-word
+  min-height: 470px;
+  min-width: 380px;
+  transition: background-color 1s ease-out 40ms;
+  margin-right: 5%;
+  /* margin-left: 5%; */
+  /* padding: 10px; */
 }
 
 .productCard:hover {
   background-color: #BFBFA7;
 }
 
+.btns-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.compareButton {
+  position: relative;
+}
+
 .cardImg {
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 300px;
-  width: auto; */
+  display: flex;
   min-width: 300px;
   max-width: 300px;
   min-height: 300px;
   max-height: 300px;
   border: solid;
   border-radius: 8px;
-  margin: 10px;
+  margin: auto;
+  object-fit: cover;
 }
 
 .category {
@@ -58,24 +101,232 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
+/* Star Ratings */
 .rating {
   margin-top: 0px;
 }
 
+/* RP Carousel Buttons */
+.rp-left-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.rp-left-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rp-left-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+}
+
+.rp-right-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.rp-right-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.rp-right-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+}
+
+/* Comparison Table */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+
+.modal {
+  border-style: solid;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.modalContent {
+  width: 500px;
+  background-color: white;
+}
+
+.rp-modal-header {
+  padding: 10px;
+}
+
+.rp-modal-title {
+  margin: 0;
+}
+
+.rp-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+/* Comparison Modal Features */
+.current-product, .compare-product, .characteristics-header {
+  display: inline-block;
+  text-align: justify;
+  justify-content: center;
+}
+
+.current-product {
+  text-align: left;
+}
+
+.compare-product {
+  text-align: right;
+}
+
+.characteristics-header {
+  text-align: center;
+}
+.compare-feature {
+  text-align: center;
+}
+.compare-same {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.compare-deff {
+  width: 20px;
+  height: 20px;
+}
+
 /* Outfit List */
-.addToOutfit {
+.outfits-title {
+  border-style: thin;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #BFBFA7;
+  margin: auto;
+  transform: scale(2);
+}
+
+.plus-icon {
+  transform: scale(0.25);
+}
+
+.outfits-list {
+  display: flex;
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+}
+
+.add-to-outfit-text {
+  /* position: absolute; */
+  /* align-items: center; */
+  width: 50%;
+  margin: auto;
+}
+
+.add-to-outfit-card {
   border-style: solid;
   border-width: thin;
   border-color: grey;
   background-color: white;
-  height: 470px;
-  width: 380px;
-  margin: auto;
-  transition: background-color 2s ease-out 50ms;
-  overflow-wrap: break-word;
+  border-radius: 8px;
+  min-height: 470px;
+  min-width: 380px;
+  /* margin: auto; */
+  transition: background-color 1s ease-out 50ms;
+  margin-left: 5%;
+  /* padding: 10px; */
 }
 
-.addToOutfit:hover {
+.add-to-outfit-card:hover {
   background-color: #BFBFA7;
+}
+
+.outfits-map-wrap {
+  overflow: hidden;
+}
+
+.outfits-map {
+  display: flex;
+  flex-direction: row;
+  /* overflow: hidden; */
+  transition-duration: 0.5s;
+  /* margin-left: 4.5%;
+  margin-right: 4.5%; */
+}
+
+/* Outfits Carousel Buttons */
+.outfits-left-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.outfits-left-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.outfits-left-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
+}
+
+.outfits-right-arrow {
+  position: relative;
+  border-style: thin;
+  border-radius: 8px;
+  background-color: #BFBFA7;
+  z-index: 10;
+  margin: auto;
+  transform: scale(2);
+}
+
+.outfits-right-arrow button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.outfits-right-arrow button:hover {
+  transform: scale(1.5) perspective(1px);
 }

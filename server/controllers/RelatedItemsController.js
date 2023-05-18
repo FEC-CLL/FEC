@@ -30,8 +30,4 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// TODO: API request for default style image for each product
-
-// TODO: API request to get all ratings for each product and find average rating
-
 module.exports = router;
