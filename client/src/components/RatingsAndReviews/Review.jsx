@@ -2,6 +2,7 @@
 import React from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';
+import ProductStar from '../Overview/ProductStar';
 
 function Review({ review }) {
   const date = new Date(review.date.slice(0, 10)).toLocaleString('en-us', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -9,7 +10,9 @@ function Review({ review }) {
   return (
     <div className="review">
       <div className="reviewHeader">
-        <div className="reviewRating">{review.rating}</div>
+        <div className="reviewRating">
+          <ProductStar averageReview={review.rating} />
+        </div>
         <div className="reviewReviewerName">
           {review.reviewer_name}
           ,

@@ -5,6 +5,7 @@ import ReviewList from './ReviewList';
 import LoadMoreReviews from './LoadMoreReview';
 import ModalDialog from './AddReview/ModalDialog';
 import ReviewSorting from './ReviewSorting';
+import RatingOverall from './Ratings/RatingOverall';
 
 function RatingsAndReviewsContainer({ initProd }) {
   const [metaData, setMetaData] = useState({});
@@ -39,7 +40,9 @@ function RatingsAndReviewsContainer({ initProd }) {
     <div className="ratingsContainer">
       <div className="rrTitle">RATINGS & REVIEWS</div>
       <div className="rrContainer">
-        <div className="ratings1Container" />
+        <div className="ratings1Container">
+          <RatingOverall metaData={metaData} />
+        </div>
         <div className="reviewContainer">
           <ReviewSorting
             setSortType={setSortType}
