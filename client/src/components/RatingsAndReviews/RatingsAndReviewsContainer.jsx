@@ -14,6 +14,8 @@ function RatingsAndReviewsContainer({ initProd }) {
   const [reviewNum, setReviewNum] = useState(0);
   const [sortType, setSortType] = useState('relevant');
   const [showDialog, setShowDialog] = useState(false);
+  const [reported, setReported] = useState(0);
+
   const starsState = {
     1: true,
     2: true,
@@ -43,7 +45,7 @@ function RatingsAndReviewsContainer({ initProd }) {
           console.error(err);
         });
     }
-  }, [initProd.id, count, sortType]);
+  }, [initProd.id, count, sortType, reported]);
 
   return (
     <div className="ratingsContainer">
@@ -61,8 +63,8 @@ function RatingsAndReviewsContainer({ initProd }) {
             setSortType={setSortType}
             allReviews={filteredReviews}
           />
-          <ReviewList allReviews={filteredReviews} />
-          <div>
+          <ReviewList allReviews={filteredReviews} reported={reported} setReported={setReported} />
+          <div className="reviewFooterButtons">
             <LoadMoreReviews count={count} setCount={setCount} reviewNum={reviewNum} />
             <button type="button" className="buttonRR" id="addReviewButton" onClick={() => setShowDialog(true)}>ADD REVIEW</button>
           </div>
