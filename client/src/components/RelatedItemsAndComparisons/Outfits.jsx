@@ -31,9 +31,16 @@ function Outfits({ initProd, updateProduct }) {
     console.log(closet);
   };
 
-  const removeFromOutfit = () => {
+  const removeFromOutfit = (prodID) => {
     // TODO: remove from local storage
     alert('removing from outfit');
+    const outfitsArray = JSON.parse(window.localStorage.getItem('userCloset'));
+    outfitsArray.forEach((item, i) => {
+      if (item.id === prodID) {
+        outfitsArray.splice(i, 1);
+      }
+    });
+    setCloset(outfitsArray);
   };
 
   // Carousel event handlers
