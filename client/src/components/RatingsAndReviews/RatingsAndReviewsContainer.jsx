@@ -13,6 +13,7 @@ function RatingsAndReviewsContainer({ initProd }) {
   const [reviewNum, setReviewNum] = useState(0);
   const [sortType, setSortType] = useState('relevant');
   const [showDialog, setShowDialog] = useState(false);
+  const [reported, setReported] = useState(0);
 
   useEffect(() => {
     if (initProd.id) {
@@ -33,7 +34,7 @@ function RatingsAndReviewsContainer({ initProd }) {
           console.error(err);
         });
     }
-  }, [initProd.id, count, sortType]);
+  }, [initProd.id, count, sortType, reported]);
 
   return (
     <div className="ratingsContainer">
@@ -45,7 +46,7 @@ function RatingsAndReviewsContainer({ initProd }) {
             setSortType={setSortType}
             allReviews={allReviews}
           />
-          <ReviewList allReviews={allReviews} />
+          <ReviewList allReviews={allReviews} reported={reported} setReported={setReported} />
           <div>
             <LoadMoreReviews count={count} setCount={setCount} reviewNum={reviewNum} />
             <button type="button" className="buttonRR" id="addReviewButton" onClick={() => setShowDialog(true)}>ADD REVIEW</button>

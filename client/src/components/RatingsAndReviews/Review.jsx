@@ -3,7 +3,7 @@ import React from 'react';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import ReviewReport from './ReviewReport';
 
-function Review({ review }) {
+function Review({ review, reported, setReported }) {
   const date = new Date(review.date.slice(0, 10)).toLocaleString('en-us', { month: 'long', day: 'numeric', year: 'numeric' });
 
   return (
@@ -26,7 +26,7 @@ function Review({ review }) {
       <div className="reviewFooter">
         <ReviewHelpfulness review={review} />
         <div className="reviewFooterDivider">|</div>
-        <ReviewReport review={review} />
+        <ReviewReport review={review} reported={reported} setReported={setReported} />
       </div>
     </div>
   );
