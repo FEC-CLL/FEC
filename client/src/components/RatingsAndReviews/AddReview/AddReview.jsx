@@ -9,6 +9,7 @@ import ReviewSummary from './ReviewSummary';
 import ReviewBody from './ReviewBody';
 import ReviewNickname from './ReviewNickname';
 import ReviewEmail from './ReviewEmail';
+import AddReviewPhotos from './AddReviewPhotos';
 
 function AddReview({ initProd, metaData, setShowDialog }) {
   const [overallRating, setOverallRating] = useState('');
@@ -23,6 +24,7 @@ function AddReview({ initProd, metaData, setShowDialog }) {
   const [quality, setQuality] = useState('');
   const [length, setLength] = useState('');
   const [fit, setFit] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   const char = metaData.characteristics;
   const charsObj = {};
@@ -45,7 +47,7 @@ function AddReview({ initProd, metaData, setShowDialog }) {
       recommend,
       name: reviewNickname,
       email: reviewEmail,
-      photos: [],
+      photos,
       characteristics: charsObj,
     };
 
@@ -95,6 +97,8 @@ function AddReview({ initProd, metaData, setShowDialog }) {
         <ReviewSummary setReviewSummary={setReviewSummary} />
         <br />
         <ReviewBody setReviewBody={setReviewBody} />
+        <br />
+        <AddReviewPhotos setPhotos={setPhotos} />
         <br />
         <ReviewNickname setReviewNickname={setReviewNickname} />
         <br />
