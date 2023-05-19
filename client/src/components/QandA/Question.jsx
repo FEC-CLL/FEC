@@ -173,8 +173,8 @@ function Question({
             ? (
               <div>
                 { answersIsExpanded
-                  ? <button type="button" onClick={addAnswersCollapseHandler}>Collapse answers</button>
-                  : <button type="button" onClick={addAnswersExpandHandler}>See More answers</button>}
+                  ? <button type="button" className="toggle-answers-button" onClick={addAnswersCollapseHandler}>Collapse Answers</button>
+                  : <button type="button" className="toggle-answers-button" onClick={addAnswersExpandHandler}>See More Answers</button>}
               </div>
             )
             : null}
