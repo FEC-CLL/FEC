@@ -5,7 +5,7 @@ import ProductStar from './ProductStar';
 
 export default function Product({ product = {} }) {
   const {
-    name, category, styles, reviewCount, averageReview,
+    name, category, styles, reviewCount, averageReview, description,
   } = product;
 
   const [styleIndex, setStyleIndex] = useState(0);
@@ -45,8 +45,8 @@ export default function Product({ product = {} }) {
   };
 
   return (
-    <div className="container">
-      <div className="image-gallery" style={{ width: isExpanded ? '100%' : '66.66%' }}>
+    <div className="container m-container">
+      <div className={isExpanded ? 'image-gallery--expanded image-gallery' : 'image-gallery--collapsed image-gallery'}>
         <div className="image-gallery__thumbnail-nav">
           <button type="button" className={thumbnailIndex !== 0 ? 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--up' : 'image-gallery__thumbnail-nav__button image-gallery__thumbnail-nav__button--hidden'} aria-label="Up" onClick={() => setThumbnailIndex(Math.max(0, thumbnailIndex - 1))} />
           <div className="image-gallery__thumbnail-nav__list-wrapper">
@@ -58,9 +58,8 @@ export default function Product({ product = {} }) {
         </div>
         <div className="image-gallery__image">
           <button type="button" className={mainImageIndex !== 0 ? 'image-gallery__image-left' : 'image-gallery__thumbnail-nav__button--hidden'} aria-label="Left" onClick={() => setMainImageIndex(Math.max(0, mainImageIndex - 1))} />
-          <div className="image-gallery__image__main-wrapper">
+          <div className="image-gallery__image__main-wrapper" onClick={() => setIsExpanded(!isExpanded)} onKeyPress={() => setIsExpanded(!isExpanded)} role="button" tabIndex={0}>
             <img className={isExpanded ? 'image-gallery__image__main image-gallery__image__main--zoom' : 'image-gallery__image__main'} style={{ transformOrigin: `${mousePosition.x}px ${mousePosition.y}px` }} onMouseMove={mainImgZoomHandler} src={styles[styleIndex].photos[mainImageIndex].url} alt={styles[styleIndex].name} />
-            <button className="image-gallery__image__main-expand" type="button" aria-label="Expand" onClick={() => setIsExpanded(!isExpanded)} />
           </div>
           <button type="button" className={mainImageIndex !== styles[styleIndex].photos.length - 1 ? 'image-gallery__image-right' : 'image-gallery__thumbnail-nav__button--hidden'} aria-label="Right" onClick={() => setMainImageIndex(Math.min(mainImageIndex + 1, styles[styleIndex].photos.length - 1))} />
         </div>
@@ -76,14 +75,20 @@ export default function Product({ product = {} }) {
         <p className="product-information__price">
           {styles[styleIndex].sale_price ? (
             <span>
-              <span className="product-information__price--strike">{styles[styleIndex].original_price}</span>
-
-              <span className="product-information__price--sale">{styles[styleIndex].sale_price}</span>
+              <span className="product-information__price--sale">
+                $
+                {styles[styleIndex].sale_price}
+                {' '}
+              </span>
+              <span className="product-information__price--strike">
+                $
+                {styles[styleIndex].original_price}
+              </span>
             </span>
           )
             : styles[styleIndex].original_price}
         </p>
-
+        <p>{description}</p>
         <div className="product-information__style-selector">
           <p>
             <span className="product-information__style-selector--bold">STYLE &gt; </span>
