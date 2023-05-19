@@ -133,7 +133,9 @@
 .sortDropdown {
   margin-left: 4px;
   font-weight: bold;
+  text-decoration: underline;
   font-size: 20px;
+  border-style: none;
 }
 
 .reviewContainer {
@@ -415,11 +417,17 @@
   resize: vertical;
 }
 
-
-
 .reviewBodyCharCount {
-  font-size: 12px;
+  font-size: 14px;
 }
+
+::placeholder {
+  color: var(--secondary);
+  font-family: Arial;
+  font-style:italic
+}
+
+
 
 
 
