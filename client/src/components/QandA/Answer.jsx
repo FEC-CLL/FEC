@@ -3,6 +3,19 @@ import React, { useState } from 'react';
 function Answer({ answer, helpfulHandler, reportHandler }) {
   const [helpClicked, setHelpClicked] = useState(false);
   const [reportClicked, setReportClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+
+  const openModal = (photo) => {
+    setSelectedImage(photo);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage('');
+    setIsModalOpen(false);
+  };
+
   const helpHandler = () => {
     helpfulHandler(answer.answer_id);
     setHelpClicked(true);
@@ -20,8 +33,17 @@ function Answer({ answer, helpfulHandler, reportHandler }) {
           ? (
             <div className="photos">
               {answer.photos.map((photo) => (
-                <img className="answer-photo" src={photo.url} alt="" />
+                // eslint-disable-next-line
+                <img onClick={() => openModal(photo.url)} className="answer-photo" src={photo.url} alt="" />
               ))}
+              {isModalOpen && (
+                <div className="modal">
+                  <div className="photo-modal-content">
+                    <img className="modal-image" src={selectedImage} alt="full resolution" />
+                    <button className="close-button" type="button" onClick={closeModal}>X</button>
+                  </div>
+                </div>
+              ) }
             </div>
           )
           : null}
