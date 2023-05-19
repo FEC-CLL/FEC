@@ -5,7 +5,7 @@ function LoadMoreReviews({ count, setCount, reviewNum }) {
     setCount(count + 2);
   };
 
-  if (reviewNum >= 2) {
+  if (reviewNum <= 0) {
     return (
       <button
         type="button"

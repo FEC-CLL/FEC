@@ -15,7 +15,7 @@ function ReviewSorting({
         reviews, sorted by
       </div>
       <select className="sortDropdown" onChange={onSortTypeChange}>
-        <option value="relevant">relevant</option>
+        <option value="sortDropdownOption relevant">relevant</option>
         <option value="newest">newest</option>
         <option value="helpful">helpful</option>
       </select>

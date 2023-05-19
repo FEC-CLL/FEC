@@ -6,17 +6,21 @@ import axios from 'axios';
 
 function ReviewHelpfulness({ review }) {
   const [helpYes, setHelpYes] = useState(review.helpfulness);
+  const [clicked, setClicked] = useState(false);
 
   function onHelpYesClick() {
-    axios.put(`/reviews/${review.review_id}/helpful`)
-      .then((result) => {
-        if (result.status === 204) {
-          setHelpYes(helpYes + 1);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (!clicked) {
+      axios.put(`/reviews/${review.review_id}/helpful`)
+        .then((result) => {
+          if (result.status === 204) {
+            setClicked(true);
+            setHelpYes(helpYes + 1);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
 
   return (

@@ -11,55 +11,22 @@ function ProductCharacteristics({ char, charProp }) {
       <div className="addReviewChar">
         <div className="addReviewCharName">{charName}</div>
         <div className="addReviewChoices">
-          <input
-            type="radio"
-            name={charName}
-            value={1}
-            id="1"
-            checked={charVar === '1'}
-            onChange={(e) => { onOptionChange(e, setCharVar); }}
-          />
-          <label htmlFor="1">{charDescriptionArr[0]}</label>
-
-          <input
-            type="radio"
-            name={charName}
-            value={2}
-            id="2"
-            checked={charVar === '2'}
-            onChange={(e) => { onOptionChange(e, setCharVar); }}
-          />
-          <label htmlFor="2">{charDescriptionArr[1]}</label>
-
-          <input
-            type="radio"
-            name={charName}
-            value={3}
-            id="3"
-            checked={charVar === '3'}
-            onChange={(e) => { onOptionChange(e, setCharVar); }}
-          />
-          <label htmlFor="3">{charDescriptionArr[2]}</label>
-
-          <input
-            type="radio"
-            name={charName}
-            value={4}
-            id="4"
-            checked={charVar === '4'}
-            onChange={(e) => { onOptionChange(e, setCharVar); }}
-          />
-          <label htmlFor="4">{charDescriptionArr[3]}</label>
-
-          <input
-            type="radio"
-            name={charName}
-            value={5}
-            id="5"
-            checked={charVar === '5'}
-            onChange={(e) => { onOptionChange(e, setCharVar); }}
-          />
-          <label htmlFor="5">{charDescriptionArr[4]}</label>
+          {
+            ['1', '2', '3', '4', '5'].map((id) => (
+              <>
+                <input
+                  type="radio"
+                  name={charName}
+                  value={id * 1}
+                  id={id}
+                  checked={charVar === id}
+                  onChange={(e) => { onOptionChange(e, setCharVar); }}
+                  required
+                />
+                <label htmlFor={id}>{charDescriptionArr[id * 1 - 1]}</label>
+              </>
+            ))
+          }
         </div>
       </div>
     );
