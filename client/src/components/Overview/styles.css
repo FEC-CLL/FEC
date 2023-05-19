@@ -10,7 +10,7 @@
 }
 
 .image-gallery__thumbnail-nav__button--up {
-  background: url('http://localhost:3000/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
+  background: url('../../../dist/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
 }
 
 .image-gallery__thumbnail-nav__button--hidden {
@@ -26,7 +26,7 @@
 }
 
 .image-gallery__thumbnail-nav__down {
-  background: url('http://localhost:3000/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
+  background: url('../../../dist/assets/icons/up-arrow.png') 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -35,7 +35,7 @@
 }
 
 .image-gallery__image__main-expand {
-  background: url('http://localhost:3000/assets/icons/fullscreen.png') 0 0 / 16px no-repeat;
+  background: url('../../../dist/assets/icons/fullscreen.png') 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -47,7 +47,7 @@
 }
 
 .image-gallery__image-left {
-  background: url('http://localhost:3000/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
+  background: url('../../../dist/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -55,7 +55,7 @@
 }
 
 .image-gallery__image-right {
-  background: url('http://localhost:3000/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
+  background: url('../../../dist/assets/icons/arrowheads-of-thin-outline-to-the-left.png') 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -144,35 +144,35 @@
 }
 
 .product-information__reviews--0 {
-  background: url("http://localhost:3000/assets/icons/star_unfilled.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/star_unfilled.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
 }
 
 .product-information__reviews--1 {
-  background: url("http://localhost:3000/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/star-one-quarter.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
 }
 
 .product-information__reviews--2 {
-  background: url("http://localhost:3000/assets/icons/star-half.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/star-half.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
 }
 
 .product-information__reviews--3 {
-  background: url("http://localhost:3000/assets/icons/star-three-quarter.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/star-three-quarter.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
 }
 
 .product-information__reviews--4 {
-  background: url("http://localhost:3000/assets/icons/star.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/star.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -229,7 +229,7 @@
 }
 
 .product-information__style-selector--selected {
-  background: url("http://localhost:3000/assets/icons/check-mark.png") 0 0 / 16px no-repeat;
+  background: url("../../../dist/assets/icons/check-mark.png") 0 0 / 16px no-repeat;
   height: 16px;
   width: 16px;
   position: absolute;
@@ -257,12 +257,12 @@
   height: 60px;
   padding: 0 10px;
   width: 100%;
-  background: url("http://localhost:3000/assets/icons/down-arrow.png") right 20px center / 16px no-repeat;
+  background: url("../../../dist/assets/icons/down-arrow.png") right 20px center / 16px no-repeat;
   appearance: none;
 }
 
 .product-information__add-to-cart {
-  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  background: var(--primary) url("../../../dist/assets/icons/plus.png") right 20px center / 16px no-repeat;
   border: none;
   cursor: pointer;
   font-size: 16px;

@@ -263,7 +263,7 @@
 }
 
 .buttonRR {
-  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  background: var(--primary) url("../../../dist/assets/icons/plus.png") right 20px center / 16px no-repeat;
   border: none;
   cursor: pointer;
   font-size: 16px;
