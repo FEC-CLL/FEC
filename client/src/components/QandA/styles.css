@@ -6,7 +6,6 @@
 
 .buttonContainer {
   display: flex;
-  font-size: 13px;
 }
 
 /* search css */
@@ -78,6 +77,8 @@
   flex-direction: row;
   font-weight: 100;
 }
+
+
 
 .astext {
   background: none;
@@ -256,3 +257,56 @@
   margin-right: 2px;
 }
 
+@media (max-width: 800px) {
+  .answer-info, .question-info {
+    font-size: 10px;
+  }
+
+  .astext {
+    font-size: 10px;
+  }
+
+  .question-container {
+    font-size: 15px;
+  }
+
+  .answerContainer {
+    font-size: 14px;
+  }
+
+  .qaComponent {
+    font-size: 15px;
+  }
+
+  .answer-photo {
+    height: 60px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .searchForm {
+    padding: 8px;
+  }
+
+  .toggle-answers-button {
+    font-size: 12px;
+  }
+
+  .qa-button {
+    font-size: 12px;
+    height:auto;
+    padding: 16px 5px;
+  }
+
+  .imageButton {
+    padding-right: 50px;
+  }
+
+  .qaContainer {
+    margin-bottom: 20px;
+  }
+}

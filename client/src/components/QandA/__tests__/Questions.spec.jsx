@@ -360,7 +360,7 @@ describe('Questions Component', () => {
     render(<QandAContainer product={testData} />);
     await waitFor(() => screen.getByText('A:'));
 
-    const showMoreAnswers = await screen.getByText('See More answers');
+    const showMoreAnswers = await screen.getByText('See More Answers');
     expect(showMoreAnswers).toBeInTheDocument();
 
     fireEvent.click(showMoreAnswers);
@@ -375,11 +375,11 @@ describe('Questions Component', () => {
     render(<QandAContainer product={testData} />);
     await waitFor(() => screen.getByText('A:'));
 
-    const showMoreAnswers = await screen.getByText('See More answers');
+    const showMoreAnswers = await screen.getByText('See More Answers');
     fireEvent.click(showMoreAnswers);
 
     await waitFor(() => {
-      const collapseAnswers = screen.getByText('Collapse answers');
+      const collapseAnswers = screen.getByText('Collapse Answers');
       expect(collapseAnswers).toBeInTheDocument();
       fireEvent.click(collapseAnswers);
     });
