@@ -12,21 +12,21 @@ function ProductCharacteristics({ char, charProp }) {
         <div className="addReviewCharName">{charName}</div>
         <div className="addReviewChoices">
           {
-            ['1', '2', '3', '4', '5'].map((id) => (
-              <>
-                <input
-                  type="radio"
-                  name={charName}
-                  value={id * 1}
-                  id={id}
-                  checked={charVar === id}
-                  onChange={(e) => { onOptionChange(e, setCharVar); }}
-                  required
-                />
-                <label htmlFor={id}>{charDescriptionArr[id * 1 - 1]}</label>
-              </>
-            ))
-          }
+              ['1', '2', '3', '4', '5'].map((id) => (
+                <>
+                  <input
+                    type="radio"
+                    name={charName}
+                    value={id * 1}
+                    id={id}
+                    checked={charVar === id}
+                    onChange={(e) => { onOptionChange(e, setCharVar); }}
+                    required
+                  />
+                  <label htmlFor={id}>{charDescriptionArr[id * 1 - 1]}</label>
+                </>
+              ))
+            }
         </div>
       </div>
     );
