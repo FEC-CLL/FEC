@@ -31,7 +31,7 @@ function RatingsAndReviewsContainer({ initProd }) {
       axios.get(`/reviews/${initProd.id}?count=${count}&sort=${sortType}`)
         .then((response) => {
           setAllReviews(response.data.results);
-          setReviewNum(response.data.results.length);
+          setReviewNum(count - response.data.results.length);
         })
         .catch((err) => {
           console.error(err);

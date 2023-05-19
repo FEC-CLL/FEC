@@ -37,8 +37,8 @@ function Review({ review, reported, setReported }) {
 
 function ReviewPhoto({ photo }) {
   return (
-    <div className="reviewPhoto answer-photo">
-      <img src={photo.url} />
+    <div className="reviewPhoto">
+      <img src={photo.url} className="answer-photo" />
     </div>
   );
 }

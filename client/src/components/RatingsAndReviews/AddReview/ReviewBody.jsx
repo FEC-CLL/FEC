@@ -13,7 +13,7 @@ function ReviewBody({ setReviewBody }) {
       <div className="addReviewBodyText modal-component-title">*Review Body</div>
       <textarea className="addReviewBodyTextArea" maxLength="1000" placeholder="Why did you like the product or not?" onChange={onInputChange} required minLength="50" />
       <div id="reviewBodyCharCount modal-warning">
-        {charNum >= 0 ? charNum : 'Minimum reached'}
+        {charNum >= 0 ? charNum + ' characters entered' : 'Minimum reached'}
       </div>
     </div>
   );

@@ -45,7 +45,7 @@ function RatingBreakdown({
   return (
     <div className="RatingsRow">
       <div className="RatingsSide">
-        <div className="starsName" onClick={onStarClick} style={{ color: starsFilter[stars] ? '#000000' : '#606060' }}>
+        <div className="starsName" onClick={onStarClick} style={{ color: starsFilter[stars] ? '#000000' : '#A0A0A0' }}>
           {stars}
           {' stars'}
         </div>
