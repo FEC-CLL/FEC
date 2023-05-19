@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './styles.css';
 
 export default function NavBar() {
@@ -13,14 +12,6 @@ export default function NavBar() {
           </button>
         </form>
       </div>
-      <ul>
-        <li>
-          <Link to="/products/40351">YEasy 350</Link>
-        </li>
-        <li>
-          <Link to="/products/40344">Camo Onesie</Link>
-        </li>
-      </ul>
     </nav>
   );
 }
