@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal';
 import ProductStar from '../Overview/ProductStar';
 
 function Card({
-  initProd, product, removeFromOutfit,
+  initProd, product, removeFromOutfit, modalPosition
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
@@ -78,6 +78,7 @@ function Card({
           handleCompareClick={handleCompareClick}
           initProd={initProd}
           product={product}
+          modalPosition={modalPosition}
         />
       )}
       <div className="productCard" data-testid="rp-card" onClick={handleCardClick}>

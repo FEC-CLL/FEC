@@ -1,28 +1,59 @@
+
+
 # FEC
-Front End Capstone Project for HR
 
-Step 1: npm install
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)  [![Amazon AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/) [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/) [![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/) [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/) [![MongoDB](https://img.shields.io/badge/MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
-Step 2: add a dist folder in client directory
+FEC is a web application built to provide a platform for users to comment and collaborate on projects. This project was built by the CLL team at Fullstack Academy.
 
-  2.1: add an index.html file to dist folder
-  ```
-    <!DOCTYPE html>
-    <html lang="en">
-      <link>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>FEC</title>
-        <link rel="stylesheet" href="styles.css"></link>
-      </head>
-      <body>
-        <main><div id="root"></div></main>
-        <script src="bundle.js"></script>
-      </body>
-    </html>
-  ```
-  2.2 add a styles.css file to dist folder
-  
-Step 3: npm run dev in terminal at root directory
+## Table of Contents
 
-Step 4: You should see Hello World! when navigating to localhost/3000
+- [Description](#description)
+- [Technologies Used](#technologies-used)
+- [Installation and Running](#installation-and-running)
+- [Sample .env File](#sample-env-file)
+- [Code Highlights](#code-highlights)
+- [Authors and Contributors](#authors-and-contributors)
+- [Wins and Improvements](#wins-and-improvements)
+- [Tips for a Better Readme](#tips-for-a-better-readme)
+
+## Description
+
+FEC is a web application designed to mock the front end of an ecommerce clothing web site. There are four main components to this web app: Overview, Related Products and Outfits, Questions and Answer, and Ratings and Reviews. It was built using a variety of technologies, including React, Express, Node.js, AWS, and Jest. The application was built to provide a platform for users to post comments, receive notifications, and collaborate with other users.
+
+## Technologies Used
+
+- [React](https://reactjs.org/)
+- [Amazon AWS](https://aws.amazon.com/)
+- [Express.js](https://expressjs.com/)
+- [Jest](https://jestjs.io/)
+- [Node.js](https://nodejs.org/)
+- [Git](https://git-scm.com/)
+- [Heroku API](https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp)
+
+## Installation and Running
+
+To install and run FEC, first clone the repository and install the necessary dependencies by running `npm install`. Once the dependencies are installed, you can run the application with `npm run dev`.
+
+
+## Sample .env File
+A default .env file is not included when cloning so a user has to create their own .env file with the following:
+-PORT=3000
+-TOKEN=[github api token]
+-API_ENDPOINT="https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp"
+
+## Authors and Contributors
+
+FEC was created by the CLL team at Fullstack Academy. The team members are:
+
+- [Frank Mirando](https://github.com/fmirando)
+- [Aleksandr Gordin](https://github.com/SashaGordin)
+- [Julie Kravchenko](https://github.com/jkrav07)
+- [Melissa Lava](https://github.com/mellava)
+
+
+## Wins and Improvements
+
+FEC was successful in providing a platform for users to comment and collaborate on projects in real-time. The application was built quickly and efficiently using a variety of technologies.
+
+However, there are some areas that can be improved upon. For example, the notification feature could be improved to provide more detailed information about the notification. Additionally, the application could be improved to provide more options for users to customize their profile.

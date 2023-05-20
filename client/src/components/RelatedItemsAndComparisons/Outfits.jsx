@@ -9,7 +9,6 @@ function Outfits({ initProd }) {
   const [offset, setOffset] = useState(0);
   const listLength = closet.length;
   const styles = {
-    // chang width name to offset
     transform: `translate(${offset}px)`,
   };
 

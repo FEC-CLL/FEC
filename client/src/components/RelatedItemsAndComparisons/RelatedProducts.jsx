@@ -10,6 +10,7 @@ function RelatedProducts({
   const [currentView, setCurrentView] = useState([]);
   const [index, setIndex] = useState();
   const [offset, setOffset] = useState();
+  const [modalPosition, setModalPosition] = useState(0);
   const listLength = relatedProducts.length;
   const styles = {
     transform: `translate(${offset}px)`,
@@ -28,6 +29,7 @@ function RelatedProducts({
     if (index <= listLength - 3) {
       setIndex(index + 1);
       setOffset(-((index) * 500));
+      setModalPosition(-offset);
     }
   };
 
@@ -36,6 +38,7 @@ function RelatedProducts({
     if (index > 1) {
       setIndex(index - 1);
       setOffset(offset + 500);
+      setModalPosition(-offset);
     }
   };
 
@@ -62,6 +65,7 @@ function RelatedProducts({
               initProd={initProd}
               product={product}
               key={product.id}
+              modalPosition={modalPosition}
             />
           ))}
         </div>
