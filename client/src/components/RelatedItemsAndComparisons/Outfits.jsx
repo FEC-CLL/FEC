@@ -6,11 +6,11 @@ import Card from './Card';
 function Outfits({ initProd }) {
   const [closet, setCloset] = useState([]);
   const [index, setIndex] = useState(1);
-  const [width, setWidth] = useState(0);
+  const [offset, setOffset] = useState(0);
   const listLength = closet.length;
   const styles = {
     // chang width name to offset
-    transform: `translate(${width}px)`,
+    transform: `translate(${offset}px)`,
   };
 
   // Outfit event handlers
@@ -37,7 +37,7 @@ function Outfits({ initProd }) {
     // alert('Moving right');
     if (index <= listLength - 2) {
       setIndex(index + 1);
-      setWidth(-((index) * 450));
+      setOffset(-((index) * 450));
     }
   };
 
@@ -45,7 +45,7 @@ function Outfits({ initProd }) {
     // alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
-      setWidth(width + 450);
+      setOffset(offset + 450);
     }
   };
 

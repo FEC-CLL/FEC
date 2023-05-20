@@ -39,6 +39,10 @@ function ComparisonModal({
     setFeatures(feature);
   }, []);
 
+  const modalTracker = () => {
+    // This function will track current position of modal window and will translate left or right
+  };
+
   // Helper functions that return features html
   const sameCategory = (feature) => (
     <tr className="compare-same">

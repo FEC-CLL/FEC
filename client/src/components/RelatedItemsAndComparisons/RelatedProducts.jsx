@@ -9,15 +9,15 @@ function RelatedProducts({
   // Will only render 3 products at a time
   const [currentView, setCurrentView] = useState([]);
   const [index, setIndex] = useState();
-  const [width, setWidth] = useState();
+  const [offset, setOffset] = useState();
   const listLength = relatedProducts.length;
   const styles = {
-    transform: `translate(${width}px)`,
+    transform: `translate(${offset}px)`,
   };
 
   useEffect(() => {
     setIndex(1);
-    setWidth(0);
+    setOffset(0);
     if (relatedProducts.length) {
       setCurrentView(relatedProducts);
     }
@@ -27,7 +27,7 @@ function RelatedProducts({
     // alert('Moving right');
     if (index <= listLength - 3) {
       setIndex(index + 1);
-      setWidth(-((index) * 500));
+      setOffset(-((index) * 500));
     }
   };
 
@@ -35,7 +35,7 @@ function RelatedProducts({
     // alert('Moving left');
     if (index > 1) {
       setIndex(index - 1);
-      setWidth(width + 500);
+      setOffset(offset + 500);
     }
   };
 
