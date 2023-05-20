@@ -252,7 +252,7 @@
 }
 
 .imageButton {
-  background: var(--primary) url("http://localhost:3000/assets/icons/plus.png") right 20px center / 16px no-repeat;
+  background: var(--primary) url("../../../dist/assets/icons/plus.png") right 20px center / 16px no-repeat;
   padding-right: 50px;
 }
 
