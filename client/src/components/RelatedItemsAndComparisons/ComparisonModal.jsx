@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 function ComparisonModal({
-  handleCompareClick, initProd, product,
+  handleCompareClick, initProd, product, modalPosition,
 }) {
   const [features, setFeatures] = useState([]);
   const [viewProduct, setViewProduct] = useState(null);
   const [compareProduct, setCompareProduct] = useState(null);
+  const styles = {
+    transform: `translate(${modalPosition}px)`,
+  };
 
   // Or I can just use '√' and 'X'...
 
@@ -39,6 +42,10 @@ function ComparisonModal({
     setFeatures(feature);
   }, []);
 
+  // const modalTracker = (moveValue) => {
+  //   // This function will track current position of modal window and will translate left or right
+  // };
+
   // Helper functions that return features html
   const sameCategory = (feature) => (
     <tr className="compare-same">
@@ -69,7 +76,7 @@ function ComparisonModal({
   );
 
   return (
-    <div className="modal">
+    <div className="modal" style={styles}>
       <div className="overlay">
         <div className="modalContent">
           <div className="rp-modal-header">
