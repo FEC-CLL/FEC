@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function ComparisonModal({
-  handleCompareClick, initProd, product, modalPosition
+  handleCompareClick, initProd, product, modalPosition,
 }) {
   const [features, setFeatures] = useState([]);
   const [viewProduct, setViewProduct] = useState(null);

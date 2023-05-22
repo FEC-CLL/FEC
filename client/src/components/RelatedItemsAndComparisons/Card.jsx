@@ -7,7 +7,7 @@ import ComparisonModal from './ComparisonModal';
 import ProductStar from '../Overview/ProductStar';
 
 function Card({
-  initProd, product, removeFromOutfit, modalPosition
+  initProd, product, removeFromOutfit, modalPosition,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [productStyles, setProductStyles] = useState({});
