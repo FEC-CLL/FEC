@@ -4,7 +4,7 @@
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)  [![Amazon AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/) [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/) [![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/) [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/) [![MongoDB](https://img.shields.io/badge/MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
-FEC is a web application built to provide a platform for users to comment and collaborate on projects. This project was built by the CLL team at Fullstack Academy.
+FEC is a web application mimicking the front end of a ecommerce clothing web site. This project was built by the Cerise-Limon-Lucidity team at Hack Reactor.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ FEC is a web application built to provide a platform for users to comment and co
 
 ## Description
 
-FEC is a web application designed to mock the front end of an ecommerce clothing web site. There are four main components to this web app: Overview, Related Products and Outfits, Questions and Answer, and Ratings and Reviews. It was built using a variety of technologies, including React, Express, Node.js, AWS, and Jest. The application was built to provide a platform for users to post comments, receive notifications, and collaborate with other users.
+FEC is a web application designed to mock the front end of an ecommerce clothing web site. There are four main components to this web app: Overview, Related Products and Outfits, Questions and Answer, and Ratings and Reviews. It was built using a variety of technologies, including React, Express, Node.js, AWS, and Jest.
 
 ## Technologies Used
 
@@ -44,7 +44,7 @@ A default .env file is not included when cloning so a user has to create their o
 
 ## Authors and Contributors
 
-FEC was created by the CLL team at Fullstack Academy. The team members are:
+FEC was created by the CLL team at Hack Reactor. The team members are:
 
 - [Frank Mirando](https://github.com/fmirando)
 - [Aleksandr Gordin](https://github.com/SashaGordin)
@@ -54,6 +54,6 @@ FEC was created by the CLL team at Fullstack Academy. The team members are:
 
 ## Wins and Improvements
 
-FEC was successful in providing a platform for users to comment and collaborate on projects in real-time. The application was built quickly and efficiently using a variety of technologies.
+We were successful in building a complete functional front end experience which provides the user with simple and clean interface to interact with different clothing products.
 
-However, there are some areas that can be improved upon. For example, the notification feature could be improved to provide more detailed information about the notification. Additionally, the application could be improved to provide more options for users to customize their profile.
+However, there are some areas that can be improved upon. For example, we could have spent a few more days polishing the CSS styling such as the carousel and modal window for related products. We also seem to be maxing out out our number of requests for the Heroku API so future enhancements could include refactoring our API requests to be more efficient.
