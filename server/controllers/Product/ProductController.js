@@ -23,17 +23,17 @@ const getProductStyle = async (id) => {
 };
 
 const getProduct = async (id) => {
-  const [productResponse, styles, reviewsResponse, metadataResponse] = await Promise.all([
+  const [productResponse /*, styles, reviewsResponse, metadataResponse*/] = await Promise.all([
     apiInstance.get(`/products/${id}`),
-    getProductStyle(id),
-    apiInstance.get(`/reviews?product_id=${id}`),
-    apiInstance.get(`/reviews/meta?product_id=${id}`),
+    // getProductStyle(id),
+    // apiInstance.get(`/reviews?product_id=${id}`),
+    // apiInstance.get(`/reviews/meta?product_id=${id}`),
   ]);
   return {
     ...productResponse.data,
-    styles,
-    reviewCount: reviewsResponse.data.count,
-    averageReview: calculateAvg(metadataResponse.data.ratings),
+    styles: 0,
+    reviewCount: 0 /*reviewsResponse.data.count*/,
+    averageReview: 0 /*calculateAvg(metadataResponse.data.ratings)*/,
   };
 };
 

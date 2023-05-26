@@ -18,7 +18,6 @@ router.get('/:id', async (req, res) => {
     const results = await productController.getProduct(req.params.id);
     res.send(results);
   } catch (err) {
-    console.error(err);
     res.sendStatus(400);
   }
 });
